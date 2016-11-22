@@ -1,6 +1,107 @@
 {% extends 'AvanzuAdminThemeBundle:layout:base-layout.html.twig' %}
 
+{%  block javascripts_head %}
+     {{ parent() }}
+{% endblock  %}
 
- {% block page_content %}
- dferfrgrtgrtgr
- {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+{% endblock %}
+
+{% block title %}
+    Colmenapp
+{% endblock %}
+
+{% block avanzu_admin_header %}
+    <header class="main-header">
+        {% block avanzu_logo %}
+            <a href="#" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                {{ block('title') }}
+            </a>
+        {% endblock %}
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        {% block avanzu_navbar %}
+                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
+                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
+                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
+                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                        {% endblock %}
+                    </ul>
+                </div>
+            {% endif %}
+        </nav>
+    </header>
+{% endblock %}
+
+
+{% block avanzu_sidebar %}
+    <div class="sidebar">
+        <!-- user panel (Optional) -->
+        <div class="user-panel">
+
+        </div><!-- /.user-panel -->
+
+        <!-- Search Form (Optional) -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+            </div>
+        </form><!-- /.sidebar-form -->
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">Menu</li>
+            <li class="active"><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Dashboard</span></a></li>
+            <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i><span>Pedidos</span></a></li>
+            <li><a href="#"><i class="fa fa-barcode" aria-hidden="true"></i><span>Productos</span></a></li>
+            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Categorias</span></a></li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Link in level 2</a></li>
+                </ul>
+            </li>
+        </ul><!-- /.sidebar-menu -->
+
+    </div><!-- /.sidebar -->
+{% endblock %}
+
+
+{% block page_title %}
+    Periodo de producción
+{% endblock %}
+
+{% block page_subtitle %}
+    Subtitulo
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+{% endblock %}
+
+{% block page_content %}
+    contenido de la pagina
+{% endblock %}
+
+
+{% block avanzu_admin_footer %}
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.0
+        </div>
+        <strong>Colmenapp Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Colmenapp.com</a>.</strong> All rights reserved.
+    </footer>
+{% endblock %}
