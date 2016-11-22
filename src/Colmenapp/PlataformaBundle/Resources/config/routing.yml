@@ -1,0 +1,7 @@
+colmenapp_plataforma_homepage:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Default:index }
+
+periodo_produccion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/periodoProduccion.yml"
+    prefix:   /periodo-produccion

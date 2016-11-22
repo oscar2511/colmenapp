@@ -1,0 +1,12 @@
+periodoproduccion_index:
+    path:     /
+    defaults: { _controller: "ColmenappPlataformaBundle:PeriodoProduccion:index" }
+    methods:  GET
+
+periodoproduccion_show:
+    path:     /{id}/show
+    defaults: { _controller: "ColmenappPlataformaBundle:PeriodoProduccion:show" }
+    methods:  GET
+
+
+

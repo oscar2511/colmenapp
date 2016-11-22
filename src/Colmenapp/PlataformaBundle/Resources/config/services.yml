@@ -1,0 +1,4 @@
+services:
+#    colmenapp_plataforma.example:
+#        class: Colmenapp\PlataformaBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
