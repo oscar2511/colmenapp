@@ -26,18 +26,44 @@
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-            {% if app.user is not null and is_granted('IS_AUTHENTICATED_FULLY') %}
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         {% block avanzu_navbar %}
-                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:messages')) }}
-                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:notifications')) }}
-                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:tasks')) }}
-                            {{ render(controller('AvanzuAdminThemeBundle:Navbar:user')) }}
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    <img width="18" height="18" src="{{ asset('img/user-icon.png') }}" />
+                                    <span class="hidden-xs">Oscar Rodríguez</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="{{ asset('img/user-icon.png') }}" />
+                                        <p>
+                                            Oscar Rodríguez - Administrador
+                                            <small>Miembro desde 15 nov de 2015</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-4 text-center">
+                                            <a href="#">Último login 22-04-2016</a>
+                                        </div>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat">Salir</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                         {% endblock %}
                     </ul>
                 </div>
-            {% endif %}
         </nav>
     </header>
 {% endblock %}
@@ -64,14 +90,14 @@
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <li class="active"><a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Dashboard</span></a></li>
-            <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i><span>Pedidos</span></a></li>
-            <li><a href="#"><i class="fa fa-barcode" aria-hidden="true"></i><span>Productos</span></a></li>
-            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Categorias</span></a></li>
+            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Apiario</span></a></li>
+            <li><a href="#"><i class="fa fa-archive" aria-hidden="true"></i><span>Colmena</span></a></li>
+            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Alimentos</span></a></li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reportes y Estadísticas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Estadísticas</a></li>
+                    <li><a href="#">Reportes</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
@@ -102,6 +128,6 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.0
         </div>
-        <strong>Colmenapp Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Colmenapp.com</a>.</strong> All rights reserved.
+        <strong>Colmenapp Copyright &copy; 2016-2017 <a href="http://almsaeedstudio.com">Colmenapp.com</a>.</strong> Todos los derechos reservados.
     </footer>
 {% endblock %}
