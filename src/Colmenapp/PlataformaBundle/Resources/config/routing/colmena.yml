@@ -1,4 +1,4 @@
-periodoproduccion_index:
+colmena:
     path:     /
     defaults: { _controller: "ColmenappPlataformaBundle:Colmena:index" }
     methods:  GET
