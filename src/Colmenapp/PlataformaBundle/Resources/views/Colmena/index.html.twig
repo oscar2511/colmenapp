@@ -2,19 +2,24 @@
 
 
 {% block page_title %}
-    Gestión de Colmena
+<h2 class="page-header">
+    <i class="fa fa-archive"></i> Gestión de Colmena
+</h2>
+
 {% endblock %}
 
 {% block page_subtitle %}
-    Colmena n° 219
+   <h5> Colmena n° 219</h5>
 {% endblock %}
 
 {% block avanzu_breadcrumb %}
-    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Colmena</a></li>
+    </ol>
 {% endblock %}
 
 {% block page_content %}
-<br>
     <div class="row">
             <div class="col-md-4">
             <div class="box box-solid box-default ">
@@ -135,7 +140,5 @@
 
 
 
-
 {% endblock %}
-
 

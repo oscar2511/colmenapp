@@ -2,11 +2,19 @@
 
 {%  block javascripts_head %}
      {{ parent() }}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/main.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/dashboardController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/angular-chart.js') }}"></script>
 {% endblock  %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
 {% endblock %}
+
 
 {% block title %}
     Colmenapp
