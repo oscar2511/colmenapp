@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block page_content %}
+<section ng-controller="dashboardController">
     <div class="row">
         <div class="col-md-8">
             <div class="col-md-6 col-sm-6 col-xs-8">
@@ -26,16 +27,25 @@
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
-              <span class="progress-description">
-                Ver Colmenas
-              </span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
+                        <span class="progress-description">
+                          Ver Colmenas
+                        </span>
+                    </div>
+                </div>
+                <!----------- grafico productividad ----->
+                <br>
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Productividad del apiario x temporada</h3>
+                        <h3 class="box-title">Productividad del apiario (kg/temporada)</h3>
                     </div>
                     <div class="box-body">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
                     </div>
                 </div>
             </div><!-- /.col -->
@@ -49,26 +59,31 @@
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
-              <span class="progress-description">
-                Ver Alertas
-              </span>
-                    </div><!-- /.info-box-content -->
-                </div><!-- /.info-box -->
+                        <span class="progress-description">
+                           Ver Alertas
+                        </span>
+                    </div>
+                </div>
 
+                <!----------- grafico clima ----->
+                <br>
                 <div class="box box-default">
                     <div class="box-header">
                         <h3 class="box-title">Información del clima</h3>
                     </div>
                     <div class="box-body">
+                        <canvas id="line"
+                                class="chart chart-line"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
                     </div>
                 </div>
-            </div><!-- /.col -->
-
-
-
+            </div>
         </div>
-
-
+        <!-------------------------------------->
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header">
@@ -134,6 +149,7 @@
 
     </div>
 
+</section>
 {% endblock %}
 
 

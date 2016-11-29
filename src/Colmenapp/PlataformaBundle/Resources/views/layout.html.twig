@@ -2,7 +2,8 @@
 
 {%  block javascripts_head %}
      {{ parent() }}
-    {{ parent() }}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo-colmenapp.ico') }}" />
 
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/main.js')}}"></script>
@@ -24,7 +25,7 @@
     <header class="main-header">
         {% block avanzu_logo %}
             <a href="#" class="logo">
-                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                <img src="{{ asset('bundles/colmenappplataforma/colmenapp/img/logo-colmenapp.png') }}" height="35" width="35" />
                 {{ block('title') }}
             </a>
         {% endblock %}
