@@ -3,13 +3,11 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-archive"></i> Gestión de Colmena
+    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena 145</small>
 </h2>
-
 {% endblock %}
 
 {% block page_subtitle %}
-   <h5> Colmena n° 219</h5>
 {% endblock %}
 
 {% block avanzu_breadcrumb %}
@@ -20,6 +18,7 @@
 {% endblock %}
 
 {% block page_content %}
+<section ng-controller="colmenaController">
     <div class="row">
             <div class="col-md-4">
             <div class="box box-solid box-default ">
@@ -40,7 +39,6 @@
                             <td>Número de colmena</td>
                             <td colspan="2">219</td>
                         </tr>
-
                         <tr>
                             <td><i class="fa fa-map-marker"></i></td>
                             <td>Ubicación</td>
@@ -55,7 +53,7 @@
                         </tr>
                         <tr>
                             <td><i class="fa fa-line-chart"></i></td>
-                            <td>Productividad de la colmena</td>
+                            <td>agresividad de la colmena</td>
                             <td colspan="2">
                                 <span data-toggle="tooltip" title="" class="badge bg-green" data-original-title="Kg de miel x temporada ">45 kg/temp</span>
                             </td>
@@ -74,16 +72,23 @@
             <div class="col-12">
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title">Agresividad de la colonia</h3>
+                        <h3 class="box-title">Mortandad de la colonia</h3>
                     </div>
                     <div class="box-body">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header">
                     <h3 class="box-title">Acciones</h3>
@@ -122,6 +127,15 @@
                                 Agresividad: <span data-toggle="tooltip" title="" class="badge bg-blue" data-original-title="Agresividad de la colmena">Baja</span>
                             </td>
                         </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Cuadros en alza melaria </td>
+                            <td colspan="2">
+                                Dañados: 2
+                                <br>
+                                En producción: 6
+                            </td>
+                        </tr>
                         </tbody></table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
@@ -129,9 +143,41 @@
             <div class="col-12">
                 <div class="box box-warning">
                     <div class="box-header">
-                        <h3 class="box-title">Productividad de la colmena por temporada</h3>
+                        <h3 class="box-title">Productividad de colmena</h3>
                     </div>
                     <div class="box-body">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th></th>
+                                            <th>13/14</th>
+                                            <th>14/15</th>
+                                            <th>15/16</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Miel</th>
+                                            <td>54 kg</td>
+                                            <td>45 kg</td>
+                                            <td>47 kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jalea Real</th>
+                                            <td>48 kg</td>
+                                            <td>58 kg</td>
+                                            <td>63 kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Propoleo</th>
+                                            <td>52 kg</td>
+                                            <td>55 kg</td>
+                                            <td>69 kg</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,6 +185,6 @@
 
 
 
-
+</section>
 {% endblock %}
 

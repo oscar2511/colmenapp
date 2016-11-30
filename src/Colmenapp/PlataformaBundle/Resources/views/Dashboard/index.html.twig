@@ -2,16 +2,18 @@
 
 
 {% block page_title %}
-    Vista General
+<h2 class="page-header">
+    <i class="fa fa-dashboard"></i> Vista General<small>Apiario Los Algarrobos</small>
+</h2>
 {% endblock %}
 
 {% block page_subtitle %}
-    <br>
-    Apiario Los Algarrobos
 {% endblock %}
 
 {% block avanzu_breadcrumb %}
-    {{ render(controller('AvanzuAdminThemeBundle:Breadcrumb:breadcrumb', {'request':app.request, 'title' : block('page_title')})) }}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    </ol>
 {% endblock %}
 
 {% block page_content %}
@@ -36,7 +38,7 @@
                 <br>
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Productividad del apiario (kg/temporada)</h3>
+                        <h4 class="box-title">Productividad del apiario (kg/temp.)</h4>
                     </div>
                     <div class="box-body">
                         <canvas id="bar"
@@ -48,7 +50,35 @@
                         </canvas>
                     </div>
                 </div>
-            </div><!-- /.col -->
+                <!---------------------------------------------->
+
+                <div class="col-xs-12">
+                    <p class="lead">Amount Due 2/22/2014</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody><tr>
+                                <th style="width:50%">Subtotal:</th>
+                                <td>$250.30</td>
+                            </tr>
+                            <tr>
+                                <th>Tax (9.3%)</th>
+                                <td>$10.34</td>
+                            </tr>
+                            <tr>
+                                <th>Shipping:</th>
+                                <td>$5.80</td>
+                            </tr>
+                            <tr>
+                                <th>Total:</th>
+                                <td>$265.24</td>
+                            </tr>
+                            </tbody></table>
+                    </div>
+                </div>
+
+                <!---------------------------------------------->
+            </div>
+            <!---------------------------------------->
 
             <div class="col-md-6 col-sm-6 col-xs-8">
                 <div class="info-box bg-yellow">
@@ -65,25 +95,31 @@
                     </div>
                 </div>
 
+
+
+
                 <!----------- grafico clima ----->
                 <br>
                 <div class="box box-default">
                     <div class="box-header">
-                        <h3 class="box-title">Información del clima</h3>
+                        <h4 class="box-title"> Altas/Bajas de colmenas</h4>
                     </div>
                     <div class="box-body">
                         <canvas id="line"
                                 class="chart chart-line"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
+                                chart-data             = "dataColmenas"
+                                chart-labels           = "labelsColmenas"
+
+                                chart-options          = "options"
+                                chart-dataset-override = "datasetOverride"
+                                chart-click            = "onClickColmenas">
                         </canvas>
                     </div>
                 </div>
             </div>
         </div>
         <!-------------------------------------->
+
         <div class="col-md-4">
             <div class="box box-primary">
                 <div class="box-header">
@@ -148,6 +184,7 @@
         </div>
 
     </div>
+
 
 </section>
 {% endblock %}
