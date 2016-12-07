@@ -11,4 +11,16 @@ class ColmenaController extends Controller
 
         return $this->render('ColmenappPlataformaBundle:Colmena:index.html.twig');
     }
+
+    public function inspeccionNuevaAction()
+    {
+
+        return $this->render('ColmenappPlataformaBundle:Colmena:inspeccionNueva.html.twig');
+    }
+
+    public function inspeccionAction()
+    {
+
+        return $this->render('ColmenappPlataformaBundle:Colmena:inspeccion.html.twig');
+    }
 }
