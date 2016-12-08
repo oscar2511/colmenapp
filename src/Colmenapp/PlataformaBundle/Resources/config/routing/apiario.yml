@@ -1,6 +1,6 @@
 apiario:
     path:     /
-    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:index" }
+    defaults: { _controller: ColmenappPlataformaBundle:Apiario:index, _name: apiario }
     methods:  GET
 
 apiario_detalle:

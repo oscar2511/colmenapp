@@ -3,7 +3,14 @@
 
     'use strict';
 
-    var dashboardController = function($scope) {
+    var finanzaController = function($scope) {
+
+        $scope.mostrarModalAltaMovimiento = false;
+
+        $scope.altaMovimiento = function () {
+            $scope.mostrarModalAltaMovimiento = true;
+            console.log(12345);
+        };
 
         //grafico productividad
         $scope.labels = ["","Los Algarrobos","Agua Blanca"];
@@ -22,9 +29,9 @@
     };
 
     angular.module('colmenapp.Controllers')
-        .controller('dashboardController', [
+        .controller('finanzaController', [
             '$scope',
-            dashboardController
+            finanzaController
         ]);
 
 })();

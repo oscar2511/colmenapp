@@ -1,6 +1,6 @@
 colmenapp_plataforma_homepage:
     path:     /
-    defaults: { _controller: ColmenappPlataformaBundle:Dashboard:index }
+    defaults: { _controller: ColmenappPlataformaBundle:Dashboard:index, _name: home }
 
 periodo_produccion:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/periodoProduccion.yml"
@@ -13,3 +13,7 @@ colmena:
 apiario:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/apiario.yml"
     prefix:   /apiario
+
+finanza:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/finanza.yml"
+    prefix:   /finanza
