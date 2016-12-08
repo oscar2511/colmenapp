@@ -9,3 +9,7 @@ periodo_produccion:
 colmena:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/colmena.yml"
     prefix:   /colmena
+
+apiario:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/apiario.yml"
+    prefix:   /apiario

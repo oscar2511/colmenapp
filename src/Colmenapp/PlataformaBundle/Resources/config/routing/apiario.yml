@@ -1,0 +1,9 @@
+apiario:
+    path:     /
+    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:index" }
+    methods:  GET
+
+apiario_detalle:
+    path:     /detalle
+    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:detalle" }
+    methods:  GET
