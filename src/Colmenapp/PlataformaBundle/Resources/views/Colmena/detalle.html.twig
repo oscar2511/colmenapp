@@ -1,0 +1,197 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena 145</small>
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Colmena</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="colmenaController">
+    <div class="row">
+            <div class="col-md-4">
+            <div class="box box-solid box-default ">
+                <div class="box-header">
+                    <h3 class="box-title">Información gral. de la colmena</h3>
+                    <a href="#"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Apiario</td>
+                            <td colspan="2">Los Algarrobos</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Número de colmena</td>
+                            <td colspan="2">219</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-map-marker"></i></td>
+                            <td>Ubicación</td>
+                            <td colspan="2">Chamical - La Rioja</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-archive"></i></td>
+                            <td>Cantidad de cuadros</td>
+                            <td colspan="2">
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="145 colmenas">25</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-line-chart"></i></td>
+                            <td>agresividad de la colmena</td>
+                            <td colspan="2">
+                                <span data-toggle="tooltip" title="" class="badge bg-green" data-original-title="Kg de miel x temporada ">45 kg/temp</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-calendar"></i></td>
+                            <td>Última visita</td>
+                            <td colspan="2">
+                                23/04/2016
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+            <div class="col-12">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Mortandad de la colonia</h3>
+                    </div>
+                    <div class="box-body">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Acciones</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-condensed">
+                        <tbody>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Visita/Inspección</td>
+                            <td>23/04/2016</td>
+                            <td><span class="label label-info">
+                                    <a href="{{ path('colmena_inspeccion') }}">
+                                        Ver / Añadir
+                                        </a>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Alimentación</td>
+                            <td>23/04/2016: Alimentación sólida</td>
+                            <td><span class="label label-info">Ver /Añadir</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Sanidad</td>
+                            <td>05/03/2016: Fin de tratamiento</td>
+                            <td><span class="label label-info">Ver / Añadir</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Reina</td>
+                            <td>Estado: Bueno</td>
+                            <td><span class="label label-info">Ver / Añadir</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Colonia</td>
+                            <td>
+                                Agresividad: <span data-toggle="tooltip" title="" class="badge bg-blue" data-original-title="Agresividad de la colmena">Baja</span>
+                            </td>
+                            <td><span class="label label-info">Ver / Añadir</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-angle-right"></i></td>
+                            <td>Cuadros en alza melaria </td>
+                            <td>
+                                Dañados: 2
+                                <br>
+                                En producción: 6
+                            </td>
+                            <td> <span class="label label-info"> Ver / Añadir</span></td>
+                        </tr>
+                        </tbody></table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+
+            <div class="col-12">
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">Productividad de colmena</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th></th>
+                                            <th>13/14</th>
+                                            <th>14/15</th>
+                                            <th>15/16</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Miel</th>
+                                            <td>54 kg</td>
+                                            <td>45 kg</td>
+                                            <td>47 kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jalea Real</th>
+                                            <td>48 kg</td>
+                                            <td>58 kg</td>
+                                            <td>63 kg</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Propoleo</th>
+                                            <td>52 kg</td>
+                                            <td>55 kg</td>
+                                            <td>69 kg</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</section>
+{% endblock %}
+
