@@ -1,0 +1,77 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+
+{% block page_title %}
+    <h2 class="page-header">
+        Visita / Inspección<small>Colmena 145</small>
+    </h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Colmena</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Visita / Inspección</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="colmenaController">
+
+
+<div class="row">
+    <div class="col-xs-8">
+        <div class="box">
+            <div class="box-header">
+                <a href="{{ path('colmena_inspeccion_nueva') }}">
+                    <button type="button" class="btn btn-primary"><i class="fa fa-fw fa-plus-square-o"></i> Nueva inspección</button>
+                </a>
+            </div>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-striped">
+                    <tbody><tr>
+                        <th>Fecha</th>
+                        <th>Reina</th>
+                        <th>Nro. Abejas</th>
+                        <th>Nro. Cuadros</th>
+                        <th>Agresividad</th>
+                        <th>Trabajo Realizado</th>
+                    </tr>
+                    <tr>
+                        <td>23-11-2016</td>
+                        <td><span class="label label-success">Bueno</span></td>
+                        <td>210</td>
+                        <td>10</td>
+                        <td><span class="label label-warning">Media</span></td>
+                        <td>Ninguno</td>
+                    </tr>
+                    <tr>
+                        <td>28-11-2016</td>
+                        <td><span class="label label-warning">Medio</span></td>
+                        <td>290</td>
+                        <td>9</td>
+                        <td><span class="label label-warning">Media</span></td>
+                        <td>Ninguno</td>
+                    </tr>
+                    <tr>
+                        <td>01-12-2016</td>
+                        <td><span class="label label-success">Bueno</span></td>
+                        <td>389</td>
+                        <td>12</td>
+                        <td><span class="label label-info">Baja</span></td>
+                        <td>Ninguno</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+</section>
+{% endblock %}
