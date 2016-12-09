@@ -9,6 +9,8 @@
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/dashboardController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/colmenaController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/apiarioController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/finanzaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/angular-chart.js') }}"></script>
 {% endblock  %}
@@ -19,7 +21,7 @@
 
 
 {% block title %}
-    Colmenapp
+    ColmenApp
 {% endblock %}
 
 {% block avanzu_admin_header %}
@@ -78,7 +80,7 @@
     </header>
 {% endblock %}
 
-
+{% set name = app.request.attributes.get('_name') %}
 {% block avanzu_sidebar %}
     <div class="sidebar">
         <!-- user panel (Optional) -->
@@ -99,10 +101,32 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
-            <li class="active"><a href="{{ path('colmenapp_plataforma_homepage') }}"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Inicio</span></a></li>
-            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Apiario</span></a></li>
-            <li><a href="{{ path('colmena') }}"><i class="fa fa-archive" aria-hidden="true"></i><span>Colmena</span></a></li>
+            <li class=" {% if app.request.attributes.get('_name') == 'home' %}active{% endif %}">
+                <a href="{{ path('colmenapp_plataforma_homepage') }}"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Inicio</span></a>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_name') == 'apiario' %}active{% endif %}">
+                <a href="{{ path('apiario') }}"><i class="fa fa-cubes" aria-hidden="true"></i><span>Apiario</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-fw fa-plus"></i> Crear Apiario</a></li>
+                    <li class="{% if app.request.attributes.get('_name') == 'apiario' %}active{% endif %}">
+                        <a href="{{ path('apiario') }}"><i class="fa fa-fw fa-eye"></i> Ver Apiarios</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {% if app.request.attributes.get('_name') == 'colmena' %}active{% endif %}">
+                <a href="{{ path('colmena') }}"><i class="fa fa-archive" aria-hidden="true"></i><span>Colmena</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-fw fa-plus"></i> Crear Colmena</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-eye"></i> Ver Colmenas</a></li>
+                </ul>
+            </li>
             <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Alimentos</span></a></li>
+            <li class="treeview {% if app.request.attributes.get('_name') == 'finanzas' %}active{% endif %}">
+                <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator"></i><span>Finanzas</span><i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('finanza') }}"><i class="fa fa-fw fa-plus"></i> Registrar movimiento</a></li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Reportes y Estadísticas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

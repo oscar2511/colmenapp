@@ -3,11 +3,11 @@
 
     'use strict';
 
-    var dashboardController = function($scope) {
+    var apiarioController = function($scope, $http) {
 
         //grafico productividad
-        $scope.labels = ["","Los Algarrobos","Agua Blanca"];
-        $scope.data   = [0,4304,7921];
+        $scope.labels = ["","12/13","13/14", "14/15","15/16"];
+        $scope.data   = [0,1080, 921, 1366, 1527];
 
 
         //grafico alta/baja colmenas
@@ -22,9 +22,10 @@
     };
 
     angular.module('colmenapp.Controllers')
-        .controller('dashboardController', [
+        .controller('apiarioController', [
             '$scope',
-            dashboardController
+            '$http',
+            apiarioController
         ]);
 
 })();
