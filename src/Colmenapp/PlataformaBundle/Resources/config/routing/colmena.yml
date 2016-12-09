@@ -12,3 +12,8 @@ colmena_inspeccion_nueva:
     path:     /inspeccion-nueva
     defaults: { _controller: "ColmenappPlataformaBundle:Colmena:inspeccionNueva" }
     methods:  GET
+
+colmena_detalle:
+    path:     /detalle
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle" }
+    methods:  GET

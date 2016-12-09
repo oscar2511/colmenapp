@@ -23,4 +23,10 @@ class ColmenaController extends Controller
 
         return $this->render('ColmenappPlataformaBundle:Colmena:inspeccion.html.twig');
     }
+
+    public function detalleAction()
+    {
+
+        return $this->render('ColmenappPlataformaBundle:Colmena:detalle.html.twig');
+    }
 }
