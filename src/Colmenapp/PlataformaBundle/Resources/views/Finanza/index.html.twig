@@ -22,9 +22,11 @@
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header">
-                    <button ng-click="altaMovimiento()" type="button" class="btn btn-primary btn-sm">
-                        <i class="fa fa-fw fa-plus"></i> Agregar movimiento
-                    </button>
+                    <a href="" data-toggle="modal" data-target=".modal-nuevo-movimiento">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Agregar movimiento
+                        </button>
+                    </a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
@@ -107,21 +109,81 @@
     </div>
 
 
-    <div class="modal modal-primary" ng-show="mostrarModalAltaMovimiento">
+    <div class="modal fade modal-default modal-nuevo-movimiento" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Default Modal</h4>
+                    <h4 class="modal-title">Registrar movimiento</h4>
                 </div>
                 <div class="modal-body">
-                    <p>One fine body…</p>
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option></option>
+                                        <option>Los Algarrobos</option>
+                                        <option>Agua Blanca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Tipo</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Ingreso</option>
+                                        <option>Egreso</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Concepto</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese concepto..">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Monto</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese monto">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Obs.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Estado</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Pagado</option>
+                                        <option>Pendiente de pago</option>
+                                        <option>Cobrado</option>
+                                        <option>Pendiente de cobro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+
             </div>
             <!-- /.modal-content -->
         </div>
