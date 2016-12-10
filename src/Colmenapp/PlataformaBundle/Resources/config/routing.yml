@@ -17,3 +17,7 @@ apiario:
 finanza:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/finanza.yml"
     prefix:   /finanza
+
+alerta:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/alerta.yml"
+    prefix:   /alerta

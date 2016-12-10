@@ -20,10 +20,10 @@
 {% block page_content %}
     <section ng-controller="colmenaController">
         <div class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-10">
                 <div class="box">
                     <div class="box-header">
-                        <button type="button" class="btn btn-success"><i class="fa fa-fw fa-plus-square-o"></i> Nueva colmena</button>
+                        <button type="button" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus-square-o"></i> Nueva colmena</button>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
@@ -33,7 +33,8 @@
                                 <th>Fecha Alta</th>
                                 <th>Apiario</th>
                                 <th>ubicación</th>
-                                <th>Cantidadad de cuadros</th>
+                                <th>Cuadros</th>
+                                <th>Observaciones</th>
                                 <th>Última visita</th>
                                 <th></th>
                             </tr>
@@ -43,6 +44,7 @@
                                 <td>Los Algarrobos</td>
                                 <td>No definida</td>
                                 <td>10</td>
+                                <td>Ninguna</td>
                                 <td>15-11-2016</td>
                                 <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
                             </tr>
@@ -52,6 +54,7 @@
                                 <td>Los Algarrobos</td>
                                 <td>No definida</td>
                                 <td>15</td>
+                                <td>Ninguna</td>
                                 <td>15-12-2016</td>
                                 <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
                             </tr>
@@ -61,6 +64,7 @@
                                 <td>Los Algarrobos</td>
                                 <td>No definida</td>
                                 <td>12</td>
+                                <td>Ninguna</td>
                                 <td>15-12-2016</td>
                                 <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
                             </tr>

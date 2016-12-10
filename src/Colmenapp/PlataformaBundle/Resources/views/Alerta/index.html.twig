@@ -2,7 +2,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-fw fa-calculator"></i> Listado de Movimientos
+    <span class="glyphicon glyphicon-bullhorn"></span> Listado de Alertas
 </h2>
 {% endblock %}
 
@@ -12,19 +12,19 @@
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="#"><i class="fa fa-fw fa-calculator"></i> Finanzas</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span>alertas</a></li>
     </ol>
 {% endblock %}
 
 {% block page_content %}
-<section ng-controller="finanzaController">
+<section ng-controller="alertaController">
     <div class="row">
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header">
-                    <a href="" data-toggle="modal" data-target=".modal-nuevo-movimiento">
+                    <a href="" data-toggle="modal" data-target=".modal-nueva-alerta">
                         <button type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-fw fa-plus"></i> Agregar movimiento
+                            <i class="fa fa-fw fa-plus"></i> Nueva alerta
                         </button>
                     </a>
                 </div>
@@ -34,69 +34,91 @@
                         <tbody>
                         <tr>
                             <th>Nro.</th>
-                            <th>Fecha</th>
+                            <th>Fecha creación</th>
                             <th>Apiario</th>
                             <th>Tipo</th>
-                            <th>Concepto</th>
-                            <th>Monto</th>
+                            <th>Fecha de envío</th>
+                            <th>Mensaje</th>
                             <th>Observaciones</th>
                             <th>Estado</th>
                             <th>Editar</th>
                             <th>Ver</th>
                         </tr>
                         <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">1</a></td>
+                            <td><a href="#">1</a></td>
                             <th>12-09-2016</th>
                             <td>Los Algarrobos</td>
-                            <td><span class="badge bg-green">Ingreso</span></td>
-                            <td>Venta de núcleo</td>
-                            <td>$581</td>
+                            <td>Recordatorio</td>
+                            <td>19-09-2016</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-mensaje">
+                                    Ver mensaje
+                                </a>
+                            </td>
                             <td>Ninguna</td>
-                            <td>Pendiente</td>
-                            <td><a href="{{ path('apiario_detalle') }}">
+                            <td><span class="badge bg-yellow">Pendiente</span></td>
+                            <td><a href="#">
                                     <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ path('apiario_detalle') }}">
+                                <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">1</a></td>
-                            <th>15-10-2016</th>
+                            <td><a href="#">2</a></td>
+                            <th>21-11-2016</th>
                             <td>Los Algarrobos</td>
-                            <td><span class="badge bg-red">Egreso</span></td>
-                            <td>Compra de cera</td>
-                            <td>$1255</td>
+                            <td>Recordatorio</td>
+                            <td>23-11-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
                             <td>Ninguna</td>
-                            <td>Pagado</td>
-                            <td><a href="{{ path('apiario_detalle') }}">
+                            <td><span class="badge bg-green">Enviada</span></td>
+                            <td><a href="#">
                                     <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ path('apiario_detalle') }}">
+                                <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">2</a></td>
-                            <th>10-09-2016</th>
+                            <td><a href="#">3</a></td>
+                            <th>15-08-2016</th>
                             <td>Los Algarrobos</td>
-                            <td><span class="badge bg-green">Ingreso</span></td>
-                            <td>Venta de núcleo</td>
-                            <td>$790</td>
+                            <td>Recordatorio</td>
+                            <td>23-11-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
                             <td>Ninguna</td>
-                            <td>Cobrado</td>
-                            <td><a href="{{ path('apiario_detalle') }}">
+                            <td><span class="badge bg-green">Enviado</span></td>
+                            <td><a href="#">
                                     <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ path('apiario_detalle') }}">
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">4</a></td>
+                            <th>02-05-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Recordatorio</td>
+                            <td>10-05-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-red">Fallido</span></td>
+                            <td><a href="#">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
@@ -146,13 +168,38 @@
     </div>
 
 
-    <div class="modal fade modal-default modal-nuevo-movimiento" >
+    <div class="modal fade modal-default modal-ver-mensaje" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Registrar movimiento</h4>
+                    <h4 class="modal-title">Mensaje</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Controlar alza de colmena 24, posible rotura.
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <div class="modal fade modal-default modal-nueva-alerta" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nuevo alerta</h4>
                 </div>
                 <div class="modal-body">
 
@@ -168,48 +215,27 @@
                                 <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
                                 <div class="col-sm-10">
                                     <select class="form-control">
-                                        <option></option>
                                         <option>Los Algarrobos</option>
                                         <option>Agua Blanca</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Tipo</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha Envío</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control">
-                                        <option>Ingreso</option>
-                                        <option>Egreso</option>
-                                    </select>
+                                    <input type="email" class="form-control" id="inputEmail3">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Concepto</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese concepto..">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese mensaje..."></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Monto</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese monto">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Obs.</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Estado</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control">
-                                        <option>Pagado</option>
-                                        <option>Pendiente de pago</option>
-                                        <option>Cobrado</option>
-                                        <option>Pendiente de cobro</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -226,6 +252,22 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </section>
 {% endblock %}

@@ -93,12 +93,13 @@
                         <h3 class="box-title">Colmenas x apiario</h3>
                     </div>
                     <div class="box-body">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
+                        <canvas id="line"
+                                class="chart-horizontal-bar"
+                                chart-data             = "dataColmenas"
+                                chart-labels           = "labelsColmenas"
+                                chart-options          = "options"
+                                chart-dataset-override = "datasetOverride"
+                                chart-click            = "onClickColmenas">
                         </canvas>
                     </div>
                 </div>
@@ -110,10 +111,10 @@
                     </div>
                     <div class="box-body">
                         <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
+                                class="chart-horizontal-bar"
+                                chart-data             = "dataNucleo"
+                                chart-labels           = "labelsNucleo"
+                                chart-series           = "seriesNucleo"
                                 chart-click="onClick">
                         </canvas>
                     </div>

@@ -10,9 +10,11 @@
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/dashboardController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/colmenaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/apiarioController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/alertaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/finanzaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/angular-chart.js') }}"></script>
+    <script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
 {% endblock  %}
 
 {% block stylesheets %}
@@ -124,7 +126,7 @@
             <li class="treeview {% if app.request.attributes.get('_name') == 'finanzas' %}active{% endif %}">
                 <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator"></i><span>Finanzas</span><i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ path('finanza') }}"><i class="fa fa-fw fa-plus"></i> Registrar movimiento</a></li>
+                    <li><a href="{{ path('finanza') }}"><i class="fa fa-fw fa-eye"></i> Ver movimientos</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -132,6 +134,13 @@
                 <ul class="treeview-menu">
                     <li><a href="#">Estadísticas</a></li>
                     <li><a href="#">Reportes</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><span class="glyphicon glyphicon-bullhorn"></span><span>Alertas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-plus"></i> Nueva Alerta</a></li>
+                    <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-eye"></i> Ver alertas</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

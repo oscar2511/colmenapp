@@ -10,9 +10,12 @@
         $scope.data   = [0,4304,7921];
 
 
+        $scope.labelsNucleo = ["","Los Algarrobos","Agua Blanca"];
+        $scope.dataNucleo   = [0,210,351];
+
         //grafico alta/baja colmenas
-        $scope.labelsColmenas = ['',1,2,3,4,5,6,7,8,9,10,11,12];
-        $scope.dataColmenas   = ['',120, 150, 155, 155,156, 158, 160, 150,120, 123, 127, 130];
+        $scope.labelsColmenas = ["","Los Algarrobos","Agua Blanca"];
+        $scope.dataColmenas   = ['',120, 150];
 
 
 
