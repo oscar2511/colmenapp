@@ -1,0 +1,153 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-fw fa-cubes"></i> Listado de Apiarios
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#"><i class="fa fa-fw fa-cubes"></i> Apiario</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<br>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header">
+                    <a href="" data-toggle="modal" data-target=".modal-nuevo-apiario">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Nuevo apiario
+                        </button>
+                    </a>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Identificador</th>
+                            <th>Nombre</th>
+                            <th>Ubicación</th>
+                            <th>Nro. Colmenas</th>
+                            <th>Última visita</th>
+                            <th>Observaciones</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path('apiario_detalle') }}">1</a></td>
+                            <td>Los Algarrobos</td>
+                            <td>Chamical</td>
+                            <td>120</td>
+                            <td>20-11-2016</td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-green">Activo</span></td>
+                            <td><a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path('apiario_detalle') }}">2</a></td>
+                            <td>Agua Blanca</td>
+                            <td>Chepes</td>
+                            <td>110</td>
+                            <td>19-10-2016</td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-red">Inactivo</span></td>
+                            <td><a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade modal-default modal-nuevo-apiario" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nuevo apiario</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese nombre">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Ubicación</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese ubicación">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Nro. Colmenas</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese número de colmenas">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+{% endblock %}
+
+
+
+

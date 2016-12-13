@@ -1,0 +1,277 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+{% block page_title %}
+<h2 class="page-header">
+    <span class="glyphicon glyphicon-bullhorn"></span> Listado de Alertas
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-bullhorn"></span>alertas</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="alertaController">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header">
+                    <a href="" data-toggle="modal" data-target=".modal-nueva-alerta">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Nueva alerta
+                        </button>
+                    </a>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Nro.</th>
+                            <th>Fecha creación</th>
+                            <th>Apiario</th>
+                            <th>Tipo</th>
+                            <th>Fecha de envío</th>
+                            <th>Mensaje</th>
+                            <th>Observaciones</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <th>12-09-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Recordatorio</td>
+                            <td>19-09-2016</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-mensaje">
+                                    Ver mensaje
+                                </a>
+                            </td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-yellow">Pendiente</span></td>
+                            <td><a href="#">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2</a></td>
+                            <th>21-11-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Recordatorio</td>
+                            <td>23-11-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-green">Enviada</span></td>
+                            <td><a href="#">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">3</a></td>
+                            <th>15-08-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Recordatorio</td>
+                            <td>23-11-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-green">Enviado</span></td>
+                            <td><a href="#">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">4</a></td>
+                            <th>02-05-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Recordatorio</td>
+                            <td>10-05-2016</td>
+                            <td><a href="#">Ver mensaje</a> </td>
+                            <td>Ninguna</td>
+                            <td><span class="badge bg-red">Fallido</span></td>
+                            <td><a href="#">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Variación de ingresos/egresos</h3>
+                </div>
+                <div class="box-body">
+                    <canvas id="line"
+                            class="chart chart-line"
+                            chart-data             = "dataColmenas"
+                            chart-labels           = "labelsColmenas"
+                            chart-options          = "options"
+                            chart-dataset-override = "datasetOverride"
+                            chart-click            = "onClickColmenas">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">Variación de ingresos/egresos</h3>
+                </div>
+                <div class="box-body">
+                    <canvas id="line"
+                            class="chart chart-line"
+                            chart-data             = "dataColmenas"
+                            chart-labels           = "labelsColmenas"
+                            chart-options          = "options"
+                            chart-dataset-override = "datasetOverride"
+                            chart-click            = "onClickColmenas">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade modal-default modal-ver-mensaje" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Mensaje</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Controlar alza de colmena 24, posible rotura.
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <div class="modal fade modal-default modal-nueva-alerta" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nuevo alerta</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Los Algarrobos</option>
+                                        <option>Agua Blanca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha Envío</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese mensaje..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+{% endblock %}
+
+
+
+

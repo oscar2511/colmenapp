@@ -1,0 +1,134 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-dashboard"></i> Vista General
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="dashboardController">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon"><i class="fa fa-fw fa-cubes"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Apiarios</span>
+                        <span class="info-box-number">2</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                          <a style="color: white!important;" href="{{ path('apiario') }}"> Ver apiarios</a>
+                        </span>
+                    </div>
+                </div>
+             </div>
+            <div class="col-md-4">
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-archive"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Colmenas</span>
+                        <span class="info-box-number">349</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                          <a style="color: white!important;" href="{{ path('colmena') }}"> Ver Colmenas</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box bg-yellow">
+                    <span class="info-box-icon"><i class="fa fa-bullhorn"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Alertas Activas</span>
+                        <span class="info-box-number">8</span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                           Ver Alertas
+                        </span>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Gastos actuales x apiario</h3>
+                    </div>
+                    <div class="box-body">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Colmenas x apiario</h3>
+                    </div>
+                    <div class="box-body">
+                        <canvas id="line"
+                                class="chart-horizontal-bar"
+                                chart-data             = "dataColmenas"
+                                chart-labels           = "labelsColmenas"
+                                chart-options          = "options"
+                                chart-dataset-override = "datasetOverride"
+                                chart-click            = "onClickColmenas">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Núcleos producidos por apiario</h3>
+                    </div>
+                    <div class="box-body">
+                        <canvas id="bar"
+                                class="chart-horizontal-bar"
+                                chart-data             = "dataNucleo"
+                                chart-labels           = "labelsNucleo"
+                                chart-series           = "seriesNucleo"
+                                chart-click="onClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+{% endblock %}
+
+
+
+
+

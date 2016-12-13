@@ -1,0 +1,9 @@
+alerta:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Alerta:index, _name: alerta }
+    methods:  GET
+
+#alerta_detalle:
+#    path:     /detalle
+#    defaults: { _controller: "ColmenappPlataformaBundle:Alerta:detalle" }
+#    methods:  GET
