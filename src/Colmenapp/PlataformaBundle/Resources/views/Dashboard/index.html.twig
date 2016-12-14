@@ -3,7 +3,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-dashboard"></i> Vista General
+    <i class="fa fa-dashboard"></i> Inicio
 </h2>
 {% endblock %}
 
@@ -65,63 +65,72 @@
                            Ver Alertas
                         </span>
                     </div>
+                </div>
             </div>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-4">
-                <div class="box box-success">
-                    <div class="box-header">
-                        <h3 class="box-title">Gastos actuales x apiario</h3>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
+        <div class="col-md-4">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">Variación de ingresos/egresos</h3>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box box-success">
-                    <div class="box-header">
-                        <h3 class="box-title">Colmenas x apiario</h3>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="line"
-                                class="chart-horizontal-bar"
-                                chart-data             = "dataColmenas"
-                                chart-labels           = "labelsColmenas"
-                                chart-options          = "options"
-                                chart-dataset-override = "datasetOverride"
-                                chart-click            = "onClickColmenas">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="box box-success">
-                    <div class="box-header">
-                        <h3 class="box-title">Núcleos producidos por apiario</h3>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="bar"
-                                class="chart-horizontal-bar"
-                                chart-data             = "dataNucleo"
-                                chart-labels           = "labelsNucleo"
-                                chart-series           = "seriesNucleo"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <canvas id="line"
+                            class="chart chart-line ng-isolate-scope"
+                            chart-data="dataGastos"
+                            chart-labels="labelsGastos"
+                            chart-series="seriesGastos"
+                            chart-options="optionsGastos"
+                            chart-dataset-override="datasetOverrideGastos"
+                            chart-click="onClick"
+                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
+                    </canvas>
                 </div>
             </div>
         </div>
-
+        <div class="col-md-4">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">Producción total x apiario</h3>
+                </div>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <canvas id="bar"
+                            class="chart chart-bar ng-isolate-scope"
+                            chart-data             = "data"
+                            chart-labels           = "labels"
+                            chart-series           = "series"
+                            chart-click="onClick"
+                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">Detalles de producción total</h3>
+                </div>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Miel </b> <a class="pull-right">1679,44 kg</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Jalea Real</b> <a class="pull-right">543,87 kg</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Propóleo</b> <a class="pull-right">128,51 kg</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Núcleos</b> <a class="pull-right">65 Un.</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
 
