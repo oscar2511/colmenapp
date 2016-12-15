@@ -36,7 +36,9 @@
                                 <th>Cuadros</th>
                                 <th>Observaciones</th>
                                 <th>Última visita</th>
-                                <th></th>
+                                <th>Estado</th>
+                                <th>Editar</th>
+                                <th>Ver</th>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('colmena_detalle') }}">44</a></td>
@@ -46,7 +48,16 @@
                                 <td>10</td>
                                 <td>Ninguna</td>
                                 <td>15-11-2016</td>
-                                <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
+                                <td><span class="badge bg-green">Activa</span></td>
+                                <td><a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('colmena_detalle') }}">45</a></td>
@@ -56,7 +67,16 @@
                                 <td>15</td>
                                 <td>Ninguna</td>
                                 <td>15-12-2016</td>
-                                <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
+                                <td><span class="badge bg-red">Inactiva</span></td>
+                                <td><a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td><a href="{{ path('colmena_detalle') }}">46</a></td>
@@ -66,7 +86,17 @@
                                 <td>12</td>
                                 <td>Ninguna</td>
                                 <td>15-12-2016</td>
-                                <td><a href="{{ path('colmena_detalle') }}"> <i class="fa fa-fw fa-edit"></i></a></td>
+                                <td><span class="badge bg-green">Activa</span></td>
+                                <td><a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('colmena_detalle') }}">
+                                        <i class="fa fa-fw fa-eye"></i>
+                                    </a>
+                                </td>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
