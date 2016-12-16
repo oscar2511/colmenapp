@@ -1,0 +1,4 @@
+finanza:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Finanza:index, _name: finanza }
+    methods:  GET

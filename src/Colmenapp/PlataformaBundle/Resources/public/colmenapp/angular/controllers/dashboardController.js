@@ -3,28 +3,64 @@
 
     'use strict';
 
-    var dashboardController = function($scope, $http) {
+    var dashboardController = function($scope) {
 
         //grafico productividad
-        $scope.labels = ["","12/13","13/14", "14/15","15/16"];
-        $scope.data   = [0,1080, 921, 1366, 1527];
+        $scope.labels = ["","Los Algarrobos","Agua Blanca"];
+        $scope.data   = [0,4304,7921];
 
+
+        $scope.labelsNucleo = ["","Los Algarrobos","Agua Blanca"];
+        $scope.dataNucleo   = [0,210,351];
 
         //grafico alta/baja colmenas
-        $scope.labelsColmenas = ['',1,2,3,4,5,6,7,8,9,10,11,12];
-        $scope.dataColmenas   = ['',120, 150, 155, 155,156, 158, 160, 150,120, 123, 127, 130];
+        $scope.labelsColmenas = ["","Los Algarrobos","Agua Blanca"];
+        $scope.dataColmenas   = ['',120, 150];
 
 
 
         $scope.labelsEstado = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
         $scope.dataEstado = [300, 500, 100];
 
+      ////////////// grafico gastos
+
+      $scope.labelsGastos = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+      $scope.dataGastos = [
+        [65, 59, 80, 81, 56, 55, 40,65, 59, 80, 81, 56],
+        [28, 48, 40, 19, 86, 27, 90,65, 59, 80, 81, 56]
+      ];
+      $scope.seriesGastos = ['Los Algarrobos', 'Agua Blanca'];
+
+      $scope.onClick = function (points, evt) {
+        console.log(points, evt);
+      };
+      $scope.datasetOverrideGastos = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+      $scope.optionsGastos = {
+        scales: {
+          yAxes: [
+            {
+              id: 'y-axis-1',
+              type: 'linear',
+              display: true,
+              position: 'left'
+            },
+            {
+              id: 'y-axis-2',
+              type: 'linear',
+              display: true,
+              position: 'right'
+            }
+          ]
+        }
+      };
+
+      ///////////////////////////////
+
     };
 
     angular.module('colmenapp.Controllers')
         .controller('dashboardController', [
             '$scope',
-            '$http',
             dashboardController
         ]);
 

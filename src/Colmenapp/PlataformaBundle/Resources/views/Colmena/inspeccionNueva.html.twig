@@ -1,0 +1,83 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+
+{% block page_title %}
+<h2 class="page-header">
+    Visita / Inspección<small>Colmena 145</small>
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Colmena</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i>Visita / Inspección</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="colmenaController">
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">23/11/2016</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Estado de reina</label>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option></option>
+                                <option>Malo</option>
+                                <option>Regular</option>
+                                <option>Bueno</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Número de abejas</label>
+                        <input type="email" class="form-control"  placeholder="Ingrese cantidad">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Numero de cuadros</label>
+                        <input type="email" class="form-control"  placeholder="Ingrese nro. de cuadros">
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Agresividad de la colmena</label>
+                        <select class="form-control">
+                            <option></option>
+                            <option>Baja</option>
+                            <option>Media</option>
+                            <option>Alta</option>
+                        </select>
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="form-group">
+                        <label>Trabajo realizado</label>
+                        <textarea class="form-control" rows="3" placeholder="Ingrese trabajo realizado"></textarea>
+                    </div>
+                    <!-- /.form-group -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="submit" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-info pull-right">Guardar</button>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+

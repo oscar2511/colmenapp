@@ -3,7 +3,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-dashboard"></i> Vista General<small>Apiario Los Algarrobos</small>
+    <i class="fa fa-dashboard"></i> Inicio
 </h2>
 {% endblock %}
 
@@ -19,8 +19,25 @@
 {% block page_content %}
 <section ng-controller="dashboardController">
     <div class="row">
-        <div class="col-md-8">
-            <div class="col-md-6 col-sm-6 col-xs-8">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="info-box bg-aqua">
+                    <span class="info-box-icon"><i class="fa fa-fw fa-cubes"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Apiarios</span>
+                        <span class="info-box-number">2</span>
+
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-description">
+                          <a style="color: white!important;" href="{{ path('apiario') }}"> Ver apiarios</a>
+                        </span>
+                    </div>
+                </div>
+             </div>
+            <div class="col-md-4">
                 <div class="info-box bg-green">
                     <span class="info-box-icon"><i class="fa fa-archive"></i></span>
                     <div class="info-box-content">
@@ -30,57 +47,12 @@
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
                         <span class="progress-description">
-                          Ver Colmenas
+                          <a style="color: white!important;" href="{{ path('colmena') }}"> Ver Colmenas</a>
                         </span>
                     </div>
                 </div>
-                <!----------- grafico productividad ----->
-                <br>
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h4 class="box-title">Productividad del apiario (kg/temp.)</h4>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
-                </div>
-                <!---------------------------------------------->
-
-                <div class="col-xs-12">
-                    <p class="lead">Amount Due 2/22/2014</p>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody><tr>
-                                <th style="width:50%">Subtotal:</th>
-                                <td>$250.30</td>
-                            </tr>
-                            <tr>
-                                <th>Tax (9.3%)</th>
-                                <td>$10.34</td>
-                            </tr>
-                            <tr>
-                                <th>Shipping:</th>
-                                <td>$5.80</td>
-                            </tr>
-                            <tr>
-                                <th>Total:</th>
-                                <td>$265.24</td>
-                            </tr>
-                            </tbody></table>
-                    </div>
-                </div>
-
-                <!---------------------------------------------->
             </div>
-            <!---------------------------------------->
-
-            <div class="col-md-6 col-sm-6 col-xs-8">
+            <div class="col-md-4">
                 <div class="info-box bg-yellow">
                     <span class="info-box-icon"><i class="fa fa-bullhorn"></i></span>
                     <div class="info-box-content">
@@ -94,95 +66,71 @@
                         </span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
 
-
-
-                <!----------- grafico clima ----->
-                <br>
-                <div class="box box-default">
-                    <div class="box-header">
-                        <h4 class="box-title"> Altas/Bajas de colmenas</h4>
-                    </div>
-                    <div class="box-body">
-                        <canvas id="line"
-                                class="chart chart-line"
-                                chart-data             = "dataColmenas"
-                                chart-labels           = "labelsColmenas"
-
-                                chart-options          = "options"
-                                chart-dataset-override = "datasetOverride"
-                                chart-click            = "onClickColmenas">
-                        </canvas>
-                    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">Variación de ingresos/egresos</h3>
+                </div>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <canvas id="line"
+                            class="chart chart-line ng-isolate-scope"
+                            chart-data="dataGastos"
+                            chart-labels="labelsGastos"
+                            chart-series="seriesGastos"
+                            chart-options="optionsGastos"
+                            chart-dataset-override="datasetOverrideGastos"
+                            chart-click="onClick"
+                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
+                    </canvas>
                 </div>
             </div>
         </div>
-        <!-------------------------------------->
-
         <div class="col-md-4">
-            <div class="box box-primary">
+            <div class="box box-default">
                 <div class="box-header">
-                    <h3 class="box-title">Últimas visitas/inspecciones</h3>
+                    <h3 class="box-title">Producción total x apiario</h3>
                 </div>
-                <div class="box-body">
-                    <ul class="timeline">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                10 Diciembre 2016
-                            </span>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <canvas id="bar"
+                            class="chart chart-bar ng-isolate-scope"
+                            chart-data             = "data"
+                            chart-labels           = "labels"
+                            chart-series           = "series"
+                            chart-click="onClick"
+                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">Detalles de producción total</h3>
+                </div>
+                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Miel </b> <a class="pull-right">1679,44 kg</a>
                         </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 43</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Retirar cuadros rotos
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
+                        <li class="list-group-item">
+                            <b>Jalea Real</b> <a class="pull-right">543,87 kg</a>
                         </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 22</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Ninguno
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
+                        <li class="list-group-item">
+                            <b>Propóleo</b> <a class="pull-right">128,51 kg</a>
                         </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 23/11/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 271</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Cortar alas a reina
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
+                        <li class="list-group-item">
+                            <b>Núcleos</b> <a class="pull-right">65 Un.</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
     </div>
 
 
