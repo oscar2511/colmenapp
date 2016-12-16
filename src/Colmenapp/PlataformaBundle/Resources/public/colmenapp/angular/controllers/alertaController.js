@@ -8,7 +8,7 @@
 
         $scope.labelsEstado = ["Pendientes", "Enviadas", "Fallidas"];
         $scope.dataEstado = [300, 500, 100];
-        $scope.colors = ['#FDB45C','#46BFBD','#F70106'];
+        $scope.colors = ['#FDB45C','00a65a','#F70106'];
 
     };
 
