@@ -21,15 +21,15 @@
 {% block page_content %}
 <section ng-controller="colmenaController">
 
-
 <div class="row">
     <div class="col-xs-8">
         <div class="box">
             <div class="box-header">
-                <a href="{{ path('colmena_inspeccion_nueva') }}">
-                    <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-plus-square-o"></i> Nueva inspección</button>
-                </a>
-            </div>
+                <a href="" data-toggle="modal" data-target=".modal-nueva-inspeccion">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <i class="fa fa-fw fa-plus"></i> Nueva Inspeccion
+                    </button>
+                </a>            </div>
             <div class="box-body table-responsive no-padding">
                 <table class="table table-striped">
                     <tbody><tr>
@@ -39,6 +39,8 @@
                         <th>Nro. Cuadros</th>
                         <th>Agresividad</th>
                         <th>Trabajo Realizado</th>
+                        <th>Editar</th>
+                        <th>Ver</th>
                     </tr>
                     <tr>
                         <td>23-11-2016</td>
@@ -47,6 +49,15 @@
                         <td>10</td>
                         <td><span class="label label-warning">Media</span></td>
                         <td>Ninguno</td>
+                        <td><a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-eye"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>28-11-2016</td>
@@ -55,6 +66,15 @@
                         <td>9</td>
                         <td><span class="label label-warning">Media</span></td>
                         <td>Ninguno</td>
+                        <td><a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-eye"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>01-12-2016</td>
@@ -63,6 +83,15 @@
                         <td>12</td>
                         <td><span class="label label-info">Baja</span></td>
                         <td>Ninguno</td>
+                        <td><a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('apiario_detalle') }}">
+                                <i class="fa fa-fw fa-eye"></i>
+                            </a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -72,6 +101,72 @@
         <!-- /.box -->
     </div>
 </div>
+
+
+
+    <div class="modal fade modal-default modal-nueva-inspeccion" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Registrar movimiento</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Estado de reina</label>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option></option>
+                                        <option>Malo</option>
+                                        <option>Regular</option>
+                                        <option>Bueno</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Número de abejas</label>
+                                <input type="email" class="form-control"  placeholder="Ingrese cantidad">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Numero de cuadros</label>
+                                <input type="email" class="form-control"  placeholder="Ingrese nro. de cuadros">
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Agresividad de la colmena</label>
+                                <select class="form-control">
+                                    <option></option>
+                                    <option>Baja</option>
+                                    <option>Media</option>
+                                    <option>Alta</option>
+                                </select>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Trabajo realizado</label>
+                                <textarea class="form-control" rows="3" placeholder="Ingrese trabajo realizado"></textarea>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
 </section>
 {% endblock %}
