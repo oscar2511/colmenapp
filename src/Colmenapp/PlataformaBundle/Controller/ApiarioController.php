@@ -8,13 +8,17 @@ class ApiarioController extends Controller
 {
     public function indexAction()
     {
-
         return $this->render('ColmenappPlataformaBundle:Apiario:index.html.twig');
     }
 
     public function detalleAction()
     {
-        return $this->render('ColmenappPlataformaBundle:Apiario:detalle.html.twig');
+        $climaService = $this->get('clima_service');
+        $climaActual = $climaService->getClimaActual();
+
+        return $this->render('ColmenappPlataformaBundle:Apiario:detalle.html.twig', array(
+            'clima' => $climaActual
+        ));
     }
 
 }

@@ -2,3 +2,7 @@ services:
 #    colmenapp_plataforma.example:
 #        class: Colmenapp\PlataformaBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    clima_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\ClimaService
+        arguments: ['@doctrine.orm.entity_manager',"@service_container","@doctrine", "%url_openweathermap%", "%apikey_openweathermap%"]
