@@ -9,7 +9,6 @@
 
         $scope.altaMovimiento = function () {
             $scope.mostrarModalAltaMovimiento = true;
-            console.log(12345);
         };
 
         //grafico productividad
@@ -17,14 +16,15 @@
         $scope.data   = [0,4304,7921];
 
 
-        //grafico alta/baja colmenas
-        $scope.labelsColmenas = ['',1,2,3,4,5,6,7,8,9,10,11,12];
-        $scope.dataColmenas   = ['',120, 150, 155, 155,156, 158, 160, 150,120, 123, 127, 130];
+        //grafico Ingresos
+        $scope.labelsIngresos = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+        $scope.dataIngresos   = ['',120, 150, 155, 155,156, 158, 160, 150,120, 123, 127, 130];
 
 
+        //grafico Egresos
+        $scope.labelsEgresos = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+        $scope.dataEgresos   = ['',20, 50, 10, 100,120, 120, 140, 150,120, 173, 127, 100];
 
-        $scope.labelsEstado = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        $scope.dataEstado = [300, 500, 100];
 
     };
 
