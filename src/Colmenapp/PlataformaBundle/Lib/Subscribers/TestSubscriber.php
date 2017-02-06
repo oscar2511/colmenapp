@@ -1,7 +1,6 @@
 <?php
 
-namespace namespace Colmenapp\PlataformaBundle\Lib\Subscribers;
-
+namespace Colmenapp\PlataformaBundle\Lib\Subscribers;
 
 Class TestSubscriber implemement EventSubscriberInterface
 {
@@ -14,9 +13,9 @@ Class TestSubscriber implemement EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array (
+      /*  return array (
             KernelBundleEvents::MI_TEST_SUBSCRIBER => 'on' //todo: acá quede
-        )
+        )*/
     }
 
 
