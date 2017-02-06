@@ -3,6 +3,13 @@ services:
 #        class: Colmenapp\PlataformaBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
 
-    clima_service:
-        class: Colmenapp\PlataformaBundle\Lib\Servicios\ClimaService
-        arguments: ['@doctrine.orm.entity_manager',"@service_container","@doctrine", "%url_openweathermap%", "%apikey_openweathermap%"]
+   clima_service:
+       class: Colmenapp\PlataformaBundle\Lib\Servicios\ClimaService
+       arguments: ['@doctrine.orm.entity_manager',"@service_container","@doctrine", "%url_openweathermap%", "%apikey_openweathermap%"]
+
+
+   test_subscriber:
+       class: Colmenapp\PlataformaBundle\Lib\Subscribers\TestSubscriber
+       arguments: [@logger]
+       tags:
+           -{ name: kernel.event_subscriber }
