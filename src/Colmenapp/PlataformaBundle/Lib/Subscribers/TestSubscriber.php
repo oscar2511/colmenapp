@@ -2,7 +2,10 @@
 
 namespace Colmenapp\PlataformaBundle\Lib\Subscribers;
 
-Class TestSubscriber implemement EventSubscriberInterface
+use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+Class TestSubscriber implements EventSubscriberInterface
 {
     protected $logger;
 
@@ -13,10 +16,14 @@ Class TestSubscriber implemement EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-      /*  return array (
-            KernelBundleEvents::MI_TEST_SUBSCRIBER => 'on' //todo: acá quede
-        )*/
+        return array (
+         'MI_TEST_SUBSCRIBER' => 'onTest' //todo: acá quede
+        );
     }
 
+
+    public function onTest(Event $event) {
+        //var_dump($event->getName()); die;
+    }
 
 }

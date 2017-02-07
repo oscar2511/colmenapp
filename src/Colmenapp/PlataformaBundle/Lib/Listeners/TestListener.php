@@ -28,7 +28,7 @@ class TestListener
      */
     public function onKernelRequest(GetResponseEvent $event)
     {
-        var_dump("se ejecuto el listener"); die;
+        //var_dump("se ejecuto el listener"); die;
     }
 
     /**

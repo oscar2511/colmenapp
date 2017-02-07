@@ -12,8 +12,6 @@ services:
         arguments: ['@service_container']
         tags:
           - { name: kernel.event_listener, event: kernel.request }
-       class: Colmenapp\PlataformaBundle\Lib\Servicios\ClimaService
-       arguments: ['@doctrine.orm.entity_manager',"@service_container","@doctrine", "%url_openweathermap%", "%apikey_openweathermap%"]
 
 
     test_subscriber:
