@@ -21,7 +21,7 @@
 {% block page_content %}
 <section ng-controller="apiarioController">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="box box-solid box-default ">
                 <div class="box-header">
                     <h3 class="box-title">Información gral. del apiario</h3>
@@ -30,37 +30,31 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td><i class="fa fa-angle-right"></i></td>
-                            <td>Nombre del apiario</td>
-                            <td colspan="2">Los algarrobos</td>
+                            <td><i class="fa fa-angle-right"> </i> Nombre del apiario</td>
+                            <td>Los algarrobos</td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-map-marker"></i></td>
-                            <td>Ubicación</td>
+                            <td><i class="fa fa-map-marker"></i> Ubicación</td>
                             <td colspan="2">Chamical - La Rioja</td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-archive"></i></td>
-                            <td><a href="{{ path('colmena') }}"> Cantidad de colmenas</a></td>
-                            <td colspan="2">
+                            <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Cantidad de colmenas</a></td>
+                            <td>
                                 <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="145 colmenas">145</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-line-chart"></i></td>
-                            <td>Productividad Estimada</td>
-                            <td colspan="2">
+                            <td><i class="fa fa-line-chart"></i> Productividad Estimada</td>
+                            <td>
                                 <span data-toggle="tooltip" title="" class="badge bg-green" data-original-title="Kg de miel x temporada ">1059 kg/temp</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-calendar"></i></td>
-                            <td>Última visita</td>
-                            <td colspan="2">
+                            <td><i class="fa fa-calendar"></i> Última visita</td>
+                            <td>
                                 23/04/2016
                             </td>
                         </tr>
-
                         <tr>
                             <td colspan="4">
                                 <iframe style="border:none;" src="{{ clima }}"></iframe>
@@ -69,7 +63,78 @@
                         </tbody></table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+        </div>
 
+        <!--****************************************************************** TABS ****************************************************-->
+        <div class="col-md-8">
+            <!-- Custom Tabs -->
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab">Inspecciones</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">Alimentación</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Tratamientos</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Tareas Programadas</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Colmenas en Observ.</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Reinas en Observ.</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Dropdown <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <b>How to use:</b>
+
+                        <p>Exactly like the original bootstrap tabs except you should use
+                            the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
+                        A wonderful serenity has taken possession of my entire soul,
+                        like these sweet mornings of spring which I enjoy with my whole heart.
+                        I am alone, and feel the charm of existence in this spot,
+                        which was created for the bliss of souls like mine. I am so happy,
+                        my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
+                        that I neglect my talents. I should be incapable of drawing a single stroke
+                        at the present moment; and yet I feel that I never was a greater artist than now.
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_2">
+                        The European languages are members of the same family. Their separate existence is a myth.
+                        For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
+                        in their grammar, their pronunciation and their most common words. Everyone realizes why a
+                        new common language would be desirable: one could refuse to pay expensive translators. To
+                        achieve this, it would be necessary to have uniform grammar, pronunciation and more common
+                        words. If several languages coalesce, the grammar of the resulting language is more simple
+                        and regular than that of the individual languages.
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="tab_3">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                        like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- nav-tabs-custom -->
+        </div>
+    </div>
+
+    <!--***************************************************** GRAFICOS *************************************-->
+    <div class="row">
+        <div class="col-md-4">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Productividad</a></li>
@@ -97,7 +162,7 @@
                                 chart-click="onClick">
                         </canvas>
                     </div>
-                    <!-- /.tab-pane -->
+
                     <div class="tab-pane" id="tab_2">
                         <canvas id="line"
                                 class="chart chart-line"
@@ -109,7 +174,7 @@
                                 chart-click            = "onClickColmenas">
                         </canvas>
                     </div>
-                    <!-- /.tab-pane -->
+
                     <div class="tab-pane active" id="tab_3">
                         <canvas id="bar"
                                 class="chart chart-bar"
@@ -119,83 +184,126 @@
                                 chart-click="onClick">
                         </canvas>
                     </div>
-                    <!-- /.tab-pane -->
                 </div>
-                <!-- /.tab-content -->
             </div>
-
-
-
         </div>
 
+        <!---************************************************************ BOTONES GRANDES ************************-->
+        <div class="col-md-2">
+            <div class="info-box bg-green">
+                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
 
+                <div class="info-box-content">
+                    <span class="info-box-text">Mentions</span>
+                    <span class="info-box-number">92,050</span>
 
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 20%"></div>
+                    </div>
+                  <span class="progress-description">
+                    20% Increase in 30 Days
+                  </span>
+                </div>
+            </div>
+            <div class="info-box bg-red">
+                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
 
+                <div class="info-box-content">
+                    <span class="info-box-text">Downloads</span>
+                    <span class="info-box-number">114,381</span>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <div class="info-box bg-aqua">
+                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Direct Messages</span>
+                    <span class="info-box-number">163,921</span>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 40%"></div>
+                    </div>
+                  <span class="progress-description">
+                    40% Increase in 30 Days
+                  </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+        </div>
+        <!--********************************************************* TABLA PRODUCCION **************************-->
         <div class="col-md-6">
-            <div class="box box-primary">
+            <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Últimas inspecciones</h3>
+                    <h3 class="box-title">Productividad del Apiario</h3>
                 </div>
-                <div class="box-body">
-                    <ul class="timeline">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                10 Diciembre 2016
-                            </span>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 43</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Retirar cuadros rotos
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody><tr>
+                            <th style="width: 10px">#</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th style="width: 40px">Label</th>
+                        </tr>
+                        <tr>
+                            <td>1.</td>
+                            <td>Update software</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                                 </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
+                            </td>
+                            <td><span class="badge bg-red">55%</span></td>
+                        </tr>
+                        <tr>
+                            <td>2.</td>
+                            <td>Clean database</td>
+                            <td>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 22</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Ninguno
+                            </td>
+                            <td><span class="badge bg-yellow">70%</span></td>
+                        </tr>
+                        <tr>
+                            <td>3.</td>
+                            <td>Cron job running</td>
+                            <td>
+                                <div class="progress progress-xs progress-striped active">
+                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
                                 </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
+                            </td>
+                            <td><span class="badge bg-light-blue">30%</span></td>
+                        </tr>
+                        <tr>
+                            <td>4.</td>
+                            <td>Fix and squish bugs</td>
+                            <td>
+                                <div class="progress progress-xs progress-striped active">
+                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 23/11/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 271</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Cortar alas a reina
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-
+                            </td>
+                            <td><span class="badge bg-green">90%</span></td>
+                        </tr>
+                        </tbody></table>
                 </div>
+                <!-- /.box-body -->
             </div>
         </div>
+
     </div>
+
+            <!--
+
+            -->
 </section>
 {% endblock %}
 
