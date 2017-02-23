@@ -127,23 +127,69 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        The European languages are members of the same family. Their separate existence is a myth.
-                        For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                        in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                        new common language would be desirable: one could refuse to pay expensive translators. To
-                        achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                        words. If several languages coalesce, the grammar of the resulting language is more simple
-                        and regular than that of the individual languages.
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>13/14</th>
+                                    <th>14/15</th>
+                                    <th>15/16</th>
+                                </tr>
+                                <tr>
+                                    <th>Miel</th>
+                                    <td>54 kg</td>
+                                    <td>45 kg</td>
+                                    <td>47 kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Jalea Real</th>
+                                    <td>48 kg</td>
+                                    <td>58 kg</td>
+                                    <td>63 kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Propoleo</th>
+                                    <td>52 kg</td>
+                                    <td>55 kg</td>
+                                    <td>69 kg</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                        It has survived not only five centuries, but also the leap into electronic typesetting,
-                        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
-                        like Aldus PageMaker including versions of Lorem Ipsum.
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>13/14</th>
+                                    <th>14/15</th>
+                                    <th>15/16</th>
+                                </tr>
+                                <tr>
+                                    <th>Miel</th>
+                                    <td>54 kg</td>
+                                    <td>45 kg</td>
+                                    <td>47 kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Jalea Real</th>
+                                    <td>48 kg</td>
+                                    <td>58 kg</td>
+                                    <td>63 kg</td>
+                                </tr>
+                                <tr>
+                                    <th>Propoleo</th>
+                                    <td>52 kg</td>
+                                    <td>55 kg</td>
+                                    <td>69 kg</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                 </div>
@@ -154,22 +200,43 @@
     </div>
 
     <!--********************************************************* MAPA **************************-->
-    <div class="col-md-6">
-        <div class="box box-default color-palette-box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-tag"></i> Ubicación del Apiario</h3>
-            </div>
-            <div class="box-body">
-                <div class="row" align="center">
-                    <img style="margin-left: auto;" height="260px" src="{{ asset('bundles/colmenappplataforma/img/mapa.jpg') }}">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-default color-palette-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-tag"></i> Ubicación del Apiario</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div align="center">
+                            <img style="margin-left: auto;" height="200px" src="{{ asset('bundles/colmenappplataforma/img/mapa.jpg') }}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--***************************************************** GRAFICOS *************************************-->
-    <div class="row">
+    <!--***************************************************** GRAFICO MEDIO *************************************-->
+        <div class="col-md-4">
+            <div class="box box-default color-palette-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-tag"></i> Producción por Temporada</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row" align="center">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="col-md-6">
+    <!--***************************************************** GRAFICO DERECHA *************************************-->
+        <div class="col-md-4">
             <div class="box box-default color-palette-box">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-tag"></i> Producción por Temporada</h3>
@@ -188,7 +255,6 @@
             </div>
         </div>
     </div>
-
 </section>
 {% endblock %}
 
