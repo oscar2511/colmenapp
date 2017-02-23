@@ -70,39 +70,60 @@
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab">Inspecciones</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Alimentación</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Tratamientos</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Tareas Programadas</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Colmenas en Observ.</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">Reinas en Observ.</a></li>
-                    <li class="dropdown">
+                    <li data-toggle="tooltip" data-original-title="Inspección a Apiario" class="active"><a href="#tab_1" data-toggle="tab">Inspecciones</a></li>
+                    <li data-toggle="tooltip" data-original-title="Alimentación"><a href="#tab_2" data-toggle="tab">Alimentación</a></li>
+                    <li data-toggle="tooltip" data-original-title="Tratamientos Aplicados"><a href="#tab_3" data-toggle="tab">Tratamientos</a></li>
+                    <li data-toggle="tooltip" data-original-title="Producción del Apiario"><a href="#tab_3" data-toggle="tab">Producción</a></li>
+                    <li data-toggle="tooltip" data-original-title="Finanzas del Apiario"><a href="#tab_3" data-toggle="tab">Finanzas</a></li>
+                    <li data-toggle="tooltip" data-original-title="Otros Datos del Apiario" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Dropdown <span class="caret"></span>
+                            + Datos <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                            <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Colmenas en Obs.</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reinas en Obs.</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Núcleos</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tareas Programadas</a></li>
                         </ul>
                     </li>
-                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        <b>How to use:</b>
-
-                        <p>Exactly like the original bootstrap tabs except you should use
-                            the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.</p>
-                        A wonderful serenity has taken possession of my entire soul,
-                        like these sweet mornings of spring which I enjoy with my whole heart.
-                        I am alone, and feel the charm of existence in this spot,
-                        which was created for the bliss of souls like mine. I am so happy,
-                        my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                        that I neglect my talents. I should be incapable of drawing a single stroke
-                        at the present moment; and yet I feel that I never was a greater artist than now.
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody><tr>
+                                    <th>Fecha Inspección</th>
+                                    <th>Tarea Ejecutada</th>
+                                    <th>Observaciones</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>25-02-2017</td>
+                                    <td>Armado de cerco perimetral</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                </tr>
+                                <tr>
+                                    <td>10-01-2017</td>
+                                    <td>Aplicar medicamento a colmenas</td>
+                                    <td>Colmena 13 en observación</td>
+                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                </tr>
+                                <tr>
+                                    <td>29-12-2016</td>
+                                    <td>Alimentación</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                </tr>
+                                <tr>
+                                    <td>18-12-2016</td>
+                                    <td>Alimentación y tratamiento preventivo</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                </tr>
+                                </tbody></table>
+                            <button type="button" class="btn btn-block btn-info">Ver Todas las Inspecciones</button>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
@@ -132,178 +153,42 @@
         </div>
     </div>
 
+    <!--********************************************************* MAPA **************************-->
+    <div class="col-md-6">
+        <div class="box box-default color-palette-box">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-tag"></i> Ubicación del Apiario</h3>
+            </div>
+            <div class="box-body">
+                <div class="row" align="center">
+                    <img style="margin-left: auto;" height="260px" src="{{ asset('bundles/colmenappplataforma/img/mapa.jpg') }}">
+                </div>
+            </div>
+        </div>
+    </div>
     <!--***************************************************** GRAFICOS *************************************-->
     <div class="row">
-        <div class="col-md-4">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Productividad</a></li>
-                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Alta/Baja colmenas</a></li>
-                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true">Gastos</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Reportes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 1</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 2</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 3</a></li>
-                        </ul>
-                    </li>
-                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane" id="tab_1">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
 
-                    <div class="tab-pane" id="tab_2">
-                        <canvas id="line"
-                                class="chart chart-line"
-                                chart-data             = "dataColmenas"
-                                chart-labels           = "labelsColmenas"
-
-                                chart-options          = "options"
-                                chart-dataset-override = "datasetOverride"
-                                chart-click            = "onClickColmenas">
-                        </canvas>
-                    </div>
-
-                    <div class="tab-pane active" id="tab_3">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!---************************************************************ BOTONES GRANDES ************************-->
-        <div class="col-md-2">
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Mentions</span>
-                    <span class="info-box-number">92,050</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 20%"></div>
-                    </div>
-                  <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
-                </div>
-            </div>
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Downloads</span>
-                    <span class="info-box-number">114,381</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                  <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Direct Messages</span>
-                    <span class="info-box-number">163,921</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 40%"></div>
-                    </div>
-                  <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-        </div>
-        <!--********************************************************* TABLA PRODUCCION **************************-->
         <div class="col-md-6">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">Productividad del Apiario</h3>
+            <div class="box box-default color-palette-box">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-tag"></i> Producción por Temporada</h3>
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                    <table class="table table-striped">
-                        <tbody><tr>
-                            <th style="width: 10px">#</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th style="width: 40px">Label</th>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-red">55%</span></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>Clean database</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-yellow">70%</span></td>
-                        </tr>
-                        <tr>
-                            <td>3.</td>
-                            <td>Cron job running</td>
-                            <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-light-blue">30%</span></td>
-                        </tr>
-                        <tr>
-                            <td>4.</td>
-                            <td>Fix and squish bugs</td>
-                            <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-green">90%</span></td>
-                        </tr>
-                        </tbody></table>
+                <div class="box-body">
+                    <div class="row" align="center">
+                        <canvas id="bar"
+                                class="chart chart-bar"
+                                chart-data             = "data"
+                                chart-labels           = "labels"
+                                chart-series           = "series"
+                                chart-click="onClick">
+                        </canvas>
+                    </div>
                 </div>
-                <!-- /.box-body -->
             </div>
         </div>
-
     </div>
 
-            <!--
-
-            -->
 </section>
 {% endblock %}
 
