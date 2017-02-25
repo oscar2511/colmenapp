@@ -40,13 +40,7 @@
                         <tr>
                             <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Cantidad de colmenas</a></td>
                             <td>
-                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="145 colmenas">145</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><i class="fa fa-line-chart"></i> Productividad Estimada</td>
-                            <td>
-                                <span data-toggle="tooltip" title="" class="badge bg-green" data-original-title="Kg de miel x temporada ">1059 kg/temp</span>
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="43 colmenas">43</span>
                             </td>
                         </tr>
                         <tr>
@@ -70,11 +64,21 @@
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li data-toggle="tooltip" data-original-title="Inspección a Apiario" class="active"><a href="#tab_1" data-toggle="tab">Inspecciones</a></li>
-                    <li data-toggle="tooltip" data-original-title="Alimentación"><a href="#tab_2" data-toggle="tab">Alimentación</a></li>
-                    <li data-toggle="tooltip" data-original-title="Tratamientos Aplicados"><a href="#tab_3" data-toggle="tab">Tratamientos</a></li>
-                    <li data-toggle="tooltip" data-original-title="Producción del Apiario"><a href="#tab_3" data-toggle="tab">Producción</a></li>
-                    <li data-toggle="tooltip" data-original-title="Finanzas del Apiario"><a href="#tab_3" data-toggle="tab">Finanzas</a></li>
+                    <li data-toggle="tooltip" data-original-title="Inspección a Apiario" class="active">
+                        <a href="#tab_1" data-toggle="tab">Inspecciones</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Alimentación">
+                        <a href="#tab_2" data-toggle="tab">Alimentación</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Tratamientos Aplicados">
+                        <a href="#tab_3" data-toggle="tab">Tratamientos</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Producción del Apiario">
+                        <a href="#tab_4" data-toggle="tab">Producción</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Finanzas del Apiario">
+                        <a href="#tab_5" data-toggle="tab">Finanzas</a>
+                    </li>
                     <li data-toggle="tooltip" data-original-title="Otros Datos del Apiario" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             + Datos <span class="caret"></span>
@@ -89,37 +93,53 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
                                 <tbody><tr>
-                                    <th>Fecha Inspección</th>
+                                    <th>Fecha</th>
                                     <th>Tarea Ejecutada</th>
                                     <th>Observaciones</th>
-                                    <th></th>
+                                    <th>Ver</th>
                                 </tr>
                                 <tr>
-                                    <td>25-02-2017</td>
+                                    <th style="width: 15%">25-02-2017</th>
                                     <td>Armado de cerco perimetral</td>
                                     <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>10-01-2017</td>
+                                    <th>10-01-2017</th>
                                     <td>Aplicar medicamento a colmenas</td>
                                     <td>Colmena 13 en observación</td>
-                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>29-12-2016</td>
+                                    <th>29-12-2016</th>
                                     <td>Alimentación</td>
                                     <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td>18-12-2016</td>
+                                    <th>18-12-2016</th>
                                     <td>Alimentación y tratamiento preventivo</td>
                                     <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                    <td data-toggle="tooltip" data-original-title="Ver Detalle"><a href="#">Ver</a></td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody></table>
                             <button type="button" class="btn btn-block btn-info">Ver Todas las Inspecciones</button>
@@ -131,31 +151,48 @@
                             <table class="table table-striped">
                                 <tbody>
                                 <tr>
-                                    <th></th>
-                                    <th>13/14</th>
-                                    <th>14/15</th>
-                                    <th>15/16</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Nombre</th>
+                                    <th>Observación</th>
+                                    <th>Ver</th>
                                 </tr>
                                 <tr>
-                                    <th>Miel</th>
-                                    <td>54 kg</td>
-                                    <td>45 kg</td>
-                                    <td>47 kg</td>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Jalea Real</th>
-                                    <td>48 kg</td>
-                                    <td>58 kg</td>
-                                    <td>63 kg</td>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <th>Propoleo</th>
-                                    <td>52 kg</td>
-                                    <td>55 kg</td>
-                                    <td>69 kg</td>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
+                            <button type="button" class="btn btn-block btn-info">Ver Alimentación</button>
                         </div>
                     </div>
                     <!-- /.tab-pane -->
@@ -167,25 +204,125 @@
                                     <th></th>
                                     <th>13/14</th>
                                     <th>14/15</th>
-                                    <th>15/16</th>
+                                    <th>Ver</th>
                                 </tr>
                                 <tr>
                                     <th>Miel</th>
                                     <td>54 kg</td>
                                     <td>45 kg</td>
-                                    <td>47 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Jalea Real</th>
                                     <td>48 kg</td>
                                     <td>58 kg</td>
-                                    <td>63 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Propoleo</th>
                                     <td>52 kg</td>
                                     <td>55 kg</td>
-                                    <td>69 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>13/14</th>
+                                    <th>14/15</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>Miel</th>
+                                    <td>54 kg</td>
+                                    <td>45 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Jalea Real</th>
+                                    <td>48 kg</td>
+                                    <td>58 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Propoleo</th>
+                                    <td>52 kg</td>
+                                    <td>00 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_5">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>14/15</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>Miel</th>
+                                    <td>54 kg</td>
+                                    <td>45 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Jalea Real</th>
+                                    <td>48 kg</td>
+                                    <td>58 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Propoleo</th>
+                                    <td>52 kg</td>
+                                    <td>00 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -199,58 +336,43 @@
         </div>
     </div>
 
-    <!--********************************************************* MAPA **************************-->
+    <!--********************************************************* COLMENAS OBSERVADAS **************************-->
     <div class="row">
         <div class="col-md-4">
-            <div class="box box-default color-palette-box">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-tag"></i> Ubicación del Apiario</h3>
+            <div class="box box-solid box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Colmenas Observadas</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <div align="center">
-                            <img style="margin-left: auto;" height="200px" src="{{ asset('bundles/colmenappplataforma/img/mapa.jpg') }}">
-                        </div>
-                    </div>
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">4</h1></a>
+                </div>
+                <div class="footer">
                 </div>
             </div>
         </div>
-    <!--***************************************************** GRAFICO MEDIO *************************************-->
+    <!--***************************************************** REINAS OBSERVADAS *************************************-->
         <div class="col-md-4">
-            <div class="box box-default color-palette-box">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-tag"></i> Producción por Temporada</h3>
+            <div class="box box-solid box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Reinas Observadas</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row" align="center">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">3</h1></a>
+                </div>
+                <div class="footer">
                 </div>
             </div>
         </div>
-
     <!--***************************************************** GRAFICO DERECHA *************************************-->
         <div class="col-md-4">
-            <div class="box box-default color-palette-box">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-tag"></i> Producción por Temporada</h3>
+            <div class="box box-solid box-default">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Núcleos en Producción</h3>
                 </div>
                 <div class="box-body">
-                    <div class="row" align="center">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
-                    </div>
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">9</h1></a>
+                </div>
+                <div class="footer">
                 </div>
             </div>
         </div>

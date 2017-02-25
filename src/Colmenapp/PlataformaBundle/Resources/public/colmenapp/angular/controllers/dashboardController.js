@@ -6,25 +6,15 @@
     var dashboardController = function($scope) {
 
         //grafico Ingresos/Egresos
-        $scope.labels = ["","Los Algarrobos","Agua Blanca"];
+        $scope.labels = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
         $scope.data   = [
-            [0,304,7921],
-            [0,5304,6921]
+            [3304,7921,4467, 8996,2678,7822,2678,7822,2678,7822,2678,7822],
+            [5304,6921,7921, 4467,2899,4822,2899,4822,2899,4822,2899,4822]
+
         ];
+
+        $scope.colorsIngresosEgresos = ['#45b7cd','#ff6384'];
         $scope.seriesIngresosEgresos = ['Ingresos', 'Egresos'];
-
-
-        $scope.labelsNucleo = ["","Los Algarrobos","Agua Blanca"];
-        $scope.dataNucleo   = [0,210,351];
-
-        //grafico alta/baja colmenas
-        $scope.labelsColmenas = ["","Los Algarrobos","Agua Blanca"];
-        $scope.dataColmenas   = ['',120, 150];
-
-
-
-        $scope.labelsEstado = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        $scope.dataEstado = [300, 500, 100];
 
       ////////////// grafico gastos
 
