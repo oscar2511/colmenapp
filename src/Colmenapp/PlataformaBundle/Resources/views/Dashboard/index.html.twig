@@ -69,8 +69,25 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
 
-
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Ultimas Actividades</h3>
+                </div>
+                <canvas id="bar"
+                        class="chart chart-bar ng-isolate-scope"
+                        chart-data             = "data"
+                        chart-labels           = "labels"
+                        chart-series           = "seriesIngresosEgresos"
+                        chart-click="onClick"
+                        style="display: block; width: 353px; height: 176px;" width="353" height="176">
+                </canvas>
+            </div>
+        </div>
+    </div>
+<!--********************************************************* graficos ****************************************-->
     <div class="row">
         <div class="col-md-4">
             <div class="box box-default">

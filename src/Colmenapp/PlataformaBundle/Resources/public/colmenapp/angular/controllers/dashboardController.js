@@ -5,9 +5,13 @@
 
     var dashboardController = function($scope) {
 
-        //grafico productividad
+        //grafico Ingresos/Egresos
         $scope.labels = ["","Los Algarrobos","Agua Blanca"];
-        $scope.data   = [0,4304,7921];
+        $scope.data   = [
+            [0,304,7921],
+            [0,5304,6921]
+        ];
+        $scope.seriesIngresosEgresos = ['Ingresos', 'Egresos'];
 
 
         $scope.labelsNucleo = ["","Los Algarrobos","Agua Blanca"];
