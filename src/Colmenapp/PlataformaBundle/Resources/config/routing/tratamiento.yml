@@ -1,0 +1,4 @@
+tratamiento:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Tratamiento:index, _name: tratamiento }
+    methods:  GET

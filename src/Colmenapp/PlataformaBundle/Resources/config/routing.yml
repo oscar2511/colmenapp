@@ -21,3 +21,19 @@ finanza:
 alerta:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/alerta.yml"
     prefix:   /alerta
+
+alimentacion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/alimentacion.yml"
+    prefix:   /alimentacion
+
+tratamiento:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/tratamiento.yml"
+    prefix:   /tratamiento
+
+nucleo:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/nucleo.yml"
+    prefix:   /nucleo
+
+produccion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/produccion.yml"
+    prefix:   /produccion

@@ -1,0 +1,4 @@
+nucleo:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Nucleo:index, _name: nucleo }
+    methods:  GET

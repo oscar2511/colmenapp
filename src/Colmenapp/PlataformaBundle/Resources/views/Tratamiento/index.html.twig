@@ -1,0 +1,226 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-fw fa-flask"></i> <span class="glyphicon glyphicon-flask"></span> Tratamientos
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="tratamientoController">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header">
+                    <a href="" data-toggle="modal" data-target=".modal-nueva-alimentacion">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Nuevo Tratamiento
+                        </button>
+                    </a>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Nro.</th>
+                            <th>Fecha</th>
+                            <th>Apiario</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Observaciones</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td><a href="#">4</a></td>
+                            <th>28-09-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Invierno</td>
+                            <td>Descripción del tratatamiento, medicina utilizada</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">3</a></td>
+                            <th>12-08-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Primavera</td>
+                            <td>Descripción del tratatamiento, medicina utilizada</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2</a></td>
+                            <th>12-08-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Primavera</td>
+                            <td>Descripción del tratatamiento, medicina utilizada</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <th>01-02-2016</th>
+                            <td>Los Algarrobos</td>
+                            <td>Líquida</td>
+                            <td>Descripción del tratatamiento, medicina utilizada</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-default modal-ver-observaciones" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Observación</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Alguna observación
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade modal-default modal-nueva-alimentacion" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nueva alimentación</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Los Algarrobos</option>
+                                        <option>Agua Blanca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha Envío</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese mensaje..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+{% endblock %}
+
+
+
+

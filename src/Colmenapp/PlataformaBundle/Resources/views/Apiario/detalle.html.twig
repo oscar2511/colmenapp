@@ -38,9 +38,15 @@
                             <td colspan="2">Chamical - La Rioja</td>
                         </tr>
                         <tr>
-                            <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Cantidad de colmenas</a></td>
+                            <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Número de colmenas</a></td>
                             <td>
                                 <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="43 colmenas">43</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path('colmena') }}"><i class="fa fa-fw fa-cube"></i> Núcleos en Producción</a></td>
+                            <td>
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="13 núcleos">13</span>
                             </td>
                         </tr>
                         <tr>
@@ -65,30 +71,19 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li data-toggle="tooltip" data-original-title="Inspección a Apiario" class="active">
-                        <a href="#tab_1" data-toggle="tab">Inspecciones</a>
+                        <a href="#tab_1" data-toggle="tab"><i class="fa fa-fw fa-eye"></i>Inspecciones</a>
                     </li>
                     <li data-toggle="tooltip" data-original-title="Alimentación">
-                        <a href="#tab_2" data-toggle="tab">Alimentación</a>
+                        <a href="#tab_2" data-toggle="tab"><i class="fa fa-fw fa-cutlery"></i> Alimentación</a>
                     </li>
                     <li data-toggle="tooltip" data-original-title="Tratamientos Aplicados">
-                        <a href="#tab_3" data-toggle="tab">Tratamientos</a>
+                        <a href="#tab_3" data-toggle="tab"><i class="fa fa-fw fa-flask"></i> Tratamientos</a>
                     </li>
                     <li data-toggle="tooltip" data-original-title="Producción del Apiario">
-                        <a href="#tab_4" data-toggle="tab">Producción</a>
+                        <a href="#tab_4" data-toggle="tab"><i class="fa fa-fw fa-industry"></i> Producción</a>
                     </li>
                     <li data-toggle="tooltip" data-original-title="Finanzas del Apiario">
-                        <a href="#tab_5" data-toggle="tab">Finanzas</a>
-                    </li>
-                    <li data-toggle="tooltip" data-original-title="Otros Datos del Apiario" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            + Datos <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Colmenas en Obs.</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reinas en Obs.</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Núcleos</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Tareas Programadas</a></li>
-                        </ul>
+                        <a href="#tab_5" data-toggle="tab"><i class="fa fa-fw fa-money"></i> Finanzas</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -142,7 +137,7 @@
                                     </td>
                                 </tr>
                                 </tbody></table>
-                            <button type="button" class="btn btn-block btn-info">Ver Todas las Inspecciones</button>
+                            <button type="button" class="btn btn-block btn-info">Ver Inspecciones</button>
                         </div>
                     </div>
                     <!-- /.tab-pane -->
@@ -201,15 +196,17 @@
                             <table class="table table-striped">
                                 <tbody>
                                 <tr>
-                                    <th></th>
-                                    <th>13/14</th>
-                                    <th>14/15</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th>Observaciones</th>
                                     <th>Ver</th>
                                 </tr>
                                 <tr>
-                                    <th>Miel</th>
-                                    <td>54 kg</td>
-                                    <td>45 kg</td>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -217,9 +214,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Jalea Real</th>
-                                    <td>48 kg</td>
-                                    <td>58 kg</td>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -227,9 +225,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Propoleo</th>
-                                    <td>52 kg</td>
-                                    <td>55 kg</td>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -238,6 +237,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <button type="button" class="btn btn-block btn-info">Ver Tratamientos</button>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab_4">
@@ -282,6 +282,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <button type="button" class="btn btn-block btn-info">Ver Producción</button>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab_5">
@@ -289,15 +290,19 @@
                             <table class="table table-striped">
                                 <tbody>
                                 <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th>14/15</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Concepto</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
                                     <th>Ver</th>
                                 </tr>
                                 <tr>
-                                    <th>Miel</th>
-                                    <td>54 kg</td>
-                                    <td>45 kg</td>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-green">Ingreso</span></td>
+                                    <td>Venta de núcleo</td>
+                                    <td>$581</td>
+                                    <td>Pendiente</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -305,9 +310,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Jalea Real</th>
-                                    <td>48 kg</td>
-                                    <td>58 kg</td>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-red">Egreso</span></td>
+                                    <td>Compra de cera</td>
+                                    <td>$1255</td>
+                                    <td>Pagado</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -315,9 +322,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Propoleo</th>
-                                    <td>52 kg</td>
-                                    <td>00 kg</td>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-green">Ingreso</span></td>
+                                    <td>Venta de núcleo</td>
+                                    <td>$790</td>
+                                    <td>Cobrado</td>
                                     <td>
                                         <a href="#">
                                             <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
@@ -326,6 +335,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <button type="button" class="btn btn-block btn-info">Ver Finanzas</button>
                         </div>
                     </div>
                     <!-- /.tab-pane -->
@@ -367,7 +377,7 @@
         <div class="col-md-4">
             <div class="box box-solid box-default">
                 <div class="box-header">
-                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Núcleos en Producción</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-list"></i> Tareas Programadas</h3>
                 </div>
                 <div class="box-body">
                     <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">9</h1></a>
