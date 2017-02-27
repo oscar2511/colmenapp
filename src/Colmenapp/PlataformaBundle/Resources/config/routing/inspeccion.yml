@@ -1,0 +1,4 @@
+inspeccion:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Inspeccion:index, _name: inspeccion }
+    methods:  GET

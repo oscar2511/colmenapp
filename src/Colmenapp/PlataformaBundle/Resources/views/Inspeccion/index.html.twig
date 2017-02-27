@@ -2,7 +2,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-cube"></span> Núcleos
+    <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-eye"></span> Inspección
 </h2>
 {% endblock %}
 
@@ -11,19 +11,19 @@
 
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
     </ol>
 {% endblock %}
 
 {% block page_content %}
-<section ng-controller="nucleoController">
+<section ng-controller="inspeccionController">
     <div class="row">
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header">
                     <a href="" data-toggle="modal" data-target=".modal-nuevo-nucleo">
                         <button type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-fw fa-plus"></i> Nuevo Núcleo
+                            <i class="fa fa-fw fa-plus"></i> Nueva Inspección
                         </button>
                     </a>
                     <div class="box-tools">
@@ -40,24 +40,20 @@
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <th>Nro.</th>
+                        <tbody><tr>
                             <th>Fecha</th>
                             <th>Apiario</th>
-                            <th>Nro abejas</th>
+                            <th>Trabajo Realizado</th>
+                            <th>Colmenas</th>
                             <th>Observaciones</th>
                             <th>Ver</th>
                         </tr>
                         <tr>
-                            <td><a href="#">4</a></td>
-                            <th>28-09-2016</th>
+                            <td>23-11-2016</td>
                             <td>Los Algarrobos</td>
-                            <td>120</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
-                                </a>
-                            </td>
+                            <td>Alimentación artificial</td>
+                            <td>Todas</td>
+                            <td>Colmena 13 en observación</td>
                             <td>
                                 <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
@@ -65,14 +61,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="#">3</a></td>
-                            <th>12-08-2016</th>
+                            <td>09-10-2016</td>
                             <td>Los Algarrobos</td>
-                            <td>155</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
-                                </a>
-                            </td>
+                            <td>Revisión de reinas</td>
+                            <td><a href="#">Ver Colmenas afectadas</a> </td>
+                            <td>Se revisó hasta colmena 12 por falta de tiempo</td>
                             <td>
                                 <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
@@ -80,21 +73,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="#">2</a></td>
-                            <th>12-08-2016</th>
+                            <td>23-11-2016</td>
                             <td>Los Algarrobos</td>
-                            <td>180</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
-                                </a>
-                            </td>
+                            <td>Alimentación artificial</td>
+                            <td>Todas</td>
+                            <td>Colmena 13 en observación</td>
                             <td>
                                 <a href="#">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -85,15 +85,11 @@
 {% set name = app.request.attributes.get('_name') %}
 {% block avanzu_sidebar %}
     <div class="sidebar">
-        <!-- user panel (Optional) -->
         <div class="user-panel">
-
-        </div><!-- /.user-panel -->
-
-        <!-- Search Form (Optional) -->
+        </div>
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="q" class="form-control" placeholder="Buscar...">
         <span class="input-group-btn">
           <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
         </span>
@@ -129,6 +125,8 @@
                 <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-fw fa-plus"></i> Crear Colmena</a></li>
                     <li><a href="{{ path('colmena') }}"><i class="fa fa-fw fa-eye"></i> Ver Colmenas</a></li>
+                    <li><a href="{{ path('colmenas_observadas') }}"><i class="fa fa-fw fa-warning"></i> Ver Colmenas Observadas</a></li>
+                    <li><a href="{{ path('reinas_observadas') }}"><i class="fa fa-fw fa-warning"></i> Ver Reinas Observadas</a></li>
                 </ul>
             </li>
             <li class=" {% if app.request.attributes.get('_name') == 'alimentacion' %}active{% endif %}">
@@ -151,10 +149,20 @@
                     <span>Producción</span>
                 </a>
             </li>
-            <li><a href="#"><i class="fa fa-fw fa-eye"></i><span>Inspecciones</span></a></li>
-            <li><a href="#"><i class="fa fa-fw fa-eye"></i><span>Tareas Programadas</span></a></li>
+            <li class=" {% if app.request.attributes.get('_name') == 'inspeccion' %}active{% endif %}">
+                <a href="{{ path('inspeccion') }}"><i class="fa fa-fw fa-eye" aria-hidden="true"></i>
+                    <span>Inspecciones</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'tarea_programada' %}active{% endif %}">
+                <a href="{{ path('tarea_programada') }}"><i class="fa fa-fw fa-list" aria-hidden="true"></i>
+                    <span>Tareas Programadas</span>
+                </a>
+            </li>
             <li class="treeview {% if app.request.attributes.get('_name') == 'finanzas' %}active{% endif %}">
-                <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator"></i><span>Finanzas</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator" aria-hidden="true"></i>
+                    <span>Finanzas</span><i class="fa fa-angle-left pull-right" aria-hidden="true"></i>
+                </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('finanza') }}"><i class="fa fa-fw fa-eye"></i> Ver movimientos</a></li>
                 </ul>
@@ -173,6 +181,7 @@
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-eye"></i> Ver alertas</a></li>
                 </ul>
             </li>
+            <li class="header">Configuración del Sistema</li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-fw fa-gear"></i>Configuración <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

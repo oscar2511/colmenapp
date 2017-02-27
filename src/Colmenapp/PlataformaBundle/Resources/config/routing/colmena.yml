@@ -1,6 +1,6 @@
 colmena:
     path:     /
-    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:index" }
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:index", _name: colmena  }
     methods:  GET
 
 colmena_inspeccion:
@@ -10,10 +10,10 @@ colmena_inspeccion:
 
 colmena_inspeccion_nueva:
     path:     /inspeccion-nueva
-    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:inspeccionNueva" }
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:inspeccionNueva", _name: colmena  }
     methods:  GET
 
 colmena_detalle:
     path:     /detalle
-    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle" }
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle", _name: colmena , _name: colmena  }
     methods:  GET

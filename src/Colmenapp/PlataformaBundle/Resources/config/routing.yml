@@ -37,3 +37,19 @@ nucleo:
 produccion:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/produccion.yml"
     prefix:   /produccion
+
+inspeccion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/inspeccion.yml"
+    prefix:   /inspeccion
+
+tarea_programada:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/tarea_programada.yml"
+    prefix:   /tarea-programada
+
+colmenas_observadas:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/colmenasObservadas.yml"
+    prefix:   /colmenas-observadas
+
+reinas_observadas:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/reinasObservadas.yml"
+    prefix:   /reinas-observadas

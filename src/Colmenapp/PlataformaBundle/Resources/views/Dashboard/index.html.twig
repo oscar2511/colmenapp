@@ -138,7 +138,9 @@
                         </tr>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-block btn-info">Ver Tareas Pendientes</button>
+                    <a href="{{ path('tarea_programada') }}">
+                        <button type="button" class="btn btn-block btn-info"><i class="fa fa-fw fa-eye"></i> Ver Tareas Programadas</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -149,10 +151,10 @@
         <div class="col-md-4">
             <div class="box box-solid box-warning">
                 <div class="box-header">
-                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Colmenas Observadas</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i><a href="{{ path('colmenas_observadas') }}"> Colmenas Observadas</a></h3>
                 </div>
                 <div class="box-body">
-                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">4</h1></a>
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('colmenas_observadas') }}">4</a></h1></a>
                 </div>
                 <div class="footer">
                 </div>
@@ -161,7 +163,7 @@
         <div class="col-md-4">
             <div class="box box-solid box-warning">
                 <div class="box-header">
-                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> Reinas Observadas</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> <a href="{{ path('reinas_observadas') }}">Reinas Observadas</a></h3>
                 </div>
                 <div class="box-body">
                     <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">4</h1></a>
@@ -171,10 +173,10 @@
         <div class="col-md-4">
             <div class="box box-solid box-default">
                 <div class="box-header">
-                    <h3 class="box-title"><i class="fa fa-fw fa-cube"></i> Núcleos En Producción</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-cube"></i><a href="{{ path('nucleo') }}"> Núcleos En Producción</a></h3>
                 </div>
                 <div class="box-body">
-                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">4</h1></a>
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('nucleo') }}">4</a></h1></a>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>

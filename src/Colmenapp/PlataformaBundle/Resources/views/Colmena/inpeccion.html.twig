@@ -2,7 +2,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-cube"></span> Núcleos
+    <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-eye"></span> Inspección
 </h2>
 {% endblock %}
 
@@ -11,19 +11,19 @@
 
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
     </ol>
 {% endblock %}
 
 {% block page_content %}
-<section ng-controller="nucleoController">
+<section ng-controller="inspeccionController">
     <div class="row">
         <div class="col-md-10">
             <div class="box">
                 <div class="box-header">
                     <a href="" data-toggle="modal" data-target=".modal-nuevo-nucleo">
                         <button type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-fw fa-plus"></i> Nuevo Núcleo
+                            <i class="fa fa-fw fa-plus"></i> Nueva Inspección
                         </button>
                     </a>
                     <div class="box-tools">
@@ -40,61 +40,69 @@
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <th>Nro.</th>
+                        <tbody><tr>
                             <th>Fecha</th>
-                            <th>Apiario</th>
-                            <th>Nro abejas</th>
-                            <th>Observaciones</th>
+                            <th>Reina</th>
+                            <th>Nro. Abejas</th>
+                            <th>Nro. Cuadros</th>
+                            <th>Agresividad</th>
+                            <th>Trabajo Realizado</th>
+                            <th>Editar</th>
                             <th>Ver</th>
                         </tr>
                         <tr>
-                            <td><a href="#">4</a></td>
-                            <th>28-09-2016</th>
-                            <td>Los Algarrobos</td>
-                            <td>120</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
+                            <td>23-11-2016</td>
+                            <td><span class="label label-success">Bueno</span></td>
+                            <td>210</td>
+                            <td>10</td>
+                            <td><span class="label label-warning">Media</span></td>
+                            <td>Ninguno</td>
+                            <td><a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="{{ path('apiario_detalle') }}">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="#">3</a></td>
-                            <th>12-08-2016</th>
-                            <td>Los Algarrobos</td>
-                            <td>155</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
+                            <td>28-11-2016</td>
+                            <td><span class="label label-warning">Medio</span></td>
+                            <td>290</td>
+                            <td>9</td>
+                            <td><span class="label label-warning">Media</span></td>
+                            <td>Ninguno</td>
+                            <td><a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="{{ path('apiario_detalle') }}">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td><a href="#">2</a></td>
-                            <th>12-08-2016</th>
-                            <td>Los Algarrobos</td>
-                            <td>180</td>
-                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
-                                    Ver observaciones
+                            <td>01-12-2016</td>
+                            <td><span class="label label-success">Bueno</span></td>
+                            <td>389</td>
+                            <td>12</td>
+                            <td><span class="label label-info">Baja</span></td>
+                            <td>Ninguno</td>
+                            <td><a href="{{ path('apiario_detalle') }}">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i>
                                 </a>
                             </td>
                             <td>
-                                <a href="#">
+                                <a href="{{ path('apiario_detalle') }}">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                             </td>
                         </tr>
-                        </tbody></table>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
