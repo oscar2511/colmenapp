@@ -1,0 +1,9 @@
+reina:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Reina:index, _name: reina }
+    methods:  GET
+
+#alerta_detalle:
+#    path:     /detalle
+#    defaults: { _controller: "ColmenappPlataformaBundle:Alerta:detalle" }
+#    methods:  GET

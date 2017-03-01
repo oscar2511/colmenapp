@@ -3,7 +3,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena 44</small>
+    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena 12</small>
 </h2>
 {% endblock %}
 
@@ -13,7 +13,7 @@
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-archive"></i>Colmena</a></li>
+        <li><a href="#"><i class="fa fa-archive"></i> Colmena</a></li>
     </ol>
 {% endblock %}
 
@@ -37,7 +37,7 @@
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
                             <td>Número de colmena</td>
-                            <td colspan="2">219</td>
+                            <td colspan="2">12</td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-map-marker"></i></td>
@@ -73,8 +73,8 @@
                             </td>
                         </tr>
                         </tbody></table>
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
+                </div>
+            </div>
 
             <div class="col-12">
                 <div class="box box-success">
@@ -118,19 +118,35 @@
                             <td><i class="fa fa-angle-right"></i></td>
                             <td>Alimentación</td>
                             <td>23/04/2016: Alimentación sólida</td>
-                            <td><span class="label label-info">Ver /Añadir</span></td>
+                            <td>
+                                <a style="color: #ffffff!important;" href="{{ path('alimentacion') }}">
+                                    <span class="label label-info">Ver /Añadir</span>
+                                </a>
+                            </td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
                             <td>Sanidad</td>
                             <td>05/03/2016: Fin de tratamiento</td>
-                            <td><span class="label label-info">Ver / Añadir</span></td>
+                            <td>
+                                <span class="label label-info">
+                                    <a style="color: #ffffff!important;" href="{{ path('tratamiento') }}">
+                                        Ver / Añadir
+                                    </a>
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
                             <td>Reina</td>
-                            <td>Estado: Bueno</td>
-                            <td><span class="label label-info">Ver / Añadir</span></td>
+                            <td>Estado: Bueno </td>
+                            <td>
+                                <span class="label label-info">
+                                    <a style="color: #ffffff!important;" href="{{ path('reina') }}">
+                                        Ver / Añadir
+                                    </a>
+                                </span>
+                            </td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
