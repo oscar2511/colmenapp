@@ -2,7 +2,7 @@
 
 {% block page_title %}
     <h1 class="page-header">
-        <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-eye"></span> Inspección de Colmena
+        <i class="fa fa-fw fa-eye"></i> Inspección de Colmena
         <small>Colmena 12</small>
     </h1>
     <br>
@@ -15,6 +15,9 @@
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
+        <li><a href="#"><i class="fa fa-eye"></i> Inspección de Colmena</a></li>
+        <li onclick="history.go(-1);"><a href="#"><i class="fa fa-archive"></i> Colmena</a></li>
+
     </ol>
 {% endblock %}
 
