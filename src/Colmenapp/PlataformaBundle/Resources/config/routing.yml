@@ -53,3 +53,7 @@ colmenas_observadas:
 reinas_observadas:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/reinasObservadas.yml"
     prefix:   /reinas-observadas
+
+reina:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/reina.yml"
+    prefix:   /reina
