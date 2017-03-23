@@ -3,7 +3,7 @@
 
     'use strict';
 
-    var dashboardController = function($scope, NgTableParams, $filter) {
+    var dashboardController = function($scope) {
 
         //grafico Ingresos/Egresos
         $scope.labels = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -51,19 +51,50 @@
       ///////////////////////////////
 
       $scope.gridOptions = {
-        paginationPageSizes: [25, 50, 75],
+        paginationPageSizes: [10,25, 50, 75],
         paginationPageSize: 5,
+        enableSorting: true,
+        enableFiltering: true,
+        rowHeight: 50,
+        enableColumnResizing: true,
         columnDefs: [
-          { field: 'name' },
+          { field: 'name',enableColumnResizing: true },
           { field: 'age' },
           { field: 'location',
-            cellTemplate: '<div class="ngCellText"><a ng-href="/#/monitor/{{row.entity.age}}">Ver</a></div>'}
+            cellTemplate: '<div class="ngCellText"><a ng-href="/#/monitor/{{row.entity.age}}">Ver</a></div>',
+            enableSorting: false}
         ],
         onRegisterApi: function (gridApi) {
           $scope.grid1Api = gridApi;
         }
       };
       $scope.users = [
+        { name: "Madhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcds", age: 10, location: 'Nagpu' },
+        { name: "Suresh Dasari", age: 30, location: 'Chennai' },
+        { name: "Rohini Alavala", age: 29, location: 'Chennai' },
+        { name: "Praveen Kumar", age: 25, location: 'Bangalore' },
+        { name: "Sateesh Chandra", age: 27, location: 'Vizag' },
+        { name: "Siva Prasad", age: 38, location: 'Nagpur' },
+        { name: "Sudheer Rayana", age: 25, location: 'Kakinada' },
+        { name: "Honey Yemineni", age: 7, location: 'Nagpur' },
+        { name: "Mahendra Dasari", age: 22, location: 'Vijayawada' },
+        { name: "Mahesh Dasari", age: 23, location: 'California' },
+        { name: "Nagaraju Dasari", age: 34, location: 'Atlanta' },
+        { name: "Gopi Krishna", age: 29, location: 'Repalle' },
+        { name: "Sudheer Uppala", age: 19, location: 'Guntur' },
+        { name: "Madhav Sai", age: 10, location: 'Nagpur' },
+        { name: "Suresh Dasari", age: 30, location: 'Chennai' },
+        { name: "Rohini Alavala", age: 29, location: 'Chennai' },
+        { name: "Praveen Kumar", age: 25, location: 'Bangalore' },
+        { name: "Sateesh Chandra", age: 27, location: 'Vizag' },
+        { name: "Siva Prasad", age: 38, location: 'Nagpur' },
+        { name: "Sudheer Rayana", age: 25, location: 'Kakinada' },
+        { name: "Honey Yemineni", age: 7, location: 'Nagpur' },
+        { name: "Mahendra Dasari", age: 22, location: 'Vijayawada' },
+        { name: "Mahesh Dasari", age: 23, location: 'California' },
+        { name: "Nagaraju Dasari", age: 34, location: 'Atlanta' },
+        { name: "Gopi Krishna", age: 29, location: 'Repalle' },
+        { name: "Sudheer Uppala", age: 19, location: 'Guntur' },
         { name: "Madhav Sai", age: 10, location: 'Nagpur' },
         { name: "Suresh Dasari", age: 30, location: 'Chennai' },
         { name: "Rohini Alavala", age: 29, location: 'Chennai' },
@@ -86,8 +117,6 @@
     angular.module('colmenapp.Controllers')
         .controller('dashboardController', [
             '$scope',
-            'NgTableParams',
-            '$filter',
             dashboardController
         ]);
 

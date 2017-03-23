@@ -7,9 +7,9 @@
         .module('colmenapp',[
             'colmenapp.Controllers',
             'chart.js',
-            'ngTable',
             'ui.grid',
-            'ui.grid.pagination'
+            'ui.grid.pagination',
+            'ui.grid.resizeColumns'
         ]);
 
     angular.module('colmenapp.Controllers',[]);
