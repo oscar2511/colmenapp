@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Leadsius\PlatformBundle\Entity\PlAccount
  *
  * @ORM\Table(name="apiario")
- * @ORM\Entity(repositoryClass="Colmenapp\PlatformaBundle\Entity\Repositories\ApiarioRepository")
+ * @ORM\Entity(repositoryClass="Colmenapp\PlataformaBundle\Repository\ApiarioRepository")
  */
 class Apiario
 {
@@ -46,7 +46,7 @@ class Apiario
     /**
      * @var text    $updated
      *
-     * @ORM\Column(name="observacion", type="text", nullable=false)
+     * @ORM\Column(name="observacion", type="text", nullable=true)
      */
     protected $observacion;
 
@@ -208,6 +208,19 @@ class Apiario
         $this->deleted = $deleted;
     }
 
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return array (
+            'id'          => $this->id,
+            'nombre'      => $this->nombre,
+            'direccion'   => $this->direccion ? $this->direccion : null,
+            'observacion' => $this->observacion ? $this->observacion : null,
+            'created'     => $this->created
+        );
+    }
 
 
 }

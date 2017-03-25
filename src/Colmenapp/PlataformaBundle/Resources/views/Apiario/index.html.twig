@@ -41,53 +41,14 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <th>Identificador</th>
-                            <th>Nombre</th>
-                            <th>Ubicación</th>
-                            <th>Nro. Colmenas</th>
-                            <th>Última visita</th>
-                            <th>Observaciones</th>
-                            <th>Estado</th>
-                            <th>Ver</th>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">1</a></td>
-                            <td>Los Algarrobos</td>
-                            <td>Chamical</td>
-                            <td>57</td>
-                            <td>20-11-2016</td>
-                            <td>Ninguna</td>
-                            <td><span class="badge bg-green">Activo</span></td>
-                            <td>
-                                <a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">2</a></td>
-                            <td>Agua Blanca</td>
-                            <td>Chepes</td>
-                            <td>63</td>
-                            <td>19-10-2016</td>
-                            <td>Ninguna</td>
-                            <td><span class="badge bg-red">Inactivo</span></td>
-                            <td>
-                                <a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        </tbody></table>
+                    {% verbatim %}
+                        <div class="table table-striped" style="height:300px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
+                    {% endverbatim %}
                 </div>
                 <!-- /.box-body -->
             </div>
         </div>
     </div>
-
 
 
     <div class="modal fade modal-default modal-nuevo-apiario" >
@@ -99,7 +60,6 @@
                     <h4 class="modal-title">Nuevo apiario</h4>
                 </div>
                 <div class="modal-body">
-
                     <form class="form-horizontal" name="apiarioForm" novalidate>
                         <div class="box-body">
                             <div class="form-group">
@@ -131,15 +91,14 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                        <button ng-click="guardarApiario(apiarioForm)" ng-disabled="apiarioForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                        <button data-dismiss="modal" ng-click="guardarApiario(apiarioForm)" ng-disabled="apiarioForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
-
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
+
+
     </section>
 
 {% endblock %}
