@@ -59,12 +59,12 @@ class ApiarioController extends Controller
      */
     public function getApiariosAction ()
     {
-
         try {
             $em = $this->getDoctrine()->getManager();
             $apiarios = $em
                 ->getRepository('ColmenappPlataformaBundle:Apiario')
-                ->findAll();
+                ->findBy([],array('id' => 'DESC')
+              );
 
             $apiariosArray = array();
             foreach ($apiarios as $apiario) {

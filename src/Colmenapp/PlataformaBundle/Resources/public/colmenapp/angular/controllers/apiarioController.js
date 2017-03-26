@@ -3,7 +3,9 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http) {
+    var apiarioController = function($scope, $http, i18nService) {
+
+        i18nService.setCurrentLang('es');
 
         $scope.apiario = {};
         $scope.mostrarModal = false;
@@ -30,7 +32,7 @@
 
           $http.post(Routing.generate('apiario_crear'), dataApiario)
               .then(function(response) {
-                if(response.data.data          = 200 && response.data.data) {
+                if(response.data.data = 200 && response.data.data) {
                     $scope.apiario.id          = response.data.data.id;
                     $scope.apiario.nombre      = response.data.data.nombre;
                     $scope.apiario.direccion   = response.data.data.direccion;
@@ -41,8 +43,10 @@
               });
         };
 
+        /**
+        *
+        */
         function getApiarios() {
-
             $http.get(Routing.generate('apiario_todos'))
                 .then(function(response) {
                     if(response.data.status == 200) {
@@ -59,17 +63,20 @@
                 enableFiltering: true,
                 rowHeight: 50,
                 enableColumnResizing: true,
+                plugins: [new ngGridFlexibleHeightPlugin()],
                 columnDefs: [
-                    {field: 'id', enableColumnResizing: true},
+                    {field: 'id', displayName: 'Identificador', enableColumnResizing: true},
                     {field: 'nombre', enableColumnResizing: true},
                     {field: 'direccion'},
-                    {field: 'nroCol', enableColumnResizing: true},
-                    {field: 'Ult. Visita', enableColumnResizing: true},
-                    {field: 'observacion'},
                     {
-                        field: 'location',
-                        cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
-                        enableSorting: false
+                      field: 'observacion',
+                      enableFiltering: false,
+                    },
+                    {
+                      field: 'ver',
+                      cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
+                      enableSorting: false,
+                      enableFiltering: false,
                     }
                 ],
                 onRegisterApi: function (gridApi) {
@@ -87,6 +94,7 @@
         .controller('apiarioController', [
             '$scope',
             '$http',
+            'i18nService',
             apiarioController
         ]);
 
