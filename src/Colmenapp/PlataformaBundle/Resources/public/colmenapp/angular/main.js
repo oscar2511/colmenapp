@@ -9,7 +9,9 @@
             'chart.js',
             'ui.grid',
             'ui.grid.pagination',
-            'ui.grid.resizeColumns'
+            'ui.grid.resizeColumns',
+            'toaster',
+            'ngAnimate'
         ]);
 
     angular.module('colmenapp.Controllers',[]);

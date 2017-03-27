@@ -3,7 +3,7 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http, i18nService) {
+    var apiarioController = function($scope, $http, i18nService, toaster) {
 
         i18nService.setCurrentLang('es');
 
@@ -85,6 +85,10 @@
             }
         }
 
+      $scope.pop = function(){
+        toaster.pop('info', "title", "text");
+      };
+
         setTable();
         getApiarios();
 
@@ -95,6 +99,7 @@
             '$scope',
             '$http',
             'i18nService',
+            'toaster',
             apiarioController
         ]);
 
