@@ -1,0 +1,4 @@
+colmenas_observadas:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:ColmenasObservadas:index, _name: colmena }
+    methods:  GET

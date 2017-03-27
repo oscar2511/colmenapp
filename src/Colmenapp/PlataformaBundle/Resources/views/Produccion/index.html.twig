@@ -1,0 +1,236 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-fw fa-cube"></i> <span class="glyphicon glyphicon-cube"></span> Producción
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="produccionController">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header">
+                    <a href="" data-toggle="modal" data-target=".modal-nuevo-nucleo">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Nueva Producción
+                        </button>
+                    </a>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Nro.</th>
+                            <th>Año</th>
+                            <th>Temprada</th>
+                            <th>Miel (kg)</th>
+                            <th>Cera (kg)</th>
+                            <th>Polen (kg)</th>
+                            <th>Jalea Real (kg)</th>
+                            <th>Observaciones</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td><a href="#">4</a></td>
+                            <th>2016</th>
+                            <td>Primavera</td>
+                            <td>455</td>
+                            <td>210</td>
+                            <td>0</td>
+                            <td>110</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">3</a></td>
+                            <th>2017</th>
+                            <td>Primavera</td>
+                            <td>550</td>
+                            <td>310</td>
+                            <td>0</td>
+                            <td>210</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">2</a></td>
+                            <th>2016</th>
+                            <td>Primavera</td>
+                            <td>455</td>
+                            <td>210</td>
+                            <td>0</td>
+                            <td>110</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">1</a></td>
+                            <th>2016</th>
+                            <td>Primavera</td>
+                            <td>455</td>
+                            <td>210</td>
+                            <td>0</td>
+                            <td>110</td>
+                            <td><a href="" data-toggle="modal" data-target=".modal-ver-observaciones">
+                                    Ver observaciones
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-default modal-ver-observaciones" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Observación</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Alguna observación
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade modal-default modal-nuevo-nucleo" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nueva alimentación</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Los Algarrobos</option>
+                                        <option>Agua Blanca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha Envío</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese mensaje..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+{% endblock %}
+
+
+
+

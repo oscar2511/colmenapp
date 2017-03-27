@@ -1,0 +1,4 @@
+produccion:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Produccion:index, _name: produccion }
+    methods:  GET

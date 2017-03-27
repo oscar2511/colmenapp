@@ -7,3 +7,17 @@ apiario_detalle:
     path:     /detalle
     defaults: { _controller: "ColmenappPlataformaBundle:Apiario:detalle" }
     methods:  GET
+
+apiario_crear:
+    path:     /crear
+    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:crear" }
+    methods:  POST
+    options:
+            expose: true
+
+apiario_todos:
+    path:     /apiarios
+    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:getApiarios" }
+    methods:  GET
+    options:
+            expose: true

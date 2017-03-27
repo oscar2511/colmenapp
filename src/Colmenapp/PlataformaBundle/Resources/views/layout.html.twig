@@ -14,7 +14,14 @@
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/finanzaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/angular-chart.js') }}"></script>
-    <script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/ui-grid/ui-grid.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.ttf')}}" type="multipart/form-data">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.min.js"></script>
+
 {% endblock  %}
 
 {% block stylesheets %}
@@ -85,15 +92,11 @@
 {% set name = app.request.attributes.get('_name') %}
 {% block avanzu_sidebar %}
     <div class="sidebar">
-        <!-- user panel (Optional) -->
         <div class="user-panel">
-
-        </div><!-- /.user-panel -->
-
-        <!-- Search Form (Optional) -->
+        </div>
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="q" class="form-control" placeholder="Buscar...">
         <span class="input-group-btn">
           <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
         </span>
@@ -104,27 +107,69 @@
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
             <li class=" {% if app.request.attributes.get('_name') == 'home' %}active{% endif %}">
-                <a href="{{ path('colmenapp_plataforma_homepage') }}"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Inicio</span></a>
+                <a href="{{ path('colmenapp_plataforma_homepage') }}"><i class="fa fa-tachometer" aria-hidden="true"></i><span>Panel de Control</span></a>
             </li>
             <li class="treeview {% if app.request.attributes.get('_name') == 'apiario' %}active{% endif %}">
-                <a href="{{ path('apiario') }}"><i class="fa fa-cubes" aria-hidden="true"></i><span>Apiarios</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ path('apiario') }}"><i class="fa fa-cubes" aria-hidden="true"></i>
+                    <span>Apiarios</span><i class="fa fa-angle-left pull-right" aria-hidden="true"></i>
+                </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-fw fa-plus"></i> Crear Apiario</a></li>
+                    <li><a href="#"><i class="fa fa-fw fa-plus"></i>
+                            Crear Apiario
+                        </a>
+                    </li>
                     <li class="{% if app.request.attributes.get('_name') == 'apiario' %}active{% endif %}">
-                        <a href="{{ path('apiario') }}"><i class="fa fa-fw fa-eye"></i> Ver Apiarios</a>
+                        <a href="{{ path('apiario') }}">
+                            <i class="fa fa-fw fa-eye"></i> Ver Apiarios
+                        </a>
                     </li>
                 </ul>
             </li>
             <li class="treeview {% if app.request.attributes.get('_name') == 'colmena' %}active{% endif %}">
-                <a href="{{ path('colmena') }}"><i class="fa fa-archive" aria-hidden="true"></i><span>Colmenas</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ path('colmena') }}"><i class="fa fa-archive" aria-hidden="true"></i>
+                    <span>Colmenas</span><i class="fa fa-angle-left pull-right" aria-hidden="true"></i>
+                </a>
                 <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-fw fa-plus"></i> Crear Colmena</a></li>
                     <li><a href="{{ path('colmena') }}"><i class="fa fa-fw fa-eye"></i> Ver Colmenas</a></li>
+                    <li><a href="{{ path('colmenas_observadas') }}"><i class="fa fa-fw fa-warning"></i> Ver Colmenas Observadas</a></li>
+                    <li><a href="{{ path('reinas_observadas') }}"><i class="fa fa-fw fa-warning"></i> Ver Reinas Observadas</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i><span>Alimentos</span></a></li>
+            <li class=" {% if app.request.attributes.get('_name') == 'alimentacion' %}active{% endif %}">
+                <a href="{{ path('alimentacion') }}"><i  class="fa fa-cutlery" aria-hidden="true"></i>
+                    <span>Alimentación</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'tratamiento' %}active{% endif %}">
+                <a href="{{ path('tratamiento') }}"><i  class="fa fa-flask" aria-hidden="true"></i>
+                    <span>Tratamientos</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'nucleo' %}active{% endif %}">
+                <a href="{{ path('nucleo') }}"><i class="fa fa-fw fa-cube" aria-hidden="true"></i>
+                    <span>Núcleos</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'produccion' %}active{% endif %}">
+                <a href="{{ path('produccion') }}"><i class="fa fa-fw fa-industry" aria-hidden="true"></i>
+                    <span>Producción</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'inspeccion' %}active{% endif %}">
+                <a href="{{ path('inspeccion') }}"><i class="fa fa-fw fa-eye" aria-hidden="true"></i>
+                    <span>Inspecciones</span>
+                </a>
+            </li>
+            <li class=" {% if app.request.attributes.get('_name') == 'tarea_programada' %}active{% endif %}">
+                <a href="{{ path('tarea_programada') }}"><i class="fa fa-fw fa-list" aria-hidden="true"></i>
+                    <span>Tareas Programadas</span>
+                </a>
+            </li>
             <li class="treeview {% if app.request.attributes.get('_name') == 'finanzas' %}active{% endif %}">
-                <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator"></i><span>Finanzas</span><i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ path('finanza') }}"><i class="fa fa-fw fa-calculator" aria-hidden="true"></i>
+                    <span>Finanzas</span><i class="fa fa-angle-left pull-right" aria-hidden="true"></i>
+                </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('finanza') }}"><i class="fa fa-fw fa-eye"></i> Ver movimientos</a></li>
                 </ul>
@@ -143,8 +188,9 @@
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-eye"></i> Ver alertas</a></li>
                 </ul>
             </li>
+            <li class="header">Configuración del Sistema</li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-fw fa-gear"></i>Configuración</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-fw fa-gear"></i>Configuración <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-users"></i> Usuarios</a></li>
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-asterisk"></i> Cuenta</a></li>

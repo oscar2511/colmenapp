@@ -1,0 +1,4 @@
+alimentacion:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:Alimentacion:index, _name: alimentacion }
+    methods:  GET

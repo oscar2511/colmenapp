@@ -1,0 +1,4 @@
+tarea_programada:
+    path:     /
+    defaults: { _controller: ColmenappPlataformaBundle:TareasProgramadas:index, _name: tarea_programada}
+    methods:  GET

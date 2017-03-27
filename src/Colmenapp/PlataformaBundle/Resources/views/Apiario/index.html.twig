@@ -19,6 +19,7 @@
 
 {% block page_content %}
 <br>
+    <section ng-controller="apiarioController">
     <div class="row">
         <div class="col-md-10">
             <div class="box">
@@ -28,74 +29,17 @@
                             <i class="fa fa-fw fa-plus"></i> Nuevo apiario
                         </button>
                     </a>
-                    <div class="box-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
-
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <table class="table table-striped">
-                        <tbody>
-                        <tr>
-                            <th>Identificador</th>
-                            <th>Nombre</th>
-                            <th>Ubicación</th>
-                            <th>Nro. Colmenas</th>
-                            <th>Última visita</th>
-                            <th>Observaciones</th>
-                            <th>Estado</th>
-                            <th>Editar</th>
-                            <th>Ver</th>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">1</a></td>
-                            <td>Los Algarrobos</td>
-                            <td>Chamical</td>
-                            <td>120</td>
-                            <td>20-11-2016</td>
-                            <td>Ninguna</td>
-                            <td><span class="badge bg-green">Activo</span></td>
-                            <td><a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-pencil-square-o"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><a href="{{ path('apiario_detalle') }}">2</a></td>
-                            <td>Agua Blanca</td>
-                            <td>Chepes</td>
-                            <td>110</td>
-                            <td>19-10-2016</td>
-                            <td>Ninguna</td>
-                            <td><span class="badge bg-red">Inactivo</span></td>
-                            <td><a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-pencil-square-o"></i>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ path('apiario_detalle') }}">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        </tbody></table>
+                    {% verbatim %}
+                        <div class="table table-striped" style="height:360px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
+                    {% endverbatim %}
                 </div>
                 <!-- /.box-body -->
             </div>
         </div>
     </div>
-
 
 
     <div class="modal fade modal-default modal-nuevo-apiario" >
@@ -107,11 +51,10 @@
                     <h4 class="modal-title">Nuevo apiario</h4>
                 </div>
                 <div class="modal-body">
-
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" name="apiarioForm" novalidate>
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <label class="col-sm-2 control-label">Fecha</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
                                 </div>
@@ -119,25 +62,19 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese nombre">
+                                    <input type="text" ng-model="apiarioForm.nombre" name="subject" class="form-control" id="inputEmail3" placeholder="Ingrese nombre" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Ubicación</label>
+                                <label  type="text" class="col-sm-2 control-label">Dirección</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese ubicación">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Nro. Colmenas</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Ingrese número de colmenas">
+                                    <input type="text" ng-model="apiarioForm.direccion" class="form-control"  placeholder="Ingrese dirección">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                    <textarea ng-model="apiarioForm.observacion" class="form-control" rows="3" placeholder="Ingrese observación"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -145,19 +82,14 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <button data-dismiss="modal" ng-click="guardarApiario(apiarioForm)" ng-disabled="apiarioForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
                     </div>
                 </div>
-
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
 
 
+    </section>
+
 {% endblock %}
-
-
-
-

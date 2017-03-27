@@ -21,3 +21,39 @@ finanza:
 alerta:
     resource: "@ColmenappPlataformaBundle/Resources/config/routing/alerta.yml"
     prefix:   /alerta
+
+alimentacion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/alimentacion.yml"
+    prefix:   /alimentacion
+
+tratamiento:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/tratamiento.yml"
+    prefix:   /tratamiento
+
+nucleo:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/nucleo.yml"
+    prefix:   /nucleo
+
+produccion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/produccion.yml"
+    prefix:   /produccion
+
+inspeccion:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/inspeccion.yml"
+    prefix:   /inspeccion
+
+tarea_programada:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/tarea_programada.yml"
+    prefix:   /tarea-programada
+
+colmenas_observadas:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/colmenasObservadas.yml"
+    prefix:   /colmenas-observadas
+
+reinas_observadas:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/reinasObservadas.yml"
+    prefix:   /reinas-observadas
+
+reina:
+    resource: "@ColmenappPlataformaBundle/Resources/config/routing/reina.yml"
+    prefix:   /reina

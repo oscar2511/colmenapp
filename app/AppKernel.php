@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Colmenapp\PlataformaBundle\ColmenappPlataformaBundle(),
             new Avanzu\AdminThemeBundle\AvanzuAdminThemeBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

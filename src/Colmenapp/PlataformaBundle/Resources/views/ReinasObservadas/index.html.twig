@@ -1,0 +1,193 @@
+{% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
+
+{% block page_title %}
+<h2 class="page-header">
+    <i class="fa fa-fw fa-forumbee"></i> Reinas Observadas
+</h2>
+{% endblock %}
+
+{% block page_subtitle %}
+{% endblock %}
+
+{% block avanzu_breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
+    </ol>
+{% endblock %}
+
+{% block page_content %}
+<section ng-controller="reinasObservadasController">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box">
+                <div class="box-header">
+                    <a href="" data-toggle="modal" data-target=".modal-nuevo-nucleo">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-fw fa-plus"></i> Nueva Reina Observada
+                        </button>
+                    </a>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Buscar">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table table-striped">
+                        <tbody><tr>
+                            <th>Fecha</th>
+                            <th>Apiario</th>
+                            <th>Nro Colmena</th>
+                            <th>Observación</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td>23-11-2016</td>
+                            <td>Los Algarrobos</td>
+                            <td><a href="#">16</a></td>
+                            <td>Controlar, reina de avanzada edad</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04-10-2016</td>
+                            <td>Los Algarrobos</td>
+                            <td><a href="#">42</a></td>
+                            <td>Alas cortadas</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>19-08-2016</td>
+                            <td>Los Algarrobos</td>
+                            <td><a href="#">27</a></td>
+                            <td>En tratamiento</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-default modal-ver-observaciones" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Observación</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Alguna observación
+                    </p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade modal-default modal-nuevo-nucleo" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nueva alimentación</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Apiario</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control">
+                                        <option>Los Algarrobos</option>
+                                        <option>Agua Blanca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Fecha Envío</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Mensaje</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese mensaje..."></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Ingrese observaciones"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+{% endblock %}
+
+
+
+

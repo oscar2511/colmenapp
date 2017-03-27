@@ -21,7 +21,7 @@
 {% block page_content %}
 <section ng-controller="apiarioController">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="box box-solid box-default ">
                 <div class="box-header">
                     <h3 class="box-title">Información gral. del apiario</h3>
@@ -30,37 +30,31 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <td><i class="fa fa-angle-right"></i></td>
-                            <td>Nombre del apiario</td>
-                            <td colspan="2">Los algarrobos</td>
+                            <td><i class="fa fa-angle-right"> </i> Nombre del apiario</td>
+                            <td>Los Algarrobos</td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-map-marker"></i></td>
-                            <td>Ubicación</td>
+                            <td><i class="fa fa-map-marker"></i> Ubicación</td>
                             <td colspan="2">Chamical - La Rioja</td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-archive"></i></td>
-                            <td>Cantidad de colmenas</td>
-                            <td colspan="2">
-                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="145 colmenas">145</span>
+                            <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Número de colmenas</a></td>
+                            <td>
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="43 colmenas">43</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-line-chart"></i></td>
-                            <td>Productividad Estimada</td>
-                            <td colspan="2">
-                                <span data-toggle="tooltip" title="" class="badge bg-green" data-original-title="Kg de miel x temporada ">1059 kg/temp</span>
+                            <td><a href="{{ path('nucleo') }}"><i class="fa fa-fw fa-cube"></i> Núcleos en Producción</a></td>
+                            <td>
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="13 núcleos">13</span>
                             </td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-calendar"></i></td>
-                            <td>Última visita</td>
-                            <td colspan="2">
+                            <td><i class="fa fa-calendar"></i> Última visita</td>
+                            <td>
                                 23/04/2016
                             </td>
                         </tr>
-
                         <tr>
                             <td colspan="4">
                                 <iframe style="border:none;" src="{{ clima }}"></iframe>
@@ -69,129 +63,326 @@
                         </tbody></table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
+        </div>
 
+        <!--****************************************************************** TABS ****************************************************-->
+        <div class="col-md-8">
+            <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Productividad</a></li>
-                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Alta/Baja colmenas</a></li>
-                    <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true">Gastos</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Reportes <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 1</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 2</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reporte 3</a></li>
-                        </ul>
+                    <li data-toggle="tooltip" data-original-title="Inspección a Apiario" class="active">
+                        <a href="#tab_1" data-toggle="tab"><i class="fa fa-fw fa-eye"></i>Inspecciones</a>
                     </li>
-                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                    <li data-toggle="tooltip" data-original-title="Alimentación">
+                        <a href="#tab_2" data-toggle="tab"><i class="fa fa-fw fa-cutlery"></i> Alimentación</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Tratamientos Aplicados">
+                        <a href="#tab_3" data-toggle="tab"><i class="fa fa-fw fa-flask"></i> Tratamientos</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Producción del Apiario">
+                        <a href="#tab_4" data-toggle="tab"><i class="fa fa-fw fa-industry"></i> Producción</a>
+                    </li>
+                    <li data-toggle="tooltip" data-original-title="Finanzas del Apiario">
+                        <a href="#tab_5" data-toggle="tab"><i class="fa fa-fw fa-money"></i> Finanzas</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="tab_1">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
+                    <div class="tab-pane active" id="tab_1">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody><tr>
+                                    <th>Fecha</th>
+                                    <th>Tarea Ejecutada</th>
+                                    <th>Observaciones</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th style="width: 15%">25-02-2017</th>
+                                    <td>Armado de cerco perimetral</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>10-01-2017</th>
+                                    <td>Aplicar medicamento a colmenas</td>
+                                    <td>Colmena 13 en observación</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>29-12-2016</th>
+                                    <td>Alimentación</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>18-12-2016</th>
+                                    <td>Alimentación y tratamiento preventivo</td>
+                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody></table>
+                            <a style="color: white;" href="{{ path('inspeccion') }}"><button type="button" class="btn btn-block btn-info">Ver Inspecciones</button></a>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
-                        <canvas id="line"
-                                class="chart chart-line"
-                                chart-data             = "dataColmenas"
-                                chart-labels           = "labelsColmenas"
-
-                                chart-options          = "options"
-                                chart-dataset-override = "datasetOverride"
-                                chart-click            = "onClickColmenas">
-                        </canvas>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Nombre</th>
+                                    <th>Observación</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>24-09-2017</th>
+                                    <td>Líquido</td>
+                                    <td>Propóleo</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a style="color: white;" href="{{ path('alimentacion') }}"><button type="button" class="btn btn-block btn-info">Ver Alimentación</button></a>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane active" id="tab_3">
-                        <canvas id="bar"
-                                class="chart chart-bar"
-                                chart-data             = "data"
-                                chart-labels           = "labels"
-                                chart-series           = "series"
-                                chart-click="onClick">
-                        </canvas>
+                    <div class="tab-pane" id="tab_3">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Descripción</th>
+                                    <th>Observaciones</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>19-02-2016</th>
+                                    <td>Primavera</td>
+                                    <td>Se aplicó polimorfina</td>
+                                    <td>Ninguna</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a style="color: white;" href="{{ path('tratamiento') }}"><button type="button" class="btn btn-block btn-info">Ver Tratamientos</button></a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th></th>
+                                    <th>13/14</th>
+                                    <th>14/15</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>Miel</th>
+                                    <td>54 kg</td>
+                                    <td>45 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Jalea Real</th>
+                                    <td>48 kg</td>
+                                    <td>58 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Propoleo</th>
+                                    <td>52 kg</td>
+                                    <td>00 kg</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a style="color: white;" href="{{ path('produccion') }}"><button type="button" class="btn btn-block btn-info">Ver Producción</button></a>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_5">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                    <th>Concepto</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                    <th>Ver</th>
+                                </tr>
+                                <tr>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-green">Ingreso</span></td>
+                                    <td>Venta de núcleo</td>
+                                    <td>$581</td>
+                                    <td>Pendiente</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-red">Egreso</span></td>
+                                    <td>Compra de cera</td>
+                                    <td>$1255</td>
+                                    <td>Pagado</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>23-02-2016</th>
+                                    <td><span class="badge bg-green">Ingreso</span></td>
+                                    <td>Venta de núcleo</td>
+                                    <td>$790</td>
+                                    <td>Cobrado</td>
+                                    <td>
+                                        <a href="#">
+                                            <i data-toggle="tooltip" data-original-title="Ver Detalle" class="fa fa-fw fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a style="color: white;" href="{{ path('produccion') }}"><button type="button" class="btn btn-block btn-info">Ver Finanzas</button></a>
+                        </div>
                     </div>
                     <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
             </div>
-
-
-
+            <!-- nav-tabs-custom -->
         </div>
+    </div>
 
-
-
-
-        <div class="col-md-6">
-            <div class="box box-primary">
+    <!--********************************************************* COLMENAS OBSERVADAS **************************-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-solid box-warning">
                 <div class="box-header">
-                    <h3 class="box-title">Últimas inspecciones</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> <a href="{{ path('colmenas_observadas') }}">Colmenas Observadas</a></h3>
                 </div>
                 <div class="box-body">
-                    <ul class="timeline">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                10 Diciembre 2016
-                            </span>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 43</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Retirar cuadros rotos
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 3/12/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 22</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Ninguno
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa fa-forumbee bg-blue"></i>
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 23/11/2016</span>
-                                <h3 class="timeline-header"><a href="#">Inspección a colmena 271</a></h3>
-                                <div class="timeline-body">
-                                    Estado de reina: Bueno
-                                    <br>
-                                    Trabajo realizado: Cortar alas a reina
-                                </div>
-                                <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Ver inspección</a>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('colmenas_observadas') }}">4</a></h1></a>
+                </div>
+                <div class="footer">
+                </div>
+            </div>
+        </div>
+    <!--***************************************************** REINAS OBSERVADAS *************************************-->
+        <div class="col-md-4">
+            <div class="box box-solid box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i><a href="{{ path('reinas_observadas') }}"> Reinas Observadas</a></h3>
+                </div>
+                <div class="box-body">
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('reinas_observadas') }}"> 3</a></h1></a>
+                </div>
+                <div class="footer">
+                </div>
+            </div>
+        </div>
+    <!--***************************************************** GRAFICO DERECHA *************************************-->
+        <div class="col-md-4">
+            <div class="box box-solid box-info">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-list"></i> Tareas Programadas</h3>
+                </div>
+                <div class="box-body">
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center">9</h1></a>
+                </div>
+                <div class="footer">
                 </div>
             </div>
         </div>

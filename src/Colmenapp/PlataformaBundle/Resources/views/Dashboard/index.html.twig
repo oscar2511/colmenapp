@@ -3,7 +3,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-dashboard"></i> Inicio
+    <i class="fa fa-dashboard"></i> Panel de Control
 </h2>
 {% endblock %}
 
@@ -12,7 +12,7 @@
 
 {% block avanzu_breadcrumb %}
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Panel de Control</a></li>
     </ol>
 {% endblock %}
 
@@ -62,78 +62,128 @@
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
                         <span class="progress-description">
-                           Ver Alertas
+                           <a style="color: white!important;" href="{{ path('alerta') }}">Ver Alertas</a>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
+    <br>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="box box-default">
                 <div class="box-header">
-                    <h3 class="box-title">Variación de ingresos/egresos</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-money"></i>Ingresos/Egresos ($ / mes)</h3>
                 </div>
-                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
-                    <canvas id="line"
-                            class="chart chart-line ng-isolate-scope"
-                            chart-data="dataGastos"
-                            chart-labels="labelsGastos"
-                            chart-series="seriesGastos"
-                            chart-options="optionsGastos"
-                            chart-dataset-override="datasetOverrideGastos"
-                            chart-click="onClick"
-                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
-                    </canvas>
+                <br>
+                <div class="box-body">
+                <canvas id="bar"
+                        class="chart chart-bar ng-isolate-scope"
+                        chart-data    = "data"
+                        chart-labels  = "labels"
+                        chart-series  = "seriesIngresosEgresos"
+                        chart-options = "options"
+                        chart-click   = "onClick"
+                        chart-colors  = "colorsIngresosEgresos"
+                        >
+                </canvas>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="box box-default">
                 <div class="box-header">
-                    <h3 class="box-title">Producción total x apiario</h3>
+                    <h3 class="box-title"><i class="fa fa-fw fa-list"></i> Tareas Programadas</h3>
                 </div>
-                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
-                    <canvas id="bar"
-                            class="chart chart-bar ng-isolate-scope"
-                            chart-data             = "data"
-                            chart-labels           = "labels"
-                            chart-series           = "series"
-                            chart-click="onClick"
-                            style="display: block; width: 353px; height: 176px;" width="353" height="176">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="box box-default">
-                <div class="box-header">
-                    <h3 class="box-title">Detalles de producción total</h3>
-                </div>
-                <div class="box-body"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>Miel </b> <a class="pull-right">1679,44 kg</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Jalea Real</b> <a class="pull-right">543,87 kg</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Propóleo</b> <a class="pull-right">128,51 kg</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Núcleos</b> <a class="pull-right">65 Un.</a>
-                        </li>
-                    </ul>
+                <br>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Apiario</th>
+                            <th>Descripción</th>
+                            <th>Ver</th>
+                        </tr>
+                        <tr>
+                            <td>23-11-2016</td>
+                            <td>Los Algarrobos</td>
+                            <td>Inicio de estimulación</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11-12-2016</td>
+                            <td>Los Algarrobos</td>
+                            <td>Tratamiento preventivo</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>23-11-2016</td>
+                            <td>Agua Blanca</td>
+                            <td>Control de reinas</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('tarea_programada') }}">
+                        <button type="button" class="btn btn-block btn-info"><i class="fa fa-fw fa-eye"></i> Ver Tareas Programadas</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
-
+<!--********************************************************* COLMENAS OBS, REINAS OBS, NUCLEOS PROD ****************************************-->
+    <BR>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-solid box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i><a href="{{ path('colmenas_observadas') }}"> Colmenas Observadas</a></h3>
+                </div>
+                <div class="box-body">
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('colmenas_observadas') }}">4</a></h1></a>
+                </div>
+                <div class="footer">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-solid box-warning">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-warning"></i> <a href="{{ path('reinas_observadas') }}">Reinas Observadas</a></h3>
+                </div>
+                <div class="box-body">
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('reinas_observadas') }}">7</a></h1></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box box-solid box-info">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-fw fa-cube"></i><a href="{{ path('nucleo') }}"> Núcleos En Producción</a></h3>
+                </div>
+                <div class="box-body">
+                    <a href="#"> <h1 style="font-size: 6ch;" class="profile-username text-center"><a href="{{ path('nucleo') }}">4</a></h1></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% verbatim %}
+<div  ui-grid="gridOptions" ui-grid-pagination></div>
+    {% endverbatim %}
 </section>
 {% endblock %}
 

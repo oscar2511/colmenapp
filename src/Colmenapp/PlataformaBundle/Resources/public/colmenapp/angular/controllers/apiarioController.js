@@ -3,21 +3,90 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http) {
+    var apiarioController = function($scope, $http, i18nService) {
 
-        //grafico productividad
-        $scope.labels = ["","12/13","13/14", "14/15","15/16"];
-        $scope.data   = [0,1080, 921, 1366, 1527];
+        i18nService.setCurrentLang('es');
 
+        $scope.apiario = {};
+        $scope.mostrarModal = false;
 
-        //grafico alta/baja colmenas
-        $scope.labelsColmenas = ['',1,2,3,4,5,6,7,8,9,10,11,12];
-        $scope.dataColmenas   = ['',120, 150, 155, 155,156, 158, 160, 150,120, 123, 127, 130];
+        /**
+         * Mostrar modal crear apiario
+         */
+        $scope.mostrarModalCrear = function() {
+          $scope.mostrarModal = true;
+        };
 
+        $scope.ocultarModalCrear = function() {
+            $scope.mostrarModal = false;
+        };
+        /**
+         *
+         * @param apiarioForm
+         */
+        $scope.guardarApiario = function(apiarioForm) {
+          var dataApiario = {};
+          dataApiario.nombre      = apiarioForm.nombre;
+          dataApiario.direccion   = apiarioForm.direccion;
+          dataApiario.observacion = apiarioForm.observacion;
 
+          $http.post(Routing.generate('apiario_crear'), dataApiario)
+              .then(function(response) {
+                if(response.data.data = 200 && response.data.data) {
+                    $scope.apiario.id          = response.data.data.id;
+                    $scope.apiario.nombre      = response.data.data.nombre;
+                    $scope.apiario.direccion   = response.data.data.direccion;
+                    $scope.apiario.observacion = response.data.data.observacion;
+                }
+                  getApiarios();
+                  setTable();
+              });
+        };
 
-        $scope.labelsEstado = ["Download Sales", "In-Store Sales", "Mail-Order Sales"];
-        $scope.dataEstado = [300, 500, 100];
+        /**
+        *
+        */
+        function getApiarios() {
+            $http.get(Routing.generate('apiario_todos'))
+                .then(function(response) {
+                    if(response.data.status == 200) {
+                        $scope.gridOptionsApiario.data = response.data.data;
+                    }
+                });
+        }
+
+        function setTable() {
+            $scope.gridOptionsApiario = {
+                paginationPageSizes: [10, 25, 50],
+                paginationPageSize: 5,
+                enableSorting: true,
+                enableFiltering: true,
+                rowHeight: 50,
+                enableColumnResizing: true,
+                plugins: [new ngGridFlexibleHeightPlugin()],
+                columnDefs: [
+                    {field: 'id', displayName: 'Identificador', enableColumnResizing: true},
+                    {field: 'nombre', enableColumnResizing: true},
+                    {field: 'direccion'},
+                    {
+                      field: 'observacion',
+                      enableFiltering: false,
+                    },
+                    {
+                      field: 'ver',
+                      cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
+                      enableSorting: false,
+                      enableFiltering: false,
+                    }
+                ],
+                onRegisterApi: function (gridApi) {
+                    $scope.grid1Api = gridApi;
+                }
+            }
+        }
+
+        setTable();
+        getApiarios();
 
     };
 
@@ -25,6 +94,7 @@
         .controller('apiarioController', [
             '$scope',
             '$http',
+            'i18nService',
             apiarioController
         ]);
 
