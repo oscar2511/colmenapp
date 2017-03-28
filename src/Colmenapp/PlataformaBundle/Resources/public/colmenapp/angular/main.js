@@ -6,6 +6,7 @@
     angular
         .module('colmenapp',[
             'colmenapp.Controllers',
+            'colmenapp.Services',
             'chart.js',
             'ui.grid',
             'ui.grid.pagination',
@@ -15,5 +16,6 @@
         ]);
 
     angular.module('colmenapp.Controllers',[]);
+    angular.module('colmenapp.Services',[]);
 
 })();

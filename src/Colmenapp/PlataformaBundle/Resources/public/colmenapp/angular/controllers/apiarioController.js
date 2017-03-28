@@ -3,7 +3,7 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http, i18nService, toaster) {
+    var apiarioController = function($scope, $http, i18nService, toaster, notificacionService) {
 
         i18nService.setCurrentLang('es');
 
@@ -38,6 +38,7 @@
                     $scope.apiario.direccion   = response.data.data.direccion;
                     $scope.apiario.observacion = response.data.data.observacion;
                 }
+                notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");
                   getApiarios();
                   setTable();
               });
@@ -70,13 +71,13 @@
                     {field: 'direccion'},
                     {
                       field: 'observacion',
-                      enableFiltering: false,
+                      enableFiltering: false
                     },
                     {
                       field: 'ver',
                       cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
                       enableSorting: false,
-                      enableFiltering: false,
+                      enableFiltering: false
                     }
                 ],
                 onRegisterApi: function (gridApi) {
@@ -85,9 +86,6 @@
             }
         }
 
-      $scope.pop = function(){
-        toaster.pop('info', "title", "text");
-      };
 
         setTable();
         getApiarios();
@@ -100,6 +98,7 @@
             '$http',
             'i18nService',
             'toaster',
+            'notificacionService',
             apiarioController
         ]);
 
