@@ -18,23 +18,28 @@
 {% endblock %}
 
 {% block page_content %}
-<br>
     <section ng-controller="apiarioController">
+        <div class="row">
+            <div class="col-md-10">
+                <a href="" data-toggle="modal" data-target=".modal-nuevo-apiario">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <i class="fa fa-fw fa-plus"></i> Nuevo apiario
+                    </button>
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
     <div class="row">
         <toaster-container></toaster-container>
+        <div id="loading-bar-container"></div>
         <div class="col-md-10">
-            <div class="box">
-                <div class="box-header">
-                    <a href="" data-toggle="modal" data-target=".modal-nuevo-apiario">
-                        <button type="button" class="btn btn-primary btn-sm">
-                            <i class="fa fa-fw fa-plus"></i> Nuevo apiario
-                        </button>
-                    </a>
-                </div>
+            <div class="box box-info">
+
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                     {% verbatim %}
-                        <div class="table table-striped" style="height:360px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
+                        <div class="table table-striped" style="height:290px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
                     {% endverbatim %}
                 </div>
                 <!-- /.box-body -->

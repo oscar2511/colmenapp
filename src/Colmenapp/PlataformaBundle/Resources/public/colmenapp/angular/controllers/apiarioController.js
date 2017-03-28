@@ -3,9 +3,9 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http, i18nService, toaster, notificacionService) {
+    var apiarioController = function($scope, $http, i18nService, toaster, notificacionService, loader) {
 
-        i18nService.setCurrentLang('es');
+        i18nService.setCurrentLang('es'); //idioma de tabla
 
         $scope.apiario = {};
         $scope.mostrarModal = false;
@@ -25,6 +25,7 @@
          * @param apiarioForm
          */
         $scope.guardarApiario = function(apiarioForm) {
+          loader.start();
           var dataApiario = {};
           dataApiario.nombre      = apiarioForm.nombre;
           dataApiario.direccion   = apiarioForm.direccion;
@@ -41,19 +42,24 @@
                 notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");
                   getApiarios();
                   setTable();
-              });
+              }).finally(function() {
+              loader.complete();
+            });
         };
 
         /**
         *
         */
         function getApiarios() {
+          loader.start();
             $http.get(Routing.generate('apiario_todos'))
                 .then(function(response) {
                     if(response.data.status == 200) {
                         $scope.gridOptionsApiario.data = response.data.data;
                     }
-                });
+                }).finally(function() {
+                loader.complete();
+              });
         }
 
         function setTable() {
@@ -62,11 +68,16 @@
                 paginationPageSize: 5,
                 enableSorting: true,
                 enableFiltering: true,
-                rowHeight: 50,
+                rowHeight: 35,
+                enableHorizontalScrollbar: 0,
+                enableVerticalScrollbar:0,
                 enableColumnResizing: true,
                 plugins: [new ngGridFlexibleHeightPlugin()],
                 columnDefs: [
-                    {field: 'id', displayName: 'Identificador', enableColumnResizing: true},
+                    {
+                      field: 'id', displayName: 'Identificador',
+                      enableColumnResizing: true
+                    },
                     {field: 'nombre', enableColumnResizing: true},
                     {field: 'direccion'},
                     {
@@ -99,6 +110,7 @@
             'i18nService',
             'toaster',
             'notificacionService',
+            'cfpLoadingBar',
             apiarioController
         ]);
 

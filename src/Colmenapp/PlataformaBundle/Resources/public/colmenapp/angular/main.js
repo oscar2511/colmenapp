@@ -12,7 +12,8 @@
             'ui.grid.pagination',
             'ui.grid.resizeColumns',
             'toaster',
-            'ngAnimate'
+            'ngAnimate',
+            'angular-loading-bar'
         ]);
 
     angular.module('colmenapp.Controllers',[]);
