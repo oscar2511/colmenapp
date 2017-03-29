@@ -7,21 +7,12 @@
 
         i18nService.setCurrentLang('es'); //idioma de tabla
 
-        $scope.apiario = {};
+        $scope.apiario      = {};
         $scope.mostrarModal = false;
 
-        /**
-         * Mostrar modal crear apiario
-         */
-        $scope.mostrarModalCrear = function() {
-          $scope.mostrarModal = true;
-        };
 
-        $scope.ocultarModalCrear = function() {
-            $scope.mostrarModal = false;
-        };
         /**
-         *
+         * Crear un apiario
          * @param apiarioForm
          */
         $scope.guardarApiario = function(apiarioForm) {
@@ -34,21 +25,18 @@
           $http.post(Routing.generate('apiario_crear'), dataApiario)
               .then(function(response) {
                 if(response.data.data = 200 && response.data.data) {
-                    $scope.apiario.id          = response.data.data.id;
-                    $scope.apiario.nombre      = response.data.data.nombre;
-                    $scope.apiario.direccion   = response.data.data.direccion;
-                    $scope.apiario.observacion = response.data.data.observacion;
+                    notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");
                 }
-                notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");
                   getApiarios();
                   setTable();
-              }).finally(function() {
-              loader.complete();
-            });
+              })
+              .finally(function() {
+                loader.complete();
+              });
         };
 
         /**
-        *
+        * Obtener todos los apiarios y crear tabla
         */
         function getApiarios() {
           loader.start();
@@ -94,7 +82,7 @@
                     },
                     {
                       field: 'Editar',
-                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.editar(row.entity)">Editar</a></div>',
+                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)">Editar</a></div>',
                       enableSorting: false,
                       enableFiltering: false,
                       enableHiding: false
@@ -106,14 +94,40 @@
             }
         }
 
-        $scope.editar = function(apiario) {
-          $scope.nombre      = apiario.nombre;
-          $scope.observacion = apiario.observacion;
-          $scope.direccion   = apiario.direccion;
+      /**
+       * Mostrar modal editar apiario
+       * @param apiario
+       */
+        $scope.mostrarEditar = function(apiario) {
+          console.log(apiario);
+          $scope.editForm = {
+            id          : apiario.id,
+            nombre      : apiario.nombre,
+            direccion   : apiario.direccion,
+            observacion : apiario.observacion
+          };
         };
 
-        setTable();
-        getApiarios();
+      /**
+       * Editar un apiario
+       * @param apiario
+       */
+      $scope.editar = function(apiario) {
+        $http.post(Routing.generate('apiario_editar'), apiario)
+          .then(function(response) {
+            if(response.data.data = 200 && response.data.data) {
+              notificacionService.mostrarNotificacion('success', "Apiario Editado!", "");
+            }
+            getApiarios();
+            setTable();
+          }).finally(function() {
+            loader.complete();
+          })
+      };
+
+
+      setTable();
+      getApiarios();
 
     };
 

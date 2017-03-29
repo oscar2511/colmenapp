@@ -21,3 +21,10 @@ apiario_todos:
     methods:  GET
     options:
             expose: true
+
+apiario_editar:
+    path:     /editar
+    defaults: { _controller: "ColmenappPlataformaBundle:Apiario:editar" }
+    methods:  POST
+    options:
+            expose: true

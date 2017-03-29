@@ -6,9 +6,10 @@
               <h4 class="modal-title">Editar apiario{% verbatim %}{{test}}{% endverbatim %}</h4>
           </div>
           <div class="modal-body">
-              <form class="form-horizontal" name="apiarioForm" novalidate>
+              <form class="form-horizontal" name="editarForm" novalidate>
                   <div class="box-body">
                       <div class="form-group">
+                          <input type="hidden"  ng-model="editForm.id">
                           <label class="col-sm-2 control-label">Fecha</label>
                           <div class="col-sm-10">
                               <input type="email" class="form-control" disabled id="inputEmail3" placeholder="10-09-2016">
@@ -18,20 +19,20 @@
                           <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
                           <div class="col-sm-10">
                             {% verbatim %}
-                              <input type="text" ng-model="nombre" name="subject" class="form-control" id="inputEmail3" placeholder="Ingrese nombre" required>
+                              <input type="text" ng-model="editForm.nombre" name="subject" class="form-control" id="inputEmail3" placeholder="Ingrese nombre" required>
                             {% endverbatim %}
                           </div>
                       </div>
                       <div class="form-group">
                           <label  type="text" class="col-sm-2 control-label">Dirección</label>
                           <div class="col-sm-10">
-                              <input type="text" ng-model="direccion" class="form-control"  placeholder="Ingrese dirección">
+                              <input type="text" ng-model="editForm.direccion" class="form-control"  placeholder="Ingrese dirección">
                           </div>
                       </div>
                       <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Observ.</label>
                           <div class="col-sm-10">
-                              <textarea ng-model="observacion" class="form-control" rows="3" placeholder="Ingrese observación"></textarea>
+                              <textarea ng-model="editForm.observacion" class="form-control" rows="3" placeholder="Ingrese observación"></textarea>
                           </div>
                       </div>
                   </div>
@@ -39,7 +40,7 @@
 
               <div class="modal-footer">
                   <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                  <button data-dismiss="modal" ng-click="guardarApiario(apiarioForm)" ng-disabled="apiarioForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                  <button data-dismiss="modal" ng-click="editar(editForm)" ng-disabled="editarForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
               </div>
           </div>
       </div>

@@ -54,6 +54,37 @@ class ApiarioController extends Controller
         }
     }
 
+    public function editarAction(Request $request)
+    {
+        $info  = $request->getContent();
+        $data  = json_decode($info,true);
+        $em    = $this->getDoctrine()->getManager();
+
+        try {
+            $apiario = $em
+                ->getRepository('ColmenappPlataformaBundle:Apiario')
+                ->find($data['id']);
+
+            $apiario->setNombre($data['nombre']);
+            $apiario->setDireccion($data['direccion']);
+            $apiario->setObservacion($data['observacion']);
+            $apiario->setUpdated(new \DateTime("now"));
+
+            $em->persist($apiario);
+            $em->flush();
+
+            return new JsonResponse(array(
+                'status' => 200,
+                'data'   => $apiario->toArray()
+            ));
+        } catch (\Exception $e) {
+            return new JsonResponse(array(
+                'status' => 400,
+                'data'   => $e
+            ));
+        }
+    }
+
     /**
      * Retorna todos los apiarios
      */

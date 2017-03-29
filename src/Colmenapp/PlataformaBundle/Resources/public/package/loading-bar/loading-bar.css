@@ -30,13 +30,13 @@
   -o-transition: width 350ms;
   transition: width 350ms;
 
-  background: #8fe289;
+  background: #ffeb8a;
   position: fixed;
   z-index: 10002;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   border-bottom-right-radius: 1px;
   border-top-right-radius: 1px;
 }
