@@ -82,13 +82,22 @@
                     {field: 'direccion'},
                     {
                       field: 'observacion',
-                      enableFiltering: false
+                      enableFiltering: false,
+                      enableHiding: false
                     },
                     {
-                      field: 'ver',
+                      field: 'Ver',
                       cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
                       enableSorting: false,
-                      enableFiltering: false
+                      enableFiltering: false,
+                      enableHiding: false
+                    },
+                    {
+                      field: 'Editar',
+                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.editar(row.entity)">Editar</a></div>',
+                      enableSorting: false,
+                      enableFiltering: false,
+                      enableHiding: false
                     }
                 ],
                 onRegisterApi: function (gridApi) {
@@ -97,6 +106,11 @@
             }
         }
 
+        $scope.editar = function(apiario) {
+          $scope.nombre      = apiario.nombre;
+          $scope.observacion = apiario.observacion;
+          $scope.direccion   = apiario.direccion;
+        };
 
         setTable();
         getApiarios();
