@@ -64,9 +64,13 @@
                 columnDefs: [
                     {
                       field: 'id', displayName: 'Identificador',
-                      enableColumnResizing: true
+                      enableColumnResizing: true,
+                      headTemplate: '<div align="center">{{row.entity.id}}</div>'
                     },
-                    {field: 'nombre', enableColumnResizing: true},
+                    {
+                      field: 'nombre',
+                       enableColumnResizing: true,
+                     },
                     {field: 'direccion'},
                     {
                       field: 'observacion',
@@ -75,14 +79,14 @@
                     },
                     {
                       field: 'Ver',
-                      cellTemplate: '<div align="center" class="ngCellText"><a ng-href="/#/monitor/{{row.entity.nombre}}">Ver</a></div>',
+                      cellTemplate: '<div align="center" class="ngCellText"><a ng-href="detalle/{{row.entity.id}}"><i class="fa fa-fw fa-eye"></i></a></div>',
                       enableSorting: false,
                       enableFiltering: false,
                       enableHiding: false
                     },
                     {
                       field: 'Editar',
-                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)">Editar</a></div>',
+                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)"><i class="fa fa-fw fa-edit"></i></a></div>',
                       enableSorting: false,
                       enableFiltering: false,
                       enableHiding: false
@@ -124,7 +128,6 @@
             loader.complete();
           })
       };
-
 
       setTable();
       getApiarios();

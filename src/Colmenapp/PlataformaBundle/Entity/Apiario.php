@@ -27,8 +27,6 @@ class Apiario
      */
     protected $id;
 
-
-
     /**
      * @var string
      *
