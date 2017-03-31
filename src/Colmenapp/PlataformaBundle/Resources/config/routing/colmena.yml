@@ -17,3 +17,10 @@ colmena_detalle:
     path:     /detalle
     defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle", _name: colmena , _name: colmena  }
     methods:  GET
+
+colmena_crear:
+    path:     /crear
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:crear" }
+    methods:  POST
+    options:
+            expose: true

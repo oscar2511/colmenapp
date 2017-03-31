@@ -26,8 +26,6 @@ class ApiarioController extends Controller
             ->getRepository('ColmenappPlataformaBundle:Apiario')
             ->find($idApiario);
 
-            //var_dump($apiario);die;
-
         return $this->render('ColmenappPlataformaBundle:Apiario:detalle.html.twig', array(
             'clima'   => $climaActual,
             'apiario' => $apiario

@@ -10,7 +10,6 @@
     $scope.colmena      = {};
     $scope.mostrarModal = false;
 
-
     /**
      * Crear una colmena
      * @param colmenaForm
@@ -22,7 +21,7 @@
       dataColmena.direccion   = colmenaForm.direccion;
       dataColmena.observacion = colmenaForm.observacion;
 
-      $http.post(Routing.generate('apiario_crear'), dataApiario)
+      $http.post(Routing.generate('colmena_crear'), dataApiario)
         .then(function(response) {
           if(response.data.data = 200 && response.data.data) {
             notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");

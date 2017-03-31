@@ -35,11 +35,12 @@
         <div id="loading-bar-container"></div>
         <div class="col-md-10">
             <div class="box box-info">
-
-                <!-- /.box-header -->
+              <div ng-show="mostrarSpinner" style="text-align:center;">
+                <img width="250px" heigth="250px" align="center" src="{{ asset('bundles/colmenappplataforma/img/spinner.gif') }}" />
+              </div>
                 <div class="box-body no-padding">
                     {% verbatim %}
-                        <div class="table table-striped" style="height:283px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
+                        <div ng-if="!mostrarSpinner" class="table table-striped" style="height:290px!important;"  ui-grid="gridOptionsApiario" ui-grid-pagination></div>
                     {% endverbatim %}
                 </div>
                 <!-- /.box-body -->

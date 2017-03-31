@@ -6,16 +6,16 @@
     var apiarioController = function($scope, $http, i18nService, toaster, notificacionService, loader) {
 
         i18nService.setCurrentLang('es'); //idioma de tabla
-
-        $scope.apiario      = {};
-        $scope.mostrarModal = false;
-
+        $scope.apiario        = {};
+        $scope.mostrarModal   = false;
+        $scope.mostrarSpinner = true;
 
         /**
          * Crear un apiario
          * @param apiarioForm
          */
         $scope.guardarApiario = function(apiarioForm) {
+          $scope.mostrarSpinner = true;
           loader.start();
           var dataApiario = {};
           dataApiario.nombre      = apiarioForm.nombre;
@@ -29,6 +29,7 @@
                 }
                   getApiarios();
                   setTable();
+                  $scope.mostrarSpinner = false;
               })
               .finally(function() {
                 loader.complete();
@@ -44,6 +45,7 @@
                 .then(function(response) {
                     if(response.data.status == 200) {
                         $scope.gridOptionsApiario.data = response.data.data;
+                        $scope.mostrarSpinner = false;
                     }
                 }).finally(function() {
                 loader.complete();
@@ -103,7 +105,6 @@
        * @param apiario
        */
         $scope.mostrarEditar = function(apiario) {
-          console.log(apiario);
           $scope.editForm = {
             id          : apiario.id,
             nombre      : apiario.nombre,
@@ -117,6 +118,7 @@
        * @param apiario
        */
       $scope.editar = function(apiario) {
+        $scope.mostrarSpinner = true;
         $http.post(Routing.generate('apiario_editar'), apiario)
           .then(function(response) {
             if(response.data.data = 200 && response.data.data) {
@@ -124,6 +126,7 @@
             }
             getApiarios();
             setTable();
+            $scope.mostrarSpinner = false;
           }).finally(function() {
             loader.complete();
           })
