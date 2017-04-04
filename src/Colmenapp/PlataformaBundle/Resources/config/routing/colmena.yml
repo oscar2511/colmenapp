@@ -24,3 +24,18 @@ colmena_crear:
     methods:  POST
     options:
             expose: true
+
+colmenas:
+    path:     /colmenas/{apiarioId}
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:getColmenas" }
+    methods:  GET
+    options:
+            expose: true
+
+colmenas_tipos:
+    path:     /tipos-colmenas
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:getTiposColmenas" }
+    methods:  GET
+    options:
+            expose: true
+

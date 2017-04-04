@@ -3,7 +3,7 @@
 
     'use strict';
 
-    var apiarioController = function($scope, $http, i18nService, toaster, notificacionService, loader) {
+    var apiarioController = function($scope, $http, i18nService, notificacionService, loader) {
 
         i18nService.setCurrentLang('es'); //idioma de tabla
         $scope.apiario        = {};
@@ -71,7 +71,7 @@
                     },
                     {
                       field: 'nombre',
-                       enableColumnResizing: true,
+                       enableColumnResizing: true
                      },
                     {field: 'direccion'},
                     {
@@ -142,7 +142,6 @@
             '$scope',
             '$http',
             'i18nService',
-            'toaster',
             'notificacionService',
             'cfpLoadingBar',
             apiarioController

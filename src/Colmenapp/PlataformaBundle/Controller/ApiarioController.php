@@ -66,7 +66,7 @@ class ApiarioController extends Controller
 
     /**
     *
-    * @param Request
+    * @param Request $request
     */
     public function editarAction(Request $request)
     {

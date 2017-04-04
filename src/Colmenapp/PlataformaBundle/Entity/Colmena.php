@@ -41,9 +41,8 @@ class Colmena
     protected $apiario;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="TipoColmena")
+     * @assert\NotBlank()
      */
     protected $tipo;
 
@@ -151,9 +150,9 @@ class Colmena
     }
 
     /**
-     * @param string $apiario
+     * @param Apiario $apiario
      */
-    public function setApiario($apiario)
+    public function setApiario(Apiario $apiario)
     {
         $this->apiario = $apiario;
     }
@@ -167,9 +166,9 @@ class Colmena
     }
 
     /**
-     * @param string $tipo
+     * @param TipoColmena $tipo
      */
-    public function setTipo($tipo)
+    public function setTipo(TipoColmena $tipo)
     {
         $this->tipo = $tipo;
     }
@@ -312,8 +311,8 @@ class Colmena
         return array (
             'id'                => $this->id,
             'identificador'     => $this->identificador,
-            'apiario'           => $this->apiario,
-            'tipo'              => $this->tipo,
+            'apiario'           => $this->apiario->toArray(),
+            'tipo'              => $this->tipo->toArray(),
             'rejillaExcluidora' => $this->rejillaExcluidora,
             'camaraCria'        => $this->camaraCria,
             'enObservacion'     => $this->enObservacion,
