@@ -11,6 +11,15 @@ class ColmenaController extends Controller
 {
     public function indexAction()
     {
+        /*$redis = $this->container->get('snc_redis.default');
+        $a = array('test' =>1);
+        $expireMonth = 60 * 60 * 24 * 30;
+        //$redis->set('testReedis', serialize($a));
+        $redis->expire('testReedis', $expireMonth);
+        var_dump(unserialize($redis->get('testReedis'))); die;
+        */
+
+
         return $this->render('ColmenappPlataformaBundle:Colmena:index.html.twig');
     }
 
