@@ -166,9 +166,9 @@ class Colmena
     }
 
     /**
-     * @param TipoColmena $tipo
+     * @param string $tipo
      */
-    public function setTipo(TipoColmena $tipo)
+    public function setTipo($tipo)
     {
         $this->tipo = $tipo;
     }
@@ -258,7 +258,7 @@ class Colmena
      */
     public function getCreated()
     {
-        return $this->created;
+        return $this->created->format('d-m-Y');
     }
 
     /**
@@ -318,7 +318,7 @@ class Colmena
             'enObservacion'     => $this->enObservacion,
             'ultimaVisita'      => $this->ultimaVisita,
             'estado'            => $this->estado,
-            'created'           => $this->created
+            'created'           => $this->getCreated()
         );
     }
 

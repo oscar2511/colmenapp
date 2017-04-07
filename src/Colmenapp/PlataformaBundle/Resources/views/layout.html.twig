@@ -20,23 +20,22 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/ui-grid/ui-grid.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.ttf')}}" type="multipart/form-data">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.min.js"></script>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
-
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/package/loading-bar/loading-bar.js') }}"></script>
-    <link rel='stylesheet' href="{{ asset('bundles/colmenappplataforma/package/loading-bar/loading-bar.css') }}" type='text/css' media='all' />
 
 
 {% endblock  %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.ttf')}}" type="multipart/form-data">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href="{{ asset('bundles/colmenappplataforma/package/loading-bar/loading-bar.css') }}" type='text/css' media='all' />
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/custom.css')}}" type="text/css">
 {% endblock %}
 
 

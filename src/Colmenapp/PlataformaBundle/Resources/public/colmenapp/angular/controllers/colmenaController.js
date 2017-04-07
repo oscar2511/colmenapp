@@ -29,7 +29,7 @@
       $scope.mostrarSpinner = true;
       var dataColmena = {};
       dataColmena.apiarioId     = $scope.apiarioSeleccionado;
-      dataColmena.identificador = angular.isUndefined(colmenaForm.identificador) ? colmenaForm.identificador : null;
+      dataColmena.identificador = colmenaForm.identificador;
       dataColmena.tipo          = colmenaForm.tipo;
       dataColmena.rejilla       = colmenaForm.rejilla;
       dataColmena.camaraCria    = colmenaForm.camara;
@@ -55,27 +55,32 @@
     /**
      * Obtener todos los tipos de colmenas
      */
-    $scope.getTipoColmenas = function() {
+    function getTipoColmenas() {
       $http.get(Routing.generate('colmenas_tipos'))
         .then(function(response) {
           if(response.data.status == 200) {
-            $scope.tiposColomenas = response.data.data;
+            $scope.tiposColmenas = response.data.data;
           }
         })
-    };
+    }
 
     /**
      * Mostrar modal editar apiario
      * @param apiario
      */
-    $scope.mostrarEditar = function(apiario) {
-      console.log(apiario);
+    $scope.mostrarEditar = function(colmena) {
+      console.log(colmena);
       $scope.editForm = {
-        id          : apiario.id,
-        nombre      : apiario.nombre,
-        direccion   : apiario.direccion,
-        observacion : apiario.observacion
+        id            : colmena.id,
+        idApiario     : $scope.apiarioSeleccionado,
+        identificador : colmena.identificador,
+        tipo          : colmena.tipo,
+        rejilla       : colmena.rejillaExcluidora,
+        camara        : colmena.camaraCria,
+        enObservacion : colmena.enObservacion,
+        estado        : colmena.estado
       };
+      console.log($scope.editForm);
     };
 
     /**
@@ -83,15 +88,15 @@
      * @param apiario
      */
 
-    $scope.editar = function(apiario) {
-      $http.post(Routing.generate('apiario_editar'), apiario)
+    $scope.editar = function(colmena) {
+      $scope.mostrarSpinner = true;
+      colmenaService.editarColmena(colmena)
         .then(function(response) {
-          if(response.data.data = 200 && response.data.data) {
-            notificacionService.mostrarNotificacion('success', "Apiario Editado!", "");
-          }
-          getApiarios();
-          setTable();
-        }).finally(function() {
+            notificacionService.mostrarNotificacion('success', "Colmena Editada!", "");
+            getColmenas($scope.apiarioSeleccionado);
+            setTable();
+        })
+        .finally(function() {
           loader.complete();
         })
     };
@@ -119,70 +124,76 @@
         paginationPageSize: 5,
         enableSorting: true,
         enableFiltering: true,
-        rowHeight: 35,
+        rowHeight: 50,
         enableHorizontalScrollbar: 0,
         enableVerticalScrollbar:0,
         enableColumnResizing: true,
         plugins: [new ngGridFlexibleHeightPlugin()],
         columnDefs: [
           {
-            field: 'id',
+            field: 'id',displayName: 'Número',
             enableColumnResizing: true
           },
           {
-            field: 'identificador'
+            field: 'identificador',displayName: 'Identificador',
+            cellTemplate: '<div class="celda margIzq">{{row.entity.identificador}}</div>'
           },
           {
-            field: 'tipo',
+            field: 'created',displayName: 'Creado',
+            enableColumnResizing: true,
+            cellTemplate: '<div class="celda margIzq" class="celda margIzq">{{row.entity.created}}</div>'
+          },
+          {
+            field: 'tipo',displayName: 'Tipo',
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div  ng-if="row.entity.tipo">{{row.entity.tipo.descripcion}}</div><div ng-if="!row.entity.tipo">No especificado</div>'
+            cellTemplate: '<div class="celda margIzq" ng-if="row.entity.tipo">{{row.entity.tipo.descripcion}}</div><div ng-if="!row.entity.tipo">No especificado</div>'
           },
           {
-            field: 'rejillaExcluidora',
+            field: 'rejillaExcluidora',displayName: 'Rej. Excluidora',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div align="center" ng-if="row.entity.rejillaExcluidora"><i class="fa fa-fw fa-check success"></i></div><div align="center" ng-if="!row.entity.tipo">--</div>'
+            cellTemplate: '<div class="celda" align="center" ng-if="row.entity.rejillaExcluidora"><i class="fa fa-fw fa-check success"></i></div><div align="center" ng-if="!row.entity.tipo">--</div>'
           },
           {
-            field: 'camaraCria',
+            field: 'camaraCria',displayName: 'Cam. Cría',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div align="center" ng-if="row.entity.camaraCria">{{row.entity.camaraCria}}</div><div align="center" ng-if="!row.entity.camaraCria">--</div>'
+            cellTemplate: '<div class="celda" align="center" ng-if="row.entity.camaraCria">{{row.entity.camaraCria}}</div><div align="center" ng-if="!row.entity.camaraCria">--</div>'
           },
           {
-            field: 'enObservacion',
+            field: 'enObservacion', displayName: 'En Observ.',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div align="center" ng-if="row.entity.enObservacion"><small class="label bg-yellow"><i class="fa fa-fw fa-exclamation"></i></small></div><div align="center" ng-if="!row.entity.enObservacion">No</div>'
+            cellTemplate: '<div class="celda" align="center" ng-if="row.entity.enObservacion"><small class="label bg-yellow"><i class="fa fa-fw fa-exclamation"></i></small></div><div class="celda" align="center" ng-if="!row.entity.enObservacion">No</div>'
           },
           {
-            field: 'ultimaVisita',
+            field: 'ultimaVisita', displayName: 'U. Visita',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div>----</div>'
+            cellTemplate: '<div ng-if="row.entity.ultimaVisita" class="celda margIzq">{{row.entity.ultimaVisita}}</div><div align="center" class="celda margIzq" ng-if="!row.entity.ultimaVisita">---</div>'
           },
           {
-            field: 'estado',
+            field: 'estado',displayName: 'Estado',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false,
-            cellTemplate: '<div ng-if="!row.entity.estado" align="center"><span class="badge bg-green">Activa</span></div><div ng-if="row.entity.estado"><span class="badge bg-red">Inactiva</span></div>'
+            cellTemplate: '<div class="celda" ng-if="!row.entity.estado" align="center"><span class="badge bg-green">Activa</span></div><div class="celda" ng-if="row.entity.estado"><span class="badge bg-red">Inactiva</span></div>'
           },
           {
-            field: 'Ver',
-            cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)"><i class="fa fa-fw fa-edit"></i></a></div>',
-            enableSorting: false,
-            enableFiltering: false,
-            enableHiding: false
-          },
-          {
-            field: 'Editar',
-            cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)"><i class="fa fa-fw fa-edit"></i></a></div>',
+            field: 'Acciones',
+            cellTemplate: '<div align="center" class="ngCellText">' +
+
+            '<a ng-href="detalle/{{row.entity.id}}"><i class="fa fa-fw fa-eye"></i></a>' +
+              '<br>'+
+            '<a ng-href="#" data-toggle="modal" data-target=".modal-editar-colmena" ng-click="grid.appScope.mostrarEditar(row.entity)">' +
+              '<i class="fa fa-fw fa-edit"></i>' +
+            '</a>' +
+            '</div>',
             enableSorting: false,
             enableFiltering: false,
             enableHiding: false
@@ -210,6 +221,7 @@
     }
 
     setTable();
+    getTipoColmenas();
     getApiarios();
 
   };

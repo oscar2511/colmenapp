@@ -24,9 +24,22 @@ class ColmenaController extends Controller
         return $this->render('ColmenappPlataformaBundle:Colmena:colemenaInpeccion.html.twig');
     }
 
-    public function detalleAction()
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function detalleAction(Request $request)
     {
-        return $this->render('ColmenappPlataformaBundle:Colmena:detalle.html.twig');
+        $idColmena    = $request->get('id');
+
+        $em = $this->getDoctrine()->getManager();
+        $colmena = $em
+            ->getRepository('ColmenappPlataformaBundle:Colmena')
+            ->find($idColmena);
+
+        return $this->render('ColmenappPlataformaBundle:Colmena:detalle.html.twig', array(
+            'colmena' => $colmena
+        ));
     }
 
     /**
@@ -75,7 +88,6 @@ class ColmenaController extends Controller
                 'data'   => $colmena->toArray()
             ));
         } catch (\Exception $e) {
-            //var_dump($e); die;
             return new JsonResponse(array(
                 'status' => 400,
                 'data'   => $e->getMessage()
@@ -142,5 +154,62 @@ class ColmenaController extends Controller
             'status' => 200,
             'data'   => $tiposColmenasArray
         ));
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function editarAction(Request $request)
+    {
+        $info  = $request->getContent();
+        $data  = json_decode($info,true);
+        $em    = $this->getDoctrine()->getManager();
+
+        $id            = $data['id'];
+        $identificador = $data['identificador'];
+        $apiarioId     = (int) $data['idApiario'] ;
+        $tipoId        = $data['tipo'] ;
+        $rejilla       = $data['rejilla'] ;
+        $camara        = $data['camara'] ;
+        $enObservacion = $data['enObservacion'] ;
+        $estado        = $data['estado'] ;
+
+        try {
+            if($tipoId)
+                $tipo =  $em
+                    ->getRepository('ColmenappPlataformaBundle:TipoColmena')
+                    ->find($data['tipo']['id']);
+
+            $apiario = $em
+                ->getRepository('ColmenappPlataformaBundle:Apiario')
+                ->find($apiarioId);
+
+            $colmena = $em
+                ->getRepository('ColmenappPlataformaBundle:Colmena')
+                ->find($id);
+
+            if($identificador)$colmena->setIdentificador($identificador);
+            if($apiario)$colmena->setApiario($apiario);
+            if($tipoId) $colmena->setTipo($tipo);
+            $colmena->setRejillaExcluidora($rejilla);
+            if($camara)$colmena->setCamaraCria($camara);
+            if($enObservacion)$colmena->setEnObservacion($enObservacion);
+            if($estado)$colmena->setEstado($estado);
+            $colmena->setUpdated(new \DateTime("now"));
+
+            $em->persist($colmena);
+            $em->flush();
+
+            return new JsonResponse(array(
+                'status' => 200,
+                'data'   => $colmena->toArray()
+            ));
+        } catch (\Exception $e) {
+            return new JsonResponse(array(
+                'status' => 400,
+                'data'   => $e
+            ));
+        }
     }
 }

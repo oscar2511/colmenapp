@@ -1,6 +1,7 @@
 {% extends 'ColmenappPlataformaBundle::layout.html.twig' %}
 
 
+
 {% block page_title %}
     <h2 class="page-header">
         <i class="fa fa-archive"></i>  Listado de Colmenas
@@ -40,7 +41,7 @@
         <div class="row" ng-show="mostrarTabla">
             <div class="col-md-10">
                 <a href="" data-toggle="modal" data-target=".modal-nueva-colmena">
-                    <button ng-click="getTipoColmenas()" type="button" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-primary btn-sm">
                         <i class="fa fa-fw fa-plus"></i> Nueva Colmena
                     </button>
                 </a>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="box-body no-padding">
                         {% verbatim %}
-                            <div ng-if="!mostrarSpinner" class="table table-striped" style="height:290px!important;"  ui-grid="gridOptionsColmena" ui-grid-pagination></div>
+                            <div ng-if="!mostrarSpinner" class="table table-striped" style="height:330px!important;"  ui-grid="gridOptionsColmena" ui-grid-pagination></div>
                         {% endverbatim %}
                     </div>
                 </div>
@@ -97,7 +98,7 @@
                                     <label  type="text" class="col-sm-2 control-label">Tipo</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" ng-model="colmenaForm.tipo" required>
-                                            <option ng-repeat="tipo in tiposColomenas" value="{{tipo.id}}">{{ tipo.descripcion }}</option>
+                                            <option ng-repeat="tipo in tiposColmenas" value="{{tipo.id}}">{{ tipo.descripcion }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -108,7 +109,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Cámaras de crías</label>
+                                    <label class="col-sm-2 control-label">Cámaras de crías</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" ng-model="colmenaForm.camara">
                                             <option value=1 selected="selected">1</option>

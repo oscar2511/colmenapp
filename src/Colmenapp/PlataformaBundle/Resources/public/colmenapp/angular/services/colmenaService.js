@@ -38,8 +38,18 @@
         })
     }
 
-    this.getcolmenas  = getColmenas;
-    this.crearColmena = crearColmena;
+    function editarColmena(colmena) {
+      return $http.post(Routing.generate('colmena_editar'), colmena)
+        .then(function(response){
+          if(response.data.data = 200 && response.data.data) {
+            return $q.resolve(response);
+          }
+        })
+    }
+
+    this.getcolmenas   = getColmenas;
+    this.crearColmena  = crearColmena;
+    this.editarColmena = editarColmena;
 
   };
 

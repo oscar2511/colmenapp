@@ -58,7 +58,7 @@
                 paginationPageSize: 5,
                 enableSorting: true,
                 enableFiltering: true,
-                rowHeight: 35,
+                rowHeight: 50,
                 enableHorizontalScrollbar: 0,
                 enableVerticalScrollbar:0,
                 enableColumnResizing: true,
@@ -67,32 +67,36 @@
                     {
                       field: 'id', displayName: 'Identificador',
                       enableColumnResizing: true,
-                      headTemplate: '<div align="center">{{row.entity.id}}</div>'
+                      cellTemplate: '<div class="celda" align="center">{{row.entity.id}}</div>'
                     },
                     {
                       field: 'nombre',
-                       enableColumnResizing: true
+                      enableColumnResizing: true,
+                      cellTemplate: '<div class="celda margIzq" align="center">{{row.entity.nombre}}</div>'
                      },
-                    {field: 'direccion'},
+                    {
+                      field: 'direccion',
+                      cellTemplate: '<div class="celda margIzq" align="center">{{row.entity.direccion}}</div>'
+                    },
                     {
                       field: 'observacion',
                       enableFiltering: false,
-                      enableHiding: false
+                      enableHiding: false,
+                      cellTemplate: '<div class="celda margIzq" align="center">{{row.entity.observacion}}</div>'
                     },
-                    {
-                      field: 'Ver',
-                      cellTemplate: '<div align="center" class="ngCellText"><a ng-href="detalle/{{row.entity.id}}"><i class="fa fa-fw fa-eye"></i></a></div>',
-                      enableSorting: false,
-                      enableFiltering: false,
-                      enableHiding: false
-                    },
-                    {
-                      field: 'Editar',
-                      cellTemplate: '<div align="center" data-toggle="modal" data-target=".modal-editar-apiario" class="ngCellText"><a ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)"><i class="fa fa-fw fa-edit"></i></a></div>',
-                      enableSorting: false,
-                      enableFiltering: false,
-                      enableHiding: false
-                    }
+                  {
+                    field: 'Acciones',
+                    cellTemplate: '<div align="center"  class="ngCellText">' +
+                    '<a ng-href="detalle/{{row.entity.id}}"><i class="fa fa-fw fa-eye"></i></a>' +
+                    '<br>'+
+                    '<a data-toggle="modal" data-target=".modal-editar-apiario" ng-href="#" ng-click="grid.appScope.mostrarEditar(row.entity)">' +
+                    '<i class="fa fa-fw fa-edit"></i>' +
+                    '</a>' +
+                    '</div>',
+                    enableSorting: false,
+                    enableFiltering: false,
+                    enableHiding: false
+                  }
                 ],
                 onRegisterApi: function (gridApi) {
                     $scope.grid1Api = gridApi;
