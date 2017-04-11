@@ -85,13 +85,19 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Crear Multiple Colmenas</label>
                                     <div class="col-sm-10">
-                                        <input type="number" ng-model="colmenaForm.multiple" min="0" max="100" class="form-control" placeholder="Ingrese Cantidad de Colmenas">
+                                        <input type="number" ng-change="checkMultipleActivado(colmenaForm.multiple)"  ng-pattern="/^[0-9]{1,3}$/" ng-model="colmenaForm.multiple" min="0" class="form-control" placeholder="Ingrese Cantidad de Colmenas (max 100)">
+                                        <span class="help-block" ng-show="errorMultiple"><p class="text-red">La cantidad máxima de colmenas no puede exceder los 100</p></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" ng-show="!ocultarIdentificador">
                                     <label class="col-sm-2 control-label">Identificador</label>
                                     <div class="col-sm-10">
                                         <input type="text" ng-model="colmenaForm.identificador" name="subject" class="form-control"  placeholder="Ingrese identificador">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-show="ocultarIdentificador">
+                                    <div class="callout callout-info">
+                                        <p><i class="fa fa-fw fa-info"></i> Si elije crear multiples colmenas, el sistema generará automaticamente los identificadores de cada una.</p>
                                     </div>
                                 </div>
                                 <div class="form-group">

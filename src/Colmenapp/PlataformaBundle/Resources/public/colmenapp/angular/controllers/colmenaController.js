@@ -18,6 +18,8 @@
     $scope.mostrarModal = false;
     $scope.mostrarTabla = false;
     $scope.mostrarSelApiario = true;
+    $scope.ocultarIdentificador = false;
+    $scope.errorMultiple = false;
 
     /**
      * Crear una colmena
@@ -35,7 +37,6 @@
       dataColmena.camaraCria    = colmenaForm.camara;
       dataColmena.multiple      = colmenaForm.multiple;
 
-      console.log(dataColmena);
       colmenaService.crearColmena(dataColmena)
         .then(function() {
             notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
@@ -51,6 +52,8 @@
 
     $scope.limpiarForm = function() {
       $scope.colmenaForm = {};
+      $scope.ocultarIdentificador = false;
+      $scope.errorMultiple = false;
     };
 
 
@@ -82,12 +85,11 @@
         enObservacion : colmena.enObservacion,
         estado        : colmena.estado
       };
-      console.log($scope.editForm);
     };
 
     /**
-     * Editar un apiario
-     * @param apiario
+     * Editar una colmena
+     * @param colmena
      */
 
     $scope.editar = function(colmena) {
@@ -119,6 +121,25 @@
           loader.complete();
         });
     }
+
+    /**
+     * @param {number} multiple
+     */
+    $scope.checkMultipleActivado = function(multiple) {
+      if(multiple && multiple > 0 && multiple < 100) {
+        $scope.ocultarIdentificador = true;
+        $scope.errorMultiple = false;
+      }
+      else {
+        console.log(multiple);
+        if (multiple > 100)
+          $scope.errorMultiple = true;
+        else {
+          $scope.ocultarIdentificador = false;
+          $scope.errorMultiple = false;
+        }
+      }
+    };
 
     function setTable() {
       $scope.gridOptionsColmena = {
