@@ -60,41 +60,14 @@ class ColmenaController extends Controller
         $info = $request->getContent();
         $data = json_decode($info,true);
         $em   = $this->getDoctrine()->getManager();
-        $identificador = isset($data['identificador']) ? $data['identificador'] : uniqid();
-        $apiarioId     = isset($data['apiarioId']) ? $data['apiarioId'] : null;
-        $tipoId        = isset($data['tipo']) ? $data['tipo'] : null;
-        $rejilla       = isset($data['rejilla']) ? $data['rejilla'] : null;
-        $camara        = isset($data['camaraCria']) ? $data['camaraCria'] : 1;
-        $enObservacion = isset($data['enObservacion']) ? $data['enObservacion'] : null;
-        $estado        = isset($data['estado']) ? $data['estado'] : null;
 
-        $em   = $this->getDoctrine()->getManager();
+        $colmenaService = $this->get('colmena_service');
+
         try {
-            $tipo =  $em
-                ->getRepository('ColmenappPlataformaBundle:TipoColmena')
-                ->find($tipoId);
-
-            $apiario = $em
-                ->getRepository('ColmenappPlataformaBundle:Apiario')
-                ->find($apiarioId);
-
-            $colmena = new Colmena();
-
-            $colmena->setIdentificador($identificador);
-            $colmena->setApiario($apiario);
-            $colmena->setTipo($tipo);
-            $colmena->setRejillaExcluidora($rejilla);
-            $colmena->setCamaraCria($camara);
-            $colmena->setEnObservacion($enObservacion);
-            $colmena->setEstado($estado);
-            $colmena->setCreated(new \DateTime("now"));
-
-            $em->persist($colmena);
-            $em->flush();
-
+            $response = $colmenaService->crearColmena($data);
             return new JsonResponse(array(
                 'status' => 200,
-                'data'   => $colmena->toArray()
+                'data'   => "OK"
             ));
         } catch (\Exception $e) {
             return new JsonResponse(array(

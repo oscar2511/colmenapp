@@ -33,10 +33,12 @@
       dataColmena.tipo          = colmenaForm.tipo;
       dataColmena.rejilla       = colmenaForm.rejilla;
       dataColmena.camaraCria    = colmenaForm.camara;
+      dataColmena.multiple      = colmenaForm.multiple;
 
+      console.log(dataColmena);
       colmenaService.crearColmena(dataColmena)
         .then(function() {
-            notificacionService.mostrarNotificacion('success', "Apiario Guardado!", "");
+            notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
             getColmenas($scope.apiarioSeleccionado);
             setTable();
             $scope.mostrarSpinner = false;

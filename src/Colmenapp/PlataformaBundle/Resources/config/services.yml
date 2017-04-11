@@ -18,3 +18,7 @@ services:
        class: Colmenapp\PlataformaBundle\Lib\Subscribers\TestSubscriber
        arguments: [@logger]
        tags: [name: kernel.event_subscriber]
+
+    colmena_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\ColmenaService
+        arguments: ['@doctrine.orm.entity_manager',"@doctrine"]

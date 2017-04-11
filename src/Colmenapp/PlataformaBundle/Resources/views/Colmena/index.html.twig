@@ -83,13 +83,13 @@
                         <form class="form-horizontal" name="colmenaForm" novalidate>
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Fecha</label>
+                                    <label class="col-sm-2 control-label">Crear Multiple Colmenas</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" disabled placeholder="10-09-2016">
+                                        <input type="number" ng-model="colmenaForm.multiple" min="0" max="100" class="form-control" placeholder="Ingrese Cantidad de Colmenas">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Identificador</label>
+                                    <label class="col-sm-2 control-label">Identificador</label>
                                     <div class="col-sm-10">
                                         <input type="text" ng-model="colmenaForm.identificador" name="subject" class="form-control"  placeholder="Ingrese identificador">
                                     </div>
