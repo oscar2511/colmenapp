@@ -223,7 +223,7 @@ class Inspeccion
      */
     public function getCreated()
     {
-        return $this->created;
+        return $this->created->format('d-m-Y');
     }
 
     /**
@@ -271,4 +271,24 @@ class Inspeccion
     {
         return $this->deleted;
     }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return array (
+            'id'             => $this->id,
+            'fecha'          => $this->fecha,
+            'apiario'        => $this->apiario->toArray(),
+            'tareaRealizada' => $this->tareaRealizada,
+            'observacion'    => $this->observacion,
+            'tareaEnColmena' => $this->camaraCria,
+            'enObservacion'  => $this->enObservacion,
+            'deleted'        => $this->deleted,
+            'created'        => $this->getCreated()
+        );
+    }
+
+
 }

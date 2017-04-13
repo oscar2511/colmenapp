@@ -70,5 +70,62 @@
   </div>
 
 
+<!-- nueva inspeccion ------------------------------------->
+{% verbatim %}
+<div class="modal fade modal-default modal-nueva-inspeccion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" ng-click="limpiarForm()">×</span></button>
+                <h4 class="modal-title">Inspección</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="inspeccionForm" novalidate>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Fecha</label>
+                            <div class="col-sm-10">
+                                <input type="date" ng-model="inspeccionForm.multiple" min="0" class="form-control">
+                                <span class="help-block" ng-show="errorMultiple"><p class="text-red">La cantidad máxima de colmenas no puede exceder los 100</p></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  type="text" class="col-sm-2 control-label">Tipo</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-model="colmenaForm.tipo" required>
+                                    <option ng-repeat="tipo in tiposColmenas" value="{{tipo.id}}">{{ tipo.descripcion }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Rejilla Excluidora</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" ng-model="colmenaForm.rejilla">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Cámaras de crías</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" ng-model="colmenaForm.camara">
+                                    <option value=1 selected="selected">1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="limpiarForm()">Cerrar</button>
+                    <button data-dismiss="modal" ng-click="guardarColmena(colmenaForm)" ng-disabled="colmenaForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endverbatim %}
+
 </section>
 {% endblock %}

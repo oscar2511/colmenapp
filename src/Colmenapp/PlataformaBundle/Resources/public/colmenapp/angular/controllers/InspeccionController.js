@@ -120,9 +120,9 @@
       /**
        * Obtener todos los apiarios y crear tabla
        */
-      function getColmenas(idApiario) {
+      function getInspecciones(idApiario) {
         loader.start();
-        colmenaService.getcolmenas(idApiario)
+        inspeccionService.getInspecciones(idApiario)
           .then(function(response) {
             if(response) {
               $scope.gridOptionsColmena.data = response;
