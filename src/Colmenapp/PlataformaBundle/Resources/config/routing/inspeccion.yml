@@ -9,3 +9,10 @@ inspecciones:
     methods:  GET
     options:
             expose: true
+
+inspeccion_crear:
+    path:     /crear
+    defaults: { _controller: "ColmenappPlataformaBundle:Inspeccion:crear" }
+    methods:  POST
+    options:
+            expose: true

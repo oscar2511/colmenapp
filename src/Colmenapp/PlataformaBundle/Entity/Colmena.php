@@ -11,7 +11,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
- * Leadsius\PlatformBundle\Entity\PlAccount
  *
  * @ORM\Table(name="colmena")
  * @ORM\Entity(repositoryClass="Colmenapp\PlataformaBundle\Repository\ColmenaRepository")

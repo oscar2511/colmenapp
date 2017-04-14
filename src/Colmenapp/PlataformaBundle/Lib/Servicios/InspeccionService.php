@@ -13,46 +13,30 @@ class InspeccionService extends BaseInspeccionService
 
   public function crearInspeccion(array $data)
   {
-    /*$apiarioId     = isset($data['apiarioId']) ? $data['apiarioId'] : null;
-    $tipoId        = isset($data['tipo']) ? $data['tipo'] : null;
-    $rejilla       = isset($data['rejilla']) ? $data['rejilla'] : null;
-    $camara        = isset($data['camaraCria']) ? $data['camaraCria'] : 1;
-    $enObservacion = isset($data['enObservacion']) ? $data['enObservacion'] : null;
-    $estado        = isset($data['estado']) ? $data['estado'] : null;
-
-    if(isset($data['identificador']) && $data['identificador'])
-      $identificador = $data['identificador'];
-    else
-      $identificador = uniqid();
-
-    $tipo =  $this->em
-        ->getRepository('ColmenappPlataformaBundle:TipoColmena')
-        ->find($tipoId);
+    $apiarioId      = $data['apiarioId'];
+    $fecha          = new \DateTime($data['fecha']);
+    $tareaRealizada = $data['tareaRealizada'];
+    $tareaEnColmena = isset($data['tareaEnColmena']) ? 1 : 0;
+    $observacion    = isset($data['observacion']) ? $data['observacion'] : null;
 
     $apiario = $this->em
         ->getRepository('ColmenappPlataformaBundle:Apiario')
         ->find($apiarioId);
 
-    if(isset($data['multiple']) && $data['multiple'] > 0)
-      $this->crearMultiColmenas($apiario, $data['multiple'], $tipo, $rejilla, $camara );
-    else {
+      $inspeccion = new Inspeccion();
 
-      $colmena = new Colmena();
+      $inspeccion->setApiario($apiario);
+      $inspeccion->setFecha($fecha);
+      $inspeccion->setTareaRealizada($tareaRealizada);
+      $inspeccion->setTareaEnColmena($tareaEnColmena);
+      $inspeccion->setObservacion($observacion);
+      $inspeccion->setCreated(new \DateTime("now"));
 
-      $colmena->setIdentificador($identificador);
-      $colmena->setApiario($apiario);
-      $colmena->setTipo($tipo);
-      $colmena->setRejillaExcluidora($rejilla);
-      $colmena->setCamaraCria($camara);
-      $colmena->setEnObservacion($enObservacion);
-      $colmena->setEstado($estado);
-      $colmena->setCreated(new \DateTime("now"));
-
-      $this->em->persist($colmena);
+      $this->em->persist($inspeccion);
       $this->em->flush();
 
       return true;
-    }*/
+
   }
 
 
@@ -65,7 +49,7 @@ class InspeccionService extends BaseInspeccionService
         ->getRepository('ColmenappPlataformaBundle:Apiario')
         ->find($idApiario);
 
-    $inspecciones = $this->$em
+    $inspecciones = $this->em
         ->getRepository('ColmenappPlataformaBundle:Inspeccion')
         ->findBy(
             array('apiario' => $apiario),

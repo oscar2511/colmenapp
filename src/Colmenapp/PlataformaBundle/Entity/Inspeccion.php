@@ -2,8 +2,12 @@
 
 namespace Colmenapp\PlataformaBundle\Entity;
 
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Inspeccion
@@ -108,7 +112,7 @@ class Inspeccion
      */
     public function getFecha()
     {
-        return $this->fecha;
+        return $this->fecha->format('d-m-Y');
     }
 
     /**
@@ -279,12 +283,11 @@ class Inspeccion
     {
         return array (
             'id'             => $this->id,
-            'fecha'          => $this->fecha,
+            'fecha'          => $this->getFecha(),
             'apiario'        => $this->apiario->toArray(),
             'tareaRealizada' => $this->tareaRealizada,
             'observacion'    => $this->observacion,
-            'tareaEnColmena' => $this->camaraCria,
-            'enObservacion'  => $this->enObservacion,
+            'tareaEnColmena' => $this->tareaEnColmena,
             'deleted'        => $this->deleted,
             'created'        => $this->getCreated()
         );

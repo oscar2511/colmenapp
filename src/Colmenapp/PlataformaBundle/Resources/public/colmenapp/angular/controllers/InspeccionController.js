@@ -14,6 +14,9 @@
 
       i18nService.setCurrentLang('es');
 
+      $scope.mostrarSinRegistrosMsj = false;
+      $scope.mostrarSelApiario = true;
+
       function getApiarios() {
         apiarioService.getApiarios()
           .then(function(apiarios) {
@@ -23,7 +26,7 @@
 
 
       function setTable() {
-        $scope.gridOptionsColmena = {
+        $scope.gridOptionsInspeccion = {
           paginationPageSizes: [10, 25, 50],
           paginationPageSize: 5,
           enableSorting: true,
@@ -39,54 +42,28 @@
               enableColumnResizing: true
             },
             {
-              field: 'identificador',displayName: 'Identificador',
-              cellTemplate: '<div class="celda margIzq">{{row.entity.identificador}}</div>'
+              field: 'fecha',displayName: 'Fecha',
+              cellTemplate: '<div class="celda margIzq">{{row.entity.fecha}}</div>'
             },
             {
-              field: 'created',displayName: 'Creado',
-              enableColumnResizing: true,
-              cellTemplate: '<div class="celda margIzq" class="celda margIzq">{{row.entity.created}}</div>'
-            },
-            {
-              field: 'tipo',displayName: 'Tipo',
+              field: 'tarearealizada',displayName: 'T. Realizada',
               enableFiltering: false,
               enableHiding: false,
-              cellTemplate: '<div class="celda margIzq" ng-if="row.entity.tipo">{{row.entity.tipo.descripcion}}</div><div ng-if="!row.entity.tipo">No especificado</div>'
+              cellTemplate: '<div class="celda margIzq">{{row.entity.tareaRealizada}}</div>'
             },
             {
-              field: 'rejillaExcluidora',displayName: 'Rej. Excluidora',
+              field: 'tareaEnColmena',displayName: 'T. en Colmena',
               enableSorting: false,
               enableFiltering: false,
               enableHiding: false,
-              cellTemplate: '<div class="celda" align="center" ng-if="row.entity.rejillaExcluidora"><i class="fa fa-fw fa-check success"></i></div><div align="center" ng-if="!row.entity.tipo">--</div>'
+              cellTemplate: '<div class="celda" align="center" ng-if="row.entity.tareaEnColmena"><i class="fa fa-fw fa-check success"></i></div><div align="center" ng-if="!row.entity.tareaEnColmena">--</div>'
             },
             {
-              field: 'camaraCria',displayName: 'Cam. Cría',
+              field: 'observacion',displayName: 'Observación',
               enableSorting: false,
               enableFiltering: false,
               enableHiding: false,
-              cellTemplate: '<div class="celda" align="center" ng-if="row.entity.camaraCria">{{row.entity.camaraCria}}</div><div align="center" ng-if="!row.entity.camaraCria">--</div>'
-            },
-            {
-              field: 'enObservacion', displayName: 'En Observ.',
-              enableSorting: false,
-              enableFiltering: false,
-              enableHiding: false,
-              cellTemplate: '<div class="celda" align="center" ng-if="row.entity.enObservacion"><small class="label bg-yellow"><i class="fa fa-fw fa-exclamation"></i></small></div><div class="celda" align="center" ng-if="!row.entity.enObservacion">No</div>'
-            },
-            {
-              field: 'ultimaVisita', displayName: 'U. Visita',
-              enableSorting: false,
-              enableFiltering: false,
-              enableHiding: false,
-              cellTemplate: '<div ng-if="row.entity.ultimaVisita" class="celda margIzq">{{row.entity.ultimaVisita}}</div><div align="center" class="celda margIzq" ng-if="!row.entity.ultimaVisita">---</div>'
-            },
-            {
-              field: 'estado',displayName: 'Estado',
-              enableSorting: false,
-              enableFiltering: false,
-              enableHiding: false,
-              cellTemplate: '<div class="celda" ng-if="!row.entity.estado" align="center"><span class="badge bg-green">Activa</span></div><div class="celda" ng-if="row.entity.estado"><span class="badge bg-red">Inactiva</span></div>'
+              cellTemplate: '<div class="celda" align="center" ng-if="row.entity.observacion">{{row.entity.observacion}}</div><div align="center" ng-if="!row.entity.observacion">--</div>'
             },
             {
               field: 'Acciones',
@@ -125,10 +102,16 @@
         inspeccionService.getInspecciones(idApiario)
           .then(function(response) {
             if(response) {
-              $scope.gridOptionsColmena.data = response;
-              $scope.mostrarSpinner = false;
+              $scope.gridOptionsInspeccion.data = response;
+              $scope.mostrarSpinner          = false;
+              $scope.mostrarSinRegistrosMsj  = false;
+            } else {
+              $scope.mostrarSinRegistrosMsj = true;
+              $scope.mostrarSpinner         = false;
+              $scope.mostrarTabla           = false;
             }
-          }).finally(function() {
+          })
+          .finally(function() {
             loader.complete();
           });
       }
@@ -166,6 +149,37 @@
           .finally(function() {
             loader.complete();
           });
+      };
+
+      /**
+       * Crear una colmena
+       * @param colmenaForm
+       */
+      $scope.guardarInspeccion = function(inspeccionForm) {
+        $scope.limpiarForm();
+        loader.start();
+        $scope.mostrarSpinner = true;
+        var dataInspeccion = {};
+        dataInspeccion.apiarioId      = $scope.apiarioSeleccionado;
+        dataInspeccion.fecha          = inspeccionForm.fecha.toISOString().substring(0, 10);;
+        dataInspeccion.tareaRealizada = inspeccionForm.tareaRealizada;
+        dataInspeccion.tareaEnColmena = inspeccionForm.tareaEnColmena;
+        dataInspeccion.observacion    = inspeccionForm.observacion;
+
+        inspeccionService.crearInspeccion(dataInspeccion)
+          .then(function() {
+              notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
+              getInspecciones($scope.apiarioSeleccionado);
+              setTable();
+              $scope.mostrarSpinner = false;
+          })
+          .finally(function() {
+            loader.complete();
+          });
+      };
+
+      $scope.limpiarForm = function() {
+        $scope.apiarioForm = {};
       };
 
       getApiarios();

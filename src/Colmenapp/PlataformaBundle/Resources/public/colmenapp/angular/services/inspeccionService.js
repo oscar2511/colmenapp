@@ -17,10 +17,11 @@
       var inspecciones = [];
       return $http.get(Routing.generate('inspecciones', {apiarioId: apiarioId}))
         .then(function(response) {
-          if(response.data.status == 200) {
+          if(response.status === 200 && response.data.data.length > 0 ) {
             $.inspecciones = response.data.data;
             return $q.resolve($.inspecciones);
           }
+          return $q.resolve(false);
         })
     }
 
@@ -40,6 +41,7 @@
 
 
     this.getInspecciones = getInspecciones;
+    this.crearInspeccion = crearInspeccion;
 
   };
 
