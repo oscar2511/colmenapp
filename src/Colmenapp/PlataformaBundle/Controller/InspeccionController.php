@@ -20,7 +20,7 @@ class InspeccionController extends Controller
     */
     public function getInspeccionesAction(Request $request)
     {
-      try {
+//      try {
           $apiarioId = (int)$request->get('apiarioId');
 
           $inspeccionService = $this->get('inspeccion_service');
@@ -31,12 +31,12 @@ class InspeccionController extends Controller
               'status' => 200,
               'data'   => $inspecciones
           ));
-      } catch (\Exception $e) {
+  //    } catch (\Exception $e) {
           return new JsonResponse(array(
               'status' => 400,
               'data'   => $e
           ));
-      }
+    //  }
     }
 
     /**
@@ -49,20 +49,23 @@ class InspeccionController extends Controller
         $data = json_decode($info,true);
         $em   = $this->getDoctrine()->getManager();
 
+        var_dump($data); die;
+
+
         $inspeccionService = $this->get('inspeccion_service');
 
-        //try {
+        try {
             $response = $inspeccionService->crearInspeccion($data);
             return new JsonResponse(array(
                 'status' => 200,
                 'data'   => "OK"
             ));
-        /*} catch (\Exception $e) {
+        } catch (\Exception $e) {
             return new JsonResponse(array(
                 'status' => 400,
                 'data'   => $e->getMessage()
-            ));*/
-        //}
+            ));
+        }
     }
 
 

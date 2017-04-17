@@ -10,12 +10,18 @@
       notificacionService,
       loader,
       apiarioService,
-      inspeccionService) {
+      inspeccionService,
+      colmenaService) {
 
       i18nService.setCurrentLang('es');
 
       $scope.mostrarSinRegistrosMsj = false;
       $scope.mostrarSelApiario = true;
+      $scope.error = false;
+      $scope.mostrarTabla = false;
+      $scope.inspeccionForm = {};
+      var date = new Date();
+      $scope.fechaActual = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
 
       function getApiarios() {
         apiarioService.getApiarios()
@@ -111,6 +117,12 @@
               $scope.mostrarTabla           = false;
             }
           })
+          .catch(function(e) {
+            $scope.error = true;
+            $scope.mostrarSinRegistrosMsj = false;
+            $scope.mostrarSpinner         = false;
+            $scope.mostrarTabla           = false;
+          })
           .finally(function() {
             loader.complete();
           });
@@ -127,51 +139,31 @@
        * Crear una colmena
        * @param colmenaForm
        */
-      $scope.crearInspeccion = function(inspeccionForm) {
-        $scope.limpiarForm();
-        loader.start();
-        $scope.mostrarSpinner = true;
-        var dataInspeccion = {};
-        dataInspeccion.apiarioId     = $scope.apiarioSeleccionado;
-        dataInspeccion.identificador = colmenaForm.identificador;
-        dataInspeccion.tipo          = colmenaForm.tipo;
-        dataInspeccion.rejilla       = colmenaForm.rejilla;
-        dataInspeccion.camaraCria    = colmenaForm.camara;
-        dataInspeccion.multiple      = colmenaForm.multiple;
-
-        InspeccionService.crearColmena(dataColmena)
-          .then(function() {
-              notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
-              getColmenas($scope.apiarioSeleccionado);
-              setTable();
-              $scope.mostrarSpinner = false;
-          })
-          .finally(function() {
-            loader.complete();
-          });
-      };
-
-      /**
-       * Crear una colmena
-       * @param colmenaForm
-       */
       $scope.guardarInspeccion = function(inspeccionForm) {
         $scope.limpiarForm();
         loader.start();
         $scope.mostrarSpinner = true;
         var dataInspeccion = {};
         dataInspeccion.apiarioId      = $scope.apiarioSeleccionado;
-        dataInspeccion.fecha          = inspeccionForm.fecha.toISOString().substring(0, 10);;
+        dataInspeccion.fecha          = angular.isObject(inspeccionForm.fecha) ? inspeccionForm.fecha.toISOString().substring(0, 10) : new Date();
         dataInspeccion.tareaRealizada = inspeccionForm.tareaRealizada;
         dataInspeccion.tareaEnColmena = inspeccionForm.tareaEnColmena;
         dataInspeccion.observacion    = inspeccionForm.observacion;
+        console.log(dataInspeccion);
+        if(dataInspeccion.tareaEnColmena)
+          dataInspeccion.colmenasSeleccionadas = inspeccionForm.colmenasSeleccionadas;
 
         inspeccionService.crearInspeccion(dataInspeccion)
-          .then(function() {
-              notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
+          .then(function(response) {
+            if(response.data.status === 200) {
+              notificacionService.mostrarNotificacion('success', "Inspección Creada!", "");
               getInspecciones($scope.apiarioSeleccionado);
               setTable();
               $scope.mostrarSpinner = false;
+            } else {
+              $scope.error = true;
+              $scope.mostrarSpinner = false;
+            }
           })
           .finally(function() {
             loader.complete();
@@ -179,8 +171,18 @@
       };
 
       $scope.limpiarForm = function() {
-        $scope.apiarioForm = {};
+        $scope.inspeccionForm = {};
+        $scope.mostrarColmenas = false;
       };
+
+      $scope.verColmenas = function (value) {
+        if(!value) return $scope.mostrarColmenas = false;
+        colmenaService.getcolmenas($scope.apiarioSeleccionado)
+          .then(function(colmenas) {
+            $scope.colmenas = colmenas;
+            $scope.mostrarColmenas = true;
+          })
+      }
 
       getApiarios();
       setTable();
@@ -198,6 +200,7 @@
             'cfpLoadingBar',
             'apiarioService',
             'inspeccionService',
+            'colmenaService',
             inspeccionController
         ]);
 

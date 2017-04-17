@@ -13,6 +13,7 @@
     colmenaService) {
 
     i18nService.setCurrentLang('es');
+    $scope.mostrarSinRegistrosMsj = false;
 
     $scope.colmena      = {};
     $scope.mostrarModal = false;
@@ -20,6 +21,7 @@
     $scope.mostrarSelApiario = true;
     $scope.ocultarIdentificador = false;
     $scope.errorMultiple = false;
+    $scope.error = false;
 
     /**
      * Crear una colmena
@@ -38,11 +40,25 @@
       dataColmena.multiple      = colmenaForm.multiple;
 
       colmenaService.crearColmena(dataColmena)
-        .then(function() {
+        .then(function(response) {
+          if(response.data.status !== 200) {
+              $scope.error = true;
+              $scope.mostrarSinRegistrosMsj = false;
+              $scope.mostrarSpinner = false;
+            }
+          else {
+            $scope.error = false;
             notificacionService.mostrarNotificacion('success', "Colmena Creada!", "");
             getColmenas($scope.apiarioSeleccionado);
             setTable();
+            $scope.mostrarSinRegistrosMsj = false;
             $scope.mostrarSpinner = false;
+          }
+        })
+        .catch(function() {
+          $scope.error = true;
+          $scope.mostrarSinRegistrosMsj = false;
+          $scope.mostrarSpinner = false;
         })
         .finally(function() {
           loader.complete();
@@ -74,7 +90,6 @@
      * @param apiario
      */
     $scope.mostrarEditar = function(colmena) {
-      console.log(colmena);
       $scope.editForm = {
         id            : colmena.id,
         idApiario     : $scope.apiarioSeleccionado,
@@ -113,9 +128,15 @@
       loader.start();
       colmenaService.getcolmenas(idApiario)
         .then(function(response) {
-          if(response) {
+          if(response.length > 0) {
+            $scope.mostrarSinRegistrosMsj = false;
             $scope.gridOptionsColmena.data = response;
             $scope.mostrarSpinner = false;
+          }
+          else {
+            $scope.mostrarSinRegistrosMsj = true;
+            $scope.mostrarSpinner = false;
+            $scope.mostrarTabla = false;
           }
         }).finally(function() {
           loader.complete();
@@ -131,7 +152,6 @@
         $scope.errorMultiple = false;
       }
       else {
-        console.log(multiple);
         if (multiple > 100)
           $scope.errorMultiple = true;
         else {

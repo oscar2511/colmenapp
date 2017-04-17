@@ -25,3 +25,7 @@ services:
     inspeccion_service:
         class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionService
         arguments: ['@doctrine.orm.entity_manager']
+
+    inspeccion_colmena_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionColmenaService
+        arguments: ['@doctrine.orm.entity_manager', '@colmena_service']

@@ -32,9 +32,10 @@
     function crearColmena(dataColmena) {
       return $http.post(Routing.generate('colmena_crear'), dataColmena)
         .then(function(response) {
-          if(response.data.data = 200 && response.data.data) {
             return $q.resolve(response);
-          }
+        })
+        .catch(function(e) {
+          return $q.reject(e);
         })
     }
 

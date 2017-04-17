@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Colmenapp\PlataformaBundle\Entity\Inspeccion;
 
-class InspeccionService extends BaseInspeccionService
+class InspeccionColmenaService extends BaseInspeccionColmenaService
 {
 
   public function crearInspeccion(array $data)
@@ -26,7 +26,6 @@ class InspeccionService extends BaseInspeccionService
         ->find($apiarioId);
     try {
       if($colmenasSeleccionadas)
-        //$inspeccionColmena
 
       $this->em->getConnection()->beginTransaction();
 

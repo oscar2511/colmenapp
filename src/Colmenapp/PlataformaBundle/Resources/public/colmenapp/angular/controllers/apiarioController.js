@@ -9,12 +9,14 @@
         $scope.apiario        = {};
         $scope.mostrarModal   = false;
         $scope.mostrarSpinner = true;
+        $scope.mostrarSinRegistrosMsj = false;
 
         /**
          * Crear un apiario
          * @param apiarioForm
          */
         $scope.guardarApiario = function(apiarioForm) {
+          $scope.mostrarSinRegistrosMsj = false;
           $scope.mostrarSpinner = true;
           loader.start();
           var dataApiario = {};
@@ -43,9 +45,12 @@
           loader.start();
             $http.get(Routing.generate('apiario_todos'))
                 .then(function(response) {
-                    if(response.data.status == 200) {
+                    if(response.data.status == 200 && response.data.data.length > 0) {
                         $scope.gridOptionsApiario.data = response.data.data;
                         $scope.mostrarSpinner = false;
+                    } else {
+                      $scope.mostrarSinRegistrosMsj = true;
+                      $scope.mostrarSpinner = false;
                     }
                 }).finally(function() {
                 loader.complete();

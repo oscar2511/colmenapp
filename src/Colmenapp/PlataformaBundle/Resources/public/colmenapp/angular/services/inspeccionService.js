@@ -33,10 +33,11 @@
     function crearInspeccion(dataInspeccion) {
       return $http.post(Routing.generate('inspeccion_crear'), dataInspeccion)
         .then(function(response) {
-          if(response.data.data = 200 && response.data.data) {
             return $q.resolve(response);
-          }
-        })
+          })
+          .catch(function(e) {
+            return $q.reject(e);
+          })
     }
 
 
