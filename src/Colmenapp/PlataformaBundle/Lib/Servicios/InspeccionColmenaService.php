@@ -12,7 +12,6 @@ class InspeccionColmenaService extends BaseInspeccionColmenaService
 {
 
   public function crearInspeccion(
-    $apiario,
     $fecha,
     $inspeccionApiario,
     $tareaRealizada,
@@ -24,12 +23,11 @@ class InspeccionColmenaService extends BaseInspeccionColmenaService
     for($i=0; $i<count($colmenasSeleccionadas); $i++)
     {
       $colmena = $this->em
-          ->getRepository('ColmenappPlataformaBundle:colmena')
+          ->getRepository('ColmenappPlataformaBundle:Colmena')
           ->find((int)$colmenasSeleccionadas[$i]);
 
-          var_dump($colmena);die;
-
       $colmenaInspeccion = new ColmenaInspeccion();
+
 
       $colmenaInspeccion->setFecha($fecha);
       $colmenaInspeccion->setColmena($colmena);
@@ -39,9 +37,11 @@ class InspeccionColmenaService extends BaseInspeccionColmenaService
       $colmenaInspeccion->setCreated(new \DateTime("now"));
 
       $this->em->persist($colmenaInspeccion);
+        $this->em->flush();
+
     }
 
-      $this->em->flush();
+
 
       return true;
 

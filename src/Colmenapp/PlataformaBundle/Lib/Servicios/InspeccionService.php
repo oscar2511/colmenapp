@@ -20,12 +20,13 @@ class InspeccionService extends BaseInspeccionService
     $observacion    = isset($data['observacion']) ? $data['observacion'] : null;
     $colmenasSeleccionadas = isset($data['colmenasSeleccionadas']) ? $data['colmenasSeleccionadas'] : null;
 
-
-    $apiario = $this->em
+      $apiario = $this->em
         ->getRepository('ColmenappPlataformaBundle:Apiario')
         ->find($apiarioId);
 
-    try {
+
+    //try {
+
 
       $this->em->getConnection()->beginTransaction();
 
@@ -45,7 +46,6 @@ class InspeccionService extends BaseInspeccionService
         $this->
           inspeccionColmenaService
             ->crearInspeccion(
-              $apiario,
               $fecha,
               $inspeccion,
               $tareaRealizada,
@@ -57,10 +57,10 @@ class InspeccionService extends BaseInspeccionService
 
       return true;
 
-    } catch (\Exception $e) {
+    /*} catch (\Exception $e) {
         $this->em->getConnection()->rollback();
         return $e;
-      }
+      }*/
 
   }
 

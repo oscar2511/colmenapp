@@ -2,6 +2,10 @@
 
 namespace Colmenapp\PlataformaBundle\Entity;
 
+use Colmenapp\PlataformaBundle\Entity\Colmena;
+use Colmenapp\PlataformaBundle\Entity\Inspeccion;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +26,8 @@ class ColmenaInspeccion
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Colmena")
+     * @ORM\ManyToOne(targetEntity="Colmena")
+     * @assert\NotBlank()
      */
     private $colmena;
 
@@ -34,7 +39,7 @@ class ColmenaInspeccion
     private $fecha;
 
     /**
-     * @ORM\OneToOne(targetEntity="Inspeccion")
+     * @ORM\ManyToOne(targetEntity="Inspeccion")
      */
     private $inspeccionApiario;
 
@@ -274,4 +279,23 @@ class ColmenaInspeccion
     {
         return $this->deleted;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getColmena()
+    {
+        return $this->colmena;
+    }
+
+    /**
+     * @param mixed $colmena
+     */
+    public function setColmena($colmena)
+    {
+        $this->colmena = $colmena;
+    }
+
+
+
 }

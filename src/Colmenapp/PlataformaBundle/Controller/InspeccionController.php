@@ -15,9 +15,10 @@ class InspeccionController extends Controller
     }
 
     /**
-    * Obtiene las inspecciones de un apiario
-    *@param Request $request
-    */
+     * Obtiene las inspecciones de un apiario
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function getInspeccionesAction(Request $request)
     {
       try {
@@ -47,7 +48,6 @@ class InspeccionController extends Controller
     {
         $info = $request->getContent();
         $data = json_decode($info,true);
-        $em   = $this->getDoctrine()->getManager();
 
         $inspeccionService = $this->get('inspeccion_service');
 

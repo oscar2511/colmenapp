@@ -11,8 +11,10 @@ class BaseInspeccionService
 
     protected $em;
     protected $inspeccionColmenaService;
+
     /**
      * @param EntityManager $em
+     * @param InspeccionColmenaService $inspeccionColmenaService
      */
     function __construct(
       EntityManager $em,
