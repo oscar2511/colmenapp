@@ -276,6 +276,7 @@ class Inspeccion
         return $this->deleted;
     }
 
+
     /**
      * @return array
      */

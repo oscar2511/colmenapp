@@ -2,21 +2,15 @@
 
 namespace Colmenapp\PlataformaBundle\Entity;
 
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
-
 
 /**
- * InspeccionColmena
+ * ColmenaInspeccion
  *
- * @ORM\Table(name="inspeccion_colmena")
- * @ORM\Entity(repositoryClass="Colmenapp\PlataformaBundle\Repository\InspeccionColmenaRepository")
+ * @ORM\Table(name="colmena_inspeccion")
+ * @ORM\Entity(repositoryClass="Colmenapp\PlataformaBundle\Repository\ColmenaInspeccionRepository")
  */
-class InspeccionColmena
+class ColmenaInspeccion
 {
     /**
      * @var int
@@ -26,6 +20,11 @@ class InspeccionColmena
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Colmena")
+     */
+    private $colmena;
 
     /**
      * @var \DateTime
@@ -96,7 +95,7 @@ class InspeccionColmena
      * Set fecha
      *
      * @param \DateTime $fecha
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setFecha($fecha)
     {
@@ -119,7 +118,7 @@ class InspeccionColmena
      * Set inspeccionApiario
      *
      * @param integer $inspeccionApiario
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setInspeccionApiario($inspeccionApiario)
     {
@@ -142,7 +141,7 @@ class InspeccionColmena
      * Set tareaRealizada
      *
      * @param string $tareaRealizada
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setTareaRealizada($tareaRealizada)
     {
@@ -165,7 +164,7 @@ class InspeccionColmena
      * Set observacion
      *
      * @param string $observacion
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setObservacion($observacion)
     {
@@ -188,7 +187,7 @@ class InspeccionColmena
      * Set estado
      *
      * @param integer $estado
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setEstado($estado)
     {
@@ -211,7 +210,7 @@ class InspeccionColmena
      * Set created
      *
      * @param \DateTime $created
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setCreated($created)
     {
@@ -234,7 +233,7 @@ class InspeccionColmena
      * Set updated
      *
      * @param \DateTime $updated
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setUpdated($updated)
     {
@@ -257,7 +256,7 @@ class InspeccionColmena
      * Set deleted
      *
      * @param \DateTime $deleted
-     * @return InspeccionColmena
+     * @return ColmenaInspeccion
      */
     public function setDeleted($deleted)
     {

@@ -6,49 +6,44 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Colmenapp\PlataformaBundle\Entity\Inspeccion;
+use Colmenapp\PlataformaBundle\Entity\ColmenaInspeccion;
 
 class InspeccionColmenaService extends BaseInspeccionColmenaService
 {
 
-  public function crearInspeccion(array $data)
+  public function crearInspeccion(
+    $apiario,
+    $fecha,
+    $inspeccionApiario,
+    $tareaRealizada,
+    $observacion = null,
+    array $colmenasSeleccionadas
+    )
   {
-    $apiarioId      = $data['apiarioId'];
-    $fecha          = new \DateTime($data['fecha']);
-    $tareaRealizada = $data['tareaRealizada'];
-    $tareaEnColmena = isset($data['tareaEnColmena']) ? 1 : 0;
-    $observacion    = isset($data['observacion']) ? $data['observacion'] : null;
-    $colmenasSeleccionadas = isset($data['colmenasSeleccionadas']) ? $data['colmenasSeleccionadas'] : null;
 
+    for($i=0; $i<count($colmenasSeleccionadas); $i++)
+    {
+      $colmena = $this->em
+          ->getRepository('ColmenappPlataformaBundle:colmena')
+          ->find((int)$colmenasSeleccionadas[$i]);
 
-    $apiario = $this->em
-        ->getRepository('ColmenappPlataformaBundle:Apiario')
-        ->find($apiarioId);
-    try {
-      if($colmenasSeleccionadas)
+          var_dump($colmena);die;
 
-      $this->em->getConnection()->beginTransaction();
+      $colmenaInspeccion = new ColmenaInspeccion();
 
-      $inspeccion = new Inspeccion();
+      $colmenaInspeccion->setFecha($fecha);
+      $colmenaInspeccion->setColmena($colmena);
+      $colmenaInspeccion->setInspeccionApiario($inspeccionApiario);
+      $colmenaInspeccion->setTareaRealizada($tareaRealizada);
+      $colmenaInspeccion->setObservacion($observacion);
+      $colmenaInspeccion->setCreated(new \DateTime("now"));
 
-      $inspeccion->setApiario($apiario);
-      $inspeccion->setFecha($fecha);
-      $inspeccion->setTareaRealizada($tareaRealizada);
-      $inspeccion->setTareaEnColmena($tareaEnColmena);
-      $inspeccion->setObservacion($observacion);
-      $inspeccion->setCreated(new \DateTime("now"));
+      $this->em->persist($colmenaInspeccion);
+    }
 
-      $this->em->persist($inspeccion);
       $this->em->flush();
 
-      $this->em->getConnection()->commit();
-
       return true;
-
-    } catch (\Exception $e) {
-        $this->em->getConnection()->rollback();
-        return $e;
-      }
 
   }
 

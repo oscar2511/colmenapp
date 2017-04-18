@@ -11,12 +11,15 @@ class BaseInspeccionColmenaService
 
 protected $em;
 protected $colmenaService;
+protected $inspeccionColmenaService;
 
     /**
      * @param EntityManager $em
      * @param colmenaService $colmenaService
      */
-    function __construct(EntityManager $em, ColmenaService $colmenaService)
+    function __construct(
+      EntityManager $em,
+      ColmenaService $colmenaService)
     {
         $this->em = $em;
         $this->colmenaService = $colmenaService;

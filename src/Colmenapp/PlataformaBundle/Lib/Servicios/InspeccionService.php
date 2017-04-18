@@ -24,9 +24,8 @@ class InspeccionService extends BaseInspeccionService
     $apiario = $this->em
         ->getRepository('ColmenappPlataformaBundle:Apiario')
         ->find($apiarioId);
+
     try {
-      if($colmenasSeleccionadas)
-        //$inspeccionColmena
 
       $this->em->getConnection()->beginTransaction();
 
@@ -41,6 +40,18 @@ class InspeccionService extends BaseInspeccionService
 
       $this->em->persist($inspeccion);
       $this->em->flush();
+
+      if($colmenasSeleccionadas) {
+        $this->
+          inspeccionColmenaService
+            ->crearInspeccion(
+              $apiario,
+              $fecha,
+              $inspeccion,
+              $tareaRealizada,
+              $observacion,
+              $colmenasSeleccionadas);
+      }
 
       $this->em->getConnection()->commit();
 
