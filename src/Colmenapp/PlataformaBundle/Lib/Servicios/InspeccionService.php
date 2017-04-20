@@ -24,9 +24,7 @@ class InspeccionService extends BaseInspeccionService
         ->getRepository('ColmenappPlataformaBundle:Apiario')
         ->find($apiarioId);
 
-
-    //try {
-
+    try {
 
       $this->em->getConnection()->beginTransaction();
 
@@ -57,10 +55,10 @@ class InspeccionService extends BaseInspeccionService
 
       return true;
 
-    /*} catch (\Exception $e) {
+    } catch (\Exception $e) {
         $this->em->getConnection()->rollback();
         return $e;
-      }*/
+      }
 
   }
 

@@ -46,6 +46,19 @@ class Colmena
     protected $tipo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="origen_colmena", type="string", nullable=true)
+     */
+    protected $origenColmena;
+
+    /**
+    * @ORM\OneToOne(targetEntity="Reina", inversedBy="colmena")
+    * @ORM\JoinColumn(name="reina_id", referencedColumnName="id")
+    */
+    protected $reina;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="rejilla_excluidora", type="boolean", nullable=true)
@@ -79,6 +92,10 @@ class Colmena
      * @ORM\Column(name="estado", type="text", nullable=true)
      */
     protected $estado;
+
+    //public function __construct() {
+    //    $this->reina = new \Doctrine\Common\Collections\ArrayCollection();
+  //  }
 
     /**
      * @var \DateTime    $created
