@@ -20,7 +20,7 @@ services:
 
     colmena_service:
         class: Colmenapp\PlataformaBundle\Lib\Servicios\ColmenaService
-        arguments: ['@doctrine.orm.entity_manager',"@doctrine"]
+        arguments: ['@doctrine.orm.entity_manager',"@doctrine","@reina_service"]
 
     inspeccion_service:
         class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionService
@@ -29,3 +29,7 @@ services:
     inspeccion_colmena_service:
         class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionColmenaService
         arguments: ['@doctrine.orm.entity_manager', '@colmena_service']
+
+    reina_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\ReinaService
+        arguments: ['@doctrine.orm.entity_manager']

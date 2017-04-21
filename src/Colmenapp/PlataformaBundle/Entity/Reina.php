@@ -42,9 +42,8 @@ class Reina
     private $colmena;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="raza", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="RazaReina")
+     * @assert\NotBlank()
      */
     private $raza;
 

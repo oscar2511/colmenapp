@@ -20,12 +20,18 @@ class ColmenaService extends BaseColmenaService
     $enObservacion = isset($data['enObservacion']) ? $data['enObservacion'] : null;
     $estado        = isset($data['estado']) ? $data['estado'] : null;
 
+    /* reina */
+    $dataReina = array(
+      'reinaRazaId'        => $reinaRazaId,
+      'reinaIdentificador' => isset($data['reinaIdentificador']) ? $data['reinaIdentificador'] : null;
+     );
+
     if(isset($data['identificador']) && $data['identificador'])
       $identificador = $data['identificador'];
     else
       $identificador = uniqid();
 
-    $tipo =  $this->em
+    $tipo = $this->em
         ->getRepository('ColmenappPlataformaBundle:TipoColmena')
         ->find($tipoId);
 
@@ -37,21 +43,33 @@ class ColmenaService extends BaseColmenaService
       $this->crearMultiColmenas($apiario, $data['multiple'], $tipo, $rejilla, $camara );
     else {
 
-      $colmena = new Colmena();
+      try {
+        $this->em->getConnection()->beginTransaction();
 
-      $colmena->setIdentificador($identificador);
-      $colmena->setApiario($apiario);
-      $colmena->setTipo($tipo);
-      $colmena->setRejillaExcluidora($rejilla);
-      $colmena->setCamaraCria($camara);
-      $colmena->setEnObservacion($enObservacion);
-      $colmena->setEstado($estado);
-      $colmena->setCreated(new \DateTime("now"));
+        $colmena = new Colmena();
 
-      $this->em->persist($colmena);
-      $this->em->flush();
+        $colmena->setIdentificador($identificador);
+        $colmena->setApiario($apiario);
+        $colmena->setTipo($tipo);
+        $colmena->setRejillaExcluidora($rejilla);
+        $colmena->setCamaraCria($camara);
+        $colmena->setEnObservacion($enObservacion);
+        $colmena->setEstado($estado);
+        $colmena->setCreated(new \DateTime("now"));
 
-      return true;
+        $this->em->persist($colmena);
+        $this->em->flush();
+
+        $this->reinaService->crearReina($dataReina);
+
+        $this->em->getConnection()->commit();
+
+        return true;
+
+      } catch (\Exception $e) {
+          $this->em->getConnection()->rollback();
+          return $e;
+        }
     }
   }
 
