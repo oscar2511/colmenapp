@@ -10,7 +10,8 @@
     notificacionService,
     loader,
     apiarioService,
-    colmenaService) {
+    colmenaService,
+    reinaService) {
 
     i18nService.setCurrentLang('es');
     $scope.mostrarSinRegistrosMsj = false;
@@ -38,6 +39,9 @@
       dataColmena.rejilla       = colmenaForm.rejilla;
       dataColmena.camaraCria    = colmenaForm.camara;
       dataColmena.multiple      = colmenaForm.multiple;
+      //reina
+      dataColmena.reinaIdentificador = colmenaForm.reinaIdentificador;
+      dataColmena.reinaRazaId        = colmenaForm.reinaRaza;
 
       colmenaService.crearColmena(dataColmena)
         .then(function(response) {
@@ -263,6 +267,15 @@
         })
     }
 
+    function getReinaRazas() {
+      reinaService.getRazas()
+        .then(function(razas) {
+          $scope.razas = razas;
+          console.log($scope.razas);
+        })
+    }
+
+    getReinaRazas();
     setTable();
     getTipoColmenas();
     getApiarios();
@@ -278,6 +291,7 @@
       'cfpLoadingBar',
       'apiarioService',
       'colmenaService',
+      'reinaService',
       colmenaController
     ]);
 

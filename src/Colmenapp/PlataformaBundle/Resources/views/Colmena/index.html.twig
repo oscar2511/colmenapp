@@ -59,7 +59,7 @@
                 </div>
                 <div ng-show="error" class="callout callout-danger">
                   <h4>Error!</h4>
-                  <p>Ocurrió un error obteniendo las inspecciones del apiario</p>
+                  <p>Ocurrió un error ejecutando la acción.</p>
                 </div>
                 <div class="callout callout-info" ng-show="mostrarSinRegistrosMsj && !mostrarTabla && !error">
                     <h4><i class="fa fa-fw fa-info-circle"></i> No se encontraron colmenas.</h4>
@@ -91,51 +91,98 @@
                     <div class="modal-body">
                         <form class="form-horizontal" name="colmenaForm" novalidate>
                             <div class="box-body">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Crear Multiple Colmenas</label>
-                                    <div class="col-sm-10">
-                                        <input type="number" ng-change="checkMultipleActivado(colmenaForm.multiple)"  ng-pattern="/^[0-9]{1,3}$/" ng-model="colmenaForm.multiple" min="0" class="form-control" placeholder="Ingrese Cantidad de Colmenas (max 100)">
-                                        <span class="help-block" ng-show="errorMultiple"><p class="text-red">La cantidad máxima de colmenas no puede exceder los 100</p></span>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <div class="col-xs-10">
+                                    <label>Crear Multiple Colmenas</label>
+                                      <input type="number" ng-change="checkMultipleActivado(colmenaForm.multiple)"  ng-pattern="/^[0-9]{1,3}$/" ng-model="colmenaForm.multiple" min="0" class="form-control" placeholder="Ingrese Cantidad de Colmenas (max 100)">
+                                      <span class="help-block" ng-show="errorMultiple"><p class="text-red">La cantidad máxima de colmenas no puede exceder los 100</p></span>
                                     </div>
-                                </div>
-                                <div class="form-group" ng-show="!ocultarIdentificador">
-                                    <label class="col-sm-2 control-label">Identificador</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" ng-model="colmenaForm.identificador" name="subject" class="form-control"  placeholder="Ingrese identificador">
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="col-xs-10" ng-show="!ocultarIdentificador">
+                                      <label>Identificador</label>
+                                      <input type="text" ng-model="colmenaForm.identificador" name="subject" class="form-control"  placeholder="Ingrese identificador">
                                     </div>
-                                </div>
-                                <div class="form-group" ng-show="ocultarIdentificador">
-                                    <div class="callout callout-info">
-                                        <p><i class="fa fa-fw fa-info"></i> Si elije crear multiples colmenas, el sistema generará automaticamente los identificadores de cada una.</p>
+                                    <div class="col-xs-10" ng-show="ocultarIdentificador">
+                                      <label>Identificador</label>
+                                      <div class="callout callout-info">
+                                          <p><i class="fa fa-fw fa-info"></i> Si elije crear multiples colmenas, el sistema generará automaticamente los identificadores de cada una.</p>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
-                                <div class="form-group">
-                                    <label  type="text" class="col-sm-2 control-label">Tipo</label>
-                                    <div class="col-sm-10">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                      <div class="col-xs-10">
+                                        <label>Tipo</label>
                                         <select class="form-control" ng-model="colmenaForm.tipo" required>
-                                            <option ng-repeat="tipo in tiposColmenas" value="{{tipo.id}}">{{ tipo.descripcion }}</option>
+                                          <option ng-repeat="tipo in tiposColmenas" value="{{tipo.id}}">{{ tipo.descripcion }}</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail3" class="col-sm-2 control-label">Rejilla Excluidora</label>
-                                    <div class="col-sm-10">
+                                      </div>
+
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="col-xs-10">
+                                      <label>  Rejilla Excluidora
+                                        <br>
                                         <input type="checkbox" ng-model="colmenaForm.rejilla">
+
+                                      </label>
                                     </div>
+                                  </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">Cámaras de crías</label>
-                                    <div class="col-sm-10">
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <div class="col-xs-10">
+                                      <label>Cámaras de crías</label>
                                         <select class="form-control" ng-model="colmenaForm.camara">
                                             <option value=1 selected="selected">1</option>
                                             <option value=2>2</option>
                                             <option value=3>3</option>
                                         </select>
-                                    </div>
+                                      </div>
+                                  </div>
                                 </div>
-                            </div>
+                              </div>
+                              <!-------------------------------------------------------------->
+                              <div class="post">
+                                <div class="user-block">
+                                  <span>
+                                    <h4>Información de la reina</h4>
+                                  </span>
+                                </div>
+                                <p ng-show="ocultarIdentificador">
+                                  Si seleccionó crear multiples colmenas, el identificador para cada reina
+                                  será creado por el sistema de forma automática.
+                                </p>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="col-xs-10" ng-show="!ocultarIdentificador">
+                                        <label>Identificador</label>
+                                        <input type="text" ng-model="colmenaForm.reinaIdentificador" class="form-control"  placeholder="Ingrese identificador">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="col-xs-10">
+                                          <label>Raza</label>
+                                          <select class="form-control" ng-model="colmenaForm.reinaRaza" required>
+                                            <option ng-repeat="raza in razas" value="{{raza.id}}">{{ raza.descripcion }}</option>
+                                          </select>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </form>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="limpiarForm()">Cerrar</button>
                             <button data-dismiss="modal" ng-click="guardarColmena(colmenaForm)" ng-disabled="colmenaForm.$invalid" type="button" class="btn btn-primary">Guardar</button>

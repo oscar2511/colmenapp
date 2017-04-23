@@ -53,8 +53,8 @@ class Colmena
     protected $origenColmena;
 
     /**
-    * @ORM\OneToOne(targetEntity="Reina", inversedBy="colmena")
-    * @ORM\JoinColumn(name="reina_id", referencedColumnName="id")
+    * @ORM\OneToOne(targetEntity="Reina")
+    *
     */
     protected $reina;
 
@@ -317,7 +317,15 @@ class Colmena
         $this->deleted = $deleted;
     }
 
+    public function getReina()
+    {
+      return $this->reina;
+    }
 
+    public function setReina($reina)
+    {
+      $this->reina = $reina;
+    }
 
     /**
      * @return array

@@ -22,8 +22,8 @@ class ColmenaService extends BaseColmenaService
 
     /* reina */
     $dataReina = array(
-      'reinaRazaId'        => $reinaRazaId,
-      'reinaIdentificador' => isset($data['reinaIdentificador']) ? $data['reinaIdentificador'] : null;
+      'reinaRazaId'        => $data['reinaRazaId'],
+      'reinaIdentificador' => isset($data['reinaIdentificador']) ? $data['reinaIdentificador'] : uniqid()
      );
 
     if(isset($data['identificador']) && $data['identificador'])
@@ -40,10 +40,11 @@ class ColmenaService extends BaseColmenaService
         ->find($apiarioId);
 
     if(isset($data['multiple']) && $data['multiple'] > 0)
-      $this->crearMultiColmenas($apiario, $data['multiple'], $tipo, $rejilla, $camara );
+      $this->crearMultiColmenas($apiario, $data['multiple'], $tipo, $rejilla, $camara, $dataReina );
     else {
 
       try {
+
         $this->em->getConnection()->beginTransaction();
 
         $colmena = new Colmena();
@@ -57,10 +58,14 @@ class ColmenaService extends BaseColmenaService
         $colmena->setEstado($estado);
         $colmena->setCreated(new \DateTime("now"));
 
-        $this->em->persist($colmena);
-        $this->em->flush();
 
-        $this->reinaService->crearReina($dataReina);
+        $reina = $this->reinaService->crearReina($dataReina, $colmena);
+
+        $colmena->setReina($reina);
+
+        $this->em->persist($colmena);
+
+        $this->em->flush();
 
         $this->em->getConnection()->commit();
 
@@ -74,8 +79,15 @@ class ColmenaService extends BaseColmenaService
   }
 
 
-  private function crearMultiColmenas($apiario, $cantColmenas, $tipo, $rejilla, $camara)
+  private function crearMultiColmenas(
+    $apiario,
+    $cantColmenas,
+    $tipo,
+    $rejilla,
+    $camara,
+    $dataReina)
   {
+
     for($i=0; $i<$cantColmenas; $i++) {
       $colmena = new Colmena();
 
@@ -85,6 +97,11 @@ class ColmenaService extends BaseColmenaService
       $colmena->setRejillaExcluidora($rejilla);
       $colmena->setCamaraCria($camara);
       $colmena->setCreated(new \DateTime("now"));
+
+      $dataReina['reinaIdentificador'] = null;
+      $reina = $this->reinaService->crearReina($dataReina, $colmena);
+
+      $colmena->setReina($reina);
 
       $this->em->persist($colmena);
       $this->em->flush();

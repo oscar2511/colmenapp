@@ -37,7 +37,8 @@ class Reina
 
     /**
     *
-    * @ORM\OneToOne(targetEntity="Colmena", mappedBy="reina")
+    * @ORM\OneToOne(targetEntity="Colmena", inversedBy="colmena")
+    * @ORM\JoinColumn(name="colmena_id", referencedColumnName="id")
     */
     private $colmena;
 

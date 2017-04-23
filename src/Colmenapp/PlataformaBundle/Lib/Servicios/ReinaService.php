@@ -12,43 +12,49 @@ use Colmenapp\PlataformaBundle\Entity\RazaReina;
 class ReinaService extends BaseReinaService
 {
 
-  public function crearReina(array $data)
-  {
-    $colmena       = isset($data['colmena']);
-    $identificador = isset($data['identificador']) ? $data['identificador'] : null;
-    $razaId        = isset($data['razaId']) ? $data['razaId'] : null;
-    $observada     = isset($data['observada']) ? $data['observada'] : 1;
-    $enObservacion = isset($data['enObservacion']) ? $data['enObservacion'] : null;
-    $estado        = isset($data['estado']) ? $data['estado'] : null;
-    $fecha         = isset($data['fecha']);
-    $estadoSalud   = isset($data['estadoSalud']) ? $data['estadoSalud'] : null;
+public function crearReina(array $data, $colmena)
+{
 
-    if(isset($data['identificador']) && $data['identificador'])
-      $identificador = $data['identificador'];
-    else
-      $identificador = uniqid();
+  if(isset($data['reinaIdentificador']) && $data['reinaIdentificador'])
+    $identificador = $data['reinaIdentificador'];
+  else
+    $identificador = uniqid();
 
     $raza = $this->em
         ->getRepository('ColmenappPlataformaBundle:RazaReina')
-        ->find($razaId);
-
+        ->find($data['reinaRazaId']);
 
     $reina = new Reina();
+
 
     $reina->setIdentificador($identificador);
     $reina->setColmena($colmena);
     $reina->setRaza($raza);
-    $reina->setRejillaExcluidora($rejilla);
-    $reina->setCamaraCria($camara);
-    $reina->setEnObservacion($enObservacion);
-    $reina->setEstado($estado);
+    $reina->setFecha(new \DateTime("now"));
     $reina->setCreated(new \DateTime("now"));
-
     $this->em->persist($reina);
-    $this->em->flush();
+    
+    return $reina;
 
-    return true;
+}
 
+
+  /**
+  *
+  *
+  */
+  public function getRazas()
+  {
+    $razas = $this->em
+        ->getRepository('ColmenappPlataformaBundle:RazaReina')
+        ->findAll();
+
+    $razasArray = array();
+    foreach ($razas as $raza) {
+        array_push($razasArray, $raza->toArray());
+    }
+
+    return $razasArray;
   }
 
 

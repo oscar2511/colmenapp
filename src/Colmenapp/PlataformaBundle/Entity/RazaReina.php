@@ -60,7 +60,7 @@ class RazaReina
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +83,7 @@ class RazaReina
     /**
      * Get descripcion
      *
-     * @return string 
+     * @return string
      */
     public function getDescripcion()
     {
@@ -106,7 +106,7 @@ class RazaReina
     /**
      * Get estado
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEstado()
     {
@@ -129,11 +129,11 @@ class RazaReina
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
-        return $this->created;
+        return $this->created->format('d-m-Y');
     }
 
     /**
@@ -152,11 +152,11 @@ class RazaReina
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
-        return $this->updated;
+        return $this->created->format('d-m-Y');
     }
 
     /**
@@ -175,10 +175,24 @@ class RazaReina
     /**
      * Get deleted
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeleted()
     {
         return $this->deleted;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return array (
+            'id'                => $this->id,
+            'descripcion'       => $this->descripcion,
+            'estado '           => $this->estado,
+            'created'           => $this->getCreated(),
+            'updated'           => $this->getUpdated() ? $this->getUpdated() : null
+        );
     }
 }

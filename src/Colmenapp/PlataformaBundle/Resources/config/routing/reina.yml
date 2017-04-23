@@ -3,6 +3,14 @@ reina:
     defaults: { _controller: ColmenappPlataformaBundle:Reina:index, _name: reina }
     methods:  GET
 
+reina_razas:
+    path:     /razas
+    defaults: { _controller: ColmenappPlataformaBundle:Reina:getRazas }
+    methods:  GET
+    options:
+            expose: true
+
+
 #alerta_detalle:
 #    path:     /detalle
 #    defaults: { _controller: "ColmenappPlataformaBundle:Alerta:detalle" }
