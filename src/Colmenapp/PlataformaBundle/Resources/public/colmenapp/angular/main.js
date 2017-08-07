@@ -6,12 +6,17 @@
     angular
         .module('colmenapp',[
             'colmenapp.Controllers',
+            'colmenapp.Services',
             'chart.js',
             'ui.grid',
             'ui.grid.pagination',
-            'ui.grid.resizeColumns'
+            'ui.grid.resizeColumns',
+            'toaster',
+            'ngAnimate',
+            'angular-loading-bar'
         ]);
 
     angular.module('colmenapp.Controllers',[]);
+    angular.module('colmenapp.Services',[]);
 
 })();

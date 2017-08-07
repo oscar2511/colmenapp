@@ -12,20 +12,32 @@
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/apiarioController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/alertaController.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/finanzaController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/controllers/InspeccionController.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/services/notificacionService.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/services/apiarioService.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/services/colmenaService.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/colmenapp/angular/services/inspeccionService.js')}}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/angular-1.5.8/angular-chart.js/angular-chart.js') }}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/js/ui-grid/ui-grid.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.ttf')}}" type="multipart/form-data">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid-flexible-height.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/colmenappplataforma/package/loading-bar/loading-bar.js') }}"></script>
+
 
 {% endblock  %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bundles/avanzuadmintheme/static/'~ app.environment ~'/styles/admin-lte-all.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/ui-grid.ttf')}}" type="multipart/form-data">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href="{{ asset('bundles/colmenappplataforma/package/loading-bar/loading-bar.css') }}" type='text/css' media='all' />
+    <link rel="stylesheet" href="{{ asset('bundles/colmenappplataforma/css/custom.css')}}" type="text/css">
 {% endblock %}
 
 
@@ -182,7 +194,7 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><span class="glyphicon glyphicon-bullhorn"></span><span>Alertas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-bullhorn"></i><span>Alertas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-plus"></i> Nueva Alerta</a></li>
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-eye"></i> Ver alertas</a></li>
@@ -190,7 +202,7 @@
             </li>
             <li class="header">Configuración del Sistema</li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-fw fa-gear"></i>Configuración <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-fw fa-gear"></i><span>Configuración</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-users"></i> Usuarios</a></li>
                     <li><a href="{{ path('alerta') }}"><i class="fa fa-fw fa-asterisk"></i> Cuenta</a></li>

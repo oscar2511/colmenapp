@@ -12,3 +12,4 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     apikey_openweathermap: 05a6193e5aceca0e58d419717731fba7
     url_openweathermap: "http://api.openweathermap.org/data/2.5/weather"
+    redis_dsn: 'leadsius.local:6379'

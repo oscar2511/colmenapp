@@ -31,11 +31,11 @@
                         <tbody>
                         <tr>
                             <td><i class="fa fa-angle-right"> </i> Nombre del apiario</td>
-                            <td>Los Algarrobos</td>
+                            <td>{{apiario.getNombre}}</td>
                         </tr>
                         <tr>
-                            <td><i class="fa fa-map-marker"></i> Ubicación</td>
-                            <td colspan="2">Chamical - La Rioja</td>
+                            <td><i class="fa fa-map-marker"></i> Dirección</td>
+                            <td colspan="2">{{apiario.direccion}}</td>
                         </tr>
                         <tr>
                             <td><a href="{{ path('colmena') }}"><i class="fa fa-archive"></i> Número de colmenas</a></td>
@@ -389,6 +389,3 @@
     </div>
 </section>
 {% endblock %}
-
-
-

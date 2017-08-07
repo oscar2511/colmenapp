@@ -65,3 +65,20 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://%redis_dsn%
+        cache:
+            type: predis
+            alias: cache
+            dsn: redis://%redis_dsn%/1
+        session:
+            type: predis
+            alias: session
+            dsn: redis://%redis_dsn%/2
+    session:
+        client: session

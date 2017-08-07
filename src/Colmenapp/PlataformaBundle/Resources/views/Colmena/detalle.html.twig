@@ -3,7 +3,7 @@
 
 {% block page_title %}
 <h2 class="page-header">
-    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena 12</small>
+    <i class="fa fa-archive"></i> Gestión de Colmena<small>Colmena {{ colmena.identificador }}</small>
 </h2>
 {% endblock %}
 
@@ -32,30 +32,30 @@
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
                             <td>Apiario</td>
-                            <td colspan="2">Los Algarrobos</td>
+                            <td colspan="2">{{ colmena.apiario.nombre }}</td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-angle-right"></i></td>
-                            <td>Número de colmena</td>
-                            <td colspan="2">12</td>
+                            <td>Identificador de Colmena</td>
+                            <td colspan="2">{{ colmena.id }}</td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-map-marker"></i></td>
                             <td>Rejilla Excluidora</td>
-                            <td colspan="2">Si</td>
-                        </tr>
-                        <tr>
-                            <td><i class="fa fa-archive"></i></td>
-                            <td>Alzas</td>
-                            <td colspan="2">
-                                2
-                            </td>
+                            <td colspan="2">{% if colmena.rejillaExcluidora %} <i class="fa fa-fw fa-check success"></i> {% else %} No {% endif %}</td>
                         </tr>
                         <tr>
                             <td><i class="fa fa-archive"></i></td>
                             <td>Cámara de Crías</td>
                             <td colspan="2">
-                                2
+                                {{ colmena.camaraCria }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-fw fa-exclamation"></i></td>
+                            <td>En Observación</td>
+                            <td colspan="2">
+                                {% if colmena.enObservacion %} <small class="label bg-yellow"><i class="fa fa-fw fa-exclamation"></i></small> {% else %} No {% endif %}
                             </td>
                         </tr>
                         <tr>

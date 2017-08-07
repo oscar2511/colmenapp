@@ -14,6 +14,36 @@ colmena_inspeccion_nueva:
     methods:  GET
 
 colmena_detalle:
-    path:     /detalle
-    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle", _name: colmena , _name: colmena  }
+    path:     /detalle/{id}
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:detalle" }
     methods:  GET
+
+colmena_crear:
+    path:     /crear
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:crear" }
+    methods:  POST
+    options:
+            expose: true
+
+colmenas:
+    path:     /colmenas/{apiarioId}
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:getColmenas" }
+    methods:  GET
+    options:
+            expose: true
+
+colmenas_tipos:
+    path:     /tipos-colmenas
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:getTiposColmenas" }
+    methods:  GET
+    options:
+            expose: true
+
+colmena_editar:
+    path:     /editar
+    defaults: { _controller: "ColmenappPlataformaBundle:Colmena:editar" }
+    methods:  POST
+    options:
+            expose: true
+
+

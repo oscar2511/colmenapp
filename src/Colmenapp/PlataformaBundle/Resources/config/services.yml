@@ -13,8 +13,23 @@ services:
         tags:
           - { name: kernel.event_listener, event: kernel.request }
 
-
     test_subscriber:
        class: Colmenapp\PlataformaBundle\Lib\Subscribers\TestSubscriber
        arguments: [@logger]
        tags: [name: kernel.event_subscriber]
+
+    colmena_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\ColmenaService
+        arguments: ['@doctrine.orm.entity_manager',"@doctrine","@reina_service"]
+
+    inspeccion_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionService
+        arguments: ['@doctrine.orm.entity_manager', '@inspeccion_colmena_service']
+
+    inspeccion_colmena_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\InspeccionColmenaService
+        arguments: ['@doctrine.orm.entity_manager', '@colmena_service']
+
+    reina_service:
+        class: Colmenapp\PlataformaBundle\Lib\Servicios\ReinaService
+        arguments: ['@doctrine.orm.entity_manager']

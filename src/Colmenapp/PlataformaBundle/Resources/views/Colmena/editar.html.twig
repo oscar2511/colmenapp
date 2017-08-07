@@ -1,0 +1,76 @@
+
+<div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+              <h4 class="modal-title">Editar Colmena</h4>
+          </div>
+          <div class="modal-body">
+              {% verbatim %}
+              <form class="form-horizontal" name="editarForm" novalidate>
+                  <div class="box-body">
+                      <div class="form-group">
+                          <input type="hidden"  ng-model="editForm.id">
+                          <input type="hidden"  ng-model="editForm.idApiario">
+                          <label class="col-sm-2 control-label">Fecha</label>
+                          <div class="col-sm-10">
+                              <input type="email" class="form-control" disabled placeholder="10-09-2016">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-2 control-label">Identificador</label>
+                          <div class="col-sm-10">
+                              <input type="text" ng-model="editForm.identificador"  class="form-control"  placeholder="Ingrese identificador" required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label  type="text" class="col-sm-2 control-label">Tipo</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" ng-model="editForm.tipo.id" required>
+                                  <option ng-repeat="tipo in tiposColmenas" value="{{tipo.id}}"  ng-selected="tipo.id == editForm.tipo.id" >{{ tipo.descripcion }}</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Rejilla Excluidora</label>
+                          <div class="col-sm-10">
+                              <input ng-checked="editForm.rejilla" type="checkbox" ng-model="editForm.rejilla">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Cámaras de crías</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" ng-model="editForm.camara">
+                                  <option ng-selected="editForm.camara == 1" value=1>1</option>
+                                  <option ng-selected="editForm.camara == 2" value=2>2</option>
+                                  <option ng-selected="editForm.camara == 3" value=3>3</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">En Observación</label>
+                          <div class="col-sm-10">
+                              <input ng-checked="editForm.enObservacion" type="checkbox" ng-model="editForm.enObservacion">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Estado</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" ng-model="colmenaForm.estado">
+                                  <option ng-selected="!editForm.estado" value=0>Activa</option>
+                                  <option ng-selected="editForm.estado" value=1>Inactiva</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+              {% endverbatim %}
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+                  <button data-dismiss="modal" ng-click="editar(editForm)" ng-disabled="editarForm.$invalid" type="button" class="btn btn-primary">Guardar</button>
+              </div>
+          </div>
+      </div>
+  </div>

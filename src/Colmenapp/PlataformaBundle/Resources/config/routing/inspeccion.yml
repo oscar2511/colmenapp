@@ -2,3 +2,17 @@ inspeccion:
     path:     /
     defaults: { _controller: ColmenappPlataformaBundle:Inspeccion:index, _name: inspeccion }
     methods:  GET
+
+inspecciones:
+    path:     /inspecciones/{apiarioId}
+    defaults: { _controller: "ColmenappPlataformaBundle:Inspeccion:getInspecciones" }
+    methods:  GET
+    options:
+            expose: true
+
+inspeccion_crear:
+    path:     /crear
+    defaults: { _controller: "ColmenappPlataformaBundle:Inspeccion:crear" }
+    methods:  POST
+    options:
+            expose: true

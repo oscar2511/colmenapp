@@ -48,38 +48,6 @@
         }
       };
 
-      ///////////////////////////////
-
-      $scope.gridOptions = {
-        paginationPageSizes: [10,25, 50, 75],
-        paginationPageSize: 5,
-        enableSorting: true,
-        enableFiltering: true,
-        rowHeight: 50,
-        enableColumnResizing: true,
-        columnDefs: [
-          { field: 'name',enableColumnResizing: true },
-          { field: 'age' },
-          { field: 'location',
-            cellTemplate: '<div class="ngCellText"><a ng-href="/#/monitor/{{row.entity.age}}">Ver</a></div>',
-            enableSorting: false}
-        ],
-        onRegisterApi: function (gridApi) {
-          $scope.grid1Api = gridApi;
-        }
-      };
-      $scope.users = [
-        { name: "Madhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcdsMadhav Saiccs ccs dcds", age: 10, location: 'Nagpu' },
-        { name: "Suresh Dasari", age: 30, location: 'Chennai' },
-        { name: "Rohini Alavala", age: 29, location: 'Chennai' },
-        { name: "Praveen Kumar", age: 25, location: 'Bangalore' },
-        { name: "Sateesh Chandra", age: 27, location: 'Vizag' },
-        { name: "Nagaraju Dasari", age: 34, location: 'Atlanta' },
-        { name: "Gopi Krishna", age: 29, location: 'Repalle' },
-        { name: "Sudheer Uppala", age: 19, location: 'Guntur' },
-        { name: "Sushmita", age: 27, location: 'Vizag' }
-      ];
-      $scope.gridOptions.data = $scope.users;
 
     };
 
