@@ -5,4 +5,3 @@ import { TestModule } from './test.module';
 
 const platform = platformBrowserDynamic();
 platform.bootstrapModule(AppModule);
-platform.bootstrapModule(TestModule);
